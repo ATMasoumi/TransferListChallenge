@@ -90,7 +90,19 @@ final class LoadTransferFromRemoteUseCase: XCTestCase {
         }
     }
     
-    
+    func test_load_deliversErrorOnNon200HTTPResponse() {
+        let (sut, client) = makeSUT()
+        
+        let samples = [199, 201, 300, 400, 500]
+        let expectedResult = TransferLoader.Result.failure(RemoteTransferLoader.Error.invalidData)
+
+        samples.enumerated().forEach { index, code in
+            expect(sut, toCompleteWith: expectedResult, when: {
+                let json = makeItemsJSON([])
+                client.complete(withStatusCode: code, data: json, at: index)
+            })
+        }
+    }
     
     // MARK: - Helpers
     
@@ -138,7 +150,24 @@ final class LoadTransferFromRemoteUseCase: XCTestCase {
         func complete(with error: Error, at index: Int = 0) {
             messages[index].completion(.failure(error))
         }
+        
+        func complete(withStatusCode code: Int, data: Data, at index: Int = 0) {
+            let response = HTTPURLResponse(
+                url: requestedURLs[index],
+                statusCode: code,
+                httpVersion: nil,
+                headerFields: nil
+            )!
+            messages[index].completion(.success((data, response)))
+        }
+        
 
     }
-
+    
+    private func makeItemsJSON(_ items: [[String: Any]]) -> Data {
+        let json = ["items": items]
+        return try! JSONSerialization.data(withJSONObject: json)
+    }
+    
+    
 }
