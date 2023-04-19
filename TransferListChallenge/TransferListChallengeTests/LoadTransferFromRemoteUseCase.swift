@@ -14,12 +14,12 @@ public protocol HTTPClient {
 }
 
 public protocol TransferLoader {
-    typealias Result = Swift.Result<[String], Error>
+    typealias Result = Swift.Result<[Transfer], Error>
 
     func load(completion: @escaping (Result) -> Void)
 }
 
-public struct Transfer {
+public struct Transfer: Equatable {
     public let note: String
 }
 
@@ -42,16 +42,31 @@ public final class RemoteTransferLoader: TransferLoader {
     public func load(completion: @escaping (TransferLoader.Result) -> Void) {
         client.get(from: url) { result in
             switch result {
-            case .success:
-                completion(.failure(Error.invalidData))
+            case let .success(data, response):
+                if response.statusCode == 200, let root = try? JSONDecoder().decode(Root.self, from: data) {
+                    completion(.success(root.items.map { $0.item }))
+                } else {
+                    completion(.failure(Error.invalidData))
+                }
             case .failure:
                 completion(.failure(Error.connectivity))
             }
         }
     }
-    
-    
 }
+
+private struct Root: Decodable {
+    let items: [Item]
+}
+
+private struct Item: Decodable {
+    let note: String
+    
+    var item: Transfer {
+        return Transfer(note: note)
+    }
+}
+
 
 final class LoadTransferFromRemoteUseCase: XCTestCase {
 
@@ -110,6 +125,15 @@ final class LoadTransferFromRemoteUseCase: XCTestCase {
         expect(sut, toCompleteWith: expectedResult , when: {
             let invalidJSON = Data("invalid json".utf8)
             client.complete(withStatusCode: 200, data: invalidJSON)
+        })
+    }
+    
+    func test_load_deliversNoItemsOn200HTTPResponseWithEmptyJSONList() {
+        let (sut, client) = makeSUT()
+
+        expect(sut, toCompleteWith: .success([]), when: {
+            let emptyListJSON = makeItemsJSON([])
+            client.complete(withStatusCode: 200, data: emptyListJSON)
         })
     }
     
