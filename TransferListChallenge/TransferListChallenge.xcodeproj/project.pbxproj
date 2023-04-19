@@ -11,7 +11,7 @@
 		A897C27029EFB5F600B91E54 /* TransferListChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A897C26529EFB5F600B91E54 /* TransferListChallenge.framework */; };
 		A897C27529EFB5F600B91E54 /* TransferListChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A897C27429EFB5F600B91E54 /* TransferListChallengeTests.swift */; };
 		A897C27629EFB5F600B91E54 /* TransferListChallenge.h in Headers */ = {isa = PBXBuildFile; fileRef = A897C26829EFB5F600B91E54 /* TransferListChallenge.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A897C28C29EFC16E00B91E54 /* Transfer App Object Graph.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A897C28B29EFC16E00B91E54 /* Transfer App Object Graph.pdf */; };
+		A897C28E29EFC6D500B91E54 /* Transfer App Object Graphpdf.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A897C28D29EFC6D500B91E54 /* Transfer App Object Graphpdf.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +30,7 @@
 		A897C26929EFB5F600B91E54 /* TransferListChallenge.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = TransferListChallenge.docc; sourceTree = "<group>"; };
 		A897C26F29EFB5F600B91E54 /* TransferListChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransferListChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A897C27429EFB5F600B91E54 /* TransferListChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferListChallengeTests.swift; sourceTree = "<group>"; };
-		A897C28B29EFC16E00B91E54 /* Transfer App Object Graph.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Transfer App Object Graph.pdf"; sourceTree = "<group>"; };
+		A897C28D29EFC6D500B91E54 /* Transfer App Object Graphpdf.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Transfer App Object Graphpdf.pdf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +55,7 @@
 		A897C25B29EFB5F500B91E54 = {
 			isa = PBXGroup;
 			children = (
-				A897C28B29EFC16E00B91E54 /* Transfer App Object Graph.pdf */,
+				A897C28D29EFC6D500B91E54 /* Transfer App Object Graphpdf.pdf */,
 				A897C26729EFB5F600B91E54 /* TransferListChallenge */,
 				A897C27329EFB5F600B91E54 /* TransferListChallengeTests */,
 				A897C26629EFB5F600B91E54 /* Products */,
@@ -180,7 +180,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A897C28C29EFC16E00B91E54 /* Transfer App Object Graph.pdf in Resources */,
+				A897C28E29EFC6D500B91E54 /* Transfer App Object Graphpdf.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
