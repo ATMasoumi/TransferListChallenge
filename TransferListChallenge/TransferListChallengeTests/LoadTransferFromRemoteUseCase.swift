@@ -136,7 +136,20 @@ final class LoadTransferFromRemoteUseCase: XCTestCase {
             client.complete(withStatusCode: 200, data: emptyListJSON)
         })
     }
-    
+
+    func test_load_deliversItemsOn200HTTPResponseWithJSONItems() {
+        let (sut, client) = makeSUT()
+        
+        let item1 = makeItem(note: "note1")
+        let item2 = makeItem(note: "note2")
+        
+        let items = [item1.model, item2.model]
+        
+        expect(sut, toCompleteWith: .success(items), when: {
+            let json = makeItemsJSON([item1.json, item2.json])
+            client.complete(withStatusCode: 200, data: json)
+        })
+    }
     
     // MARK: - Helpers
     
@@ -201,6 +214,16 @@ final class LoadTransferFromRemoteUseCase: XCTestCase {
     private func makeItemsJSON(_ items: [[String: Any]]) -> Data {
         let json = ["items": items]
         return try! JSONSerialization.data(withJSONObject: json)
+    }
+    
+    private func makeItem(note: String) -> (model: Transfer, json: [String: Any]) {
+        let item = Transfer(note: note)
+        
+        let json = [
+            "note": note
+        ].compactMapValues { $0 }
+        
+        return (item, json)
     }
     
     
