@@ -6,11 +6,10 @@
 //
 
 import XCTest
-@testable import TransferListChallenge
+import TransferListChallenge
 
 final class TransferListChallengeTests: XCTestCase {
 
-   
     func testExample() throws {
        XCTFail("First test failed successfully.")
     }
