@@ -16,6 +16,10 @@
 		A8FD711B29F05D6E00817E8D /* RemoteTransferLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711929F05D6E00817E8D /* RemoteTransferLoader.swift */; };
 		A8FD711C29F05D6E00817E8D /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711629F05D6E00817E8D /* HTTPClient.swift */; };
 		A8FD711D29F05D6E00817E8D /* Transfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711729F05D6E00817E8D /* Transfer.swift */; };
+		A8FD712129F0602A00817E8D /* TransferItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD712029F0602A00817E8D /* TransferItemsMapper.swift */; };
+		A8FD712329F0605B00817E8D /* RemoteTransferItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD712229F0605B00817E8D /* RemoteTransferItem.swift */; };
+		A8FD712729F060B400817E8D /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD712629F060B400817E8D /* HTTPURLResponse+StatusCode.swift */; };
+		A8FD712B29F0655900817E8D /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD712A29F0655900817E8D /* XCTestCase+MemoryLeakTracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +43,10 @@
 		A8FD711729F05D6E00817E8D /* Transfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
 		A8FD711829F05D6E00817E8D /* TransferLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferLoader.swift; sourceTree = "<group>"; };
 		A8FD711929F05D6E00817E8D /* RemoteTransferLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteTransferLoader.swift; sourceTree = "<group>"; };
+		A8FD712029F0602A00817E8D /* TransferItemsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferItemsMapper.swift; sourceTree = "<group>"; };
+		A8FD712229F0605B00817E8D /* RemoteTransferItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteTransferItem.swift; sourceTree = "<group>"; };
+		A8FD712629F060B400817E8D /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
+		A8FD712A29F0655900817E8D /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,10 +90,8 @@
 		A897C26729EFB5F600B91E54 /* TransferListChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				A8FD711629F05D6E00817E8D /* HTTPClient.swift */,
-				A8FD711929F05D6E00817E8D /* RemoteTransferLoader.swift */,
-				A8FD711729F05D6E00817E8D /* Transfer.swift */,
-				A8FD711829F05D6E00817E8D /* TransferLoader.swift */,
+				A8FD712829F063D500817E8D /* Transfer Feature */,
+				A8FD712429F0608800817E8D /* Transfer API */,
 				A897C26829EFB5F600B91E54 /* TransferListChallenge.h */,
 				A897C26929EFB5F600B91E54 /* TransferListChallenge.docc */,
 			);
@@ -95,9 +101,47 @@
 		A897C27329EFB5F600B91E54 /* TransferListChallengeTests */ = {
 			isa = PBXGroup;
 			children = (
+				A8FD712929F0651300817E8D /* Helpers */,
 				A897C27429EFB5F600B91E54 /* LoadTransferFromRemoteUseCase.swift */,
 			);
 			path = TransferListChallengeTests;
+			sourceTree = "<group>";
+		};
+		A8FD712429F0608800817E8D /* Transfer API */ = {
+			isa = PBXGroup;
+			children = (
+				A8FD712529F0609D00817E8D /* Helpers */,
+				A8FD711629F05D6E00817E8D /* HTTPClient.swift */,
+				A8FD711929F05D6E00817E8D /* RemoteTransferLoader.swift */,
+				A8FD712029F0602A00817E8D /* TransferItemsMapper.swift */,
+				A8FD712229F0605B00817E8D /* RemoteTransferItem.swift */,
+			);
+			path = "Transfer API";
+			sourceTree = "<group>";
+		};
+		A8FD712529F0609D00817E8D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A8FD712629F060B400817E8D /* HTTPURLResponse+StatusCode.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A8FD712829F063D500817E8D /* Transfer Feature */ = {
+			isa = PBXGroup;
+			children = (
+				A8FD711729F05D6E00817E8D /* Transfer.swift */,
+				A8FD711829F05D6E00817E8D /* TransferLoader.swift */,
+			);
+			path = "Transfer Feature";
+			sourceTree = "<group>";
+		};
+		A8FD712929F0651300817E8D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A8FD712A29F0655900817E8D /* XCTestCase+MemoryLeakTracking.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +258,9 @@
 				A8FD711D29F05D6E00817E8D /* Transfer.swift in Sources */,
 				A897C26A29EFB5F600B91E54 /* TransferListChallenge.docc in Sources */,
 				A8FD711C29F05D6E00817E8D /* HTTPClient.swift in Sources */,
+				A8FD712129F0602A00817E8D /* TransferItemsMapper.swift in Sources */,
+				A8FD712329F0605B00817E8D /* RemoteTransferItem.swift in Sources */,
+				A8FD712729F060B400817E8D /* HTTPURLResponse+StatusCode.swift in Sources */,
 				A8FD711A29F05D6E00817E8D /* TransferLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A897C27529EFB5F600B91E54 /* LoadTransferFromRemoteUseCase.swift in Sources */,
+				A8FD712B29F0655900817E8D /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
