@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "42BAB2DF-7228-4EFF-99FB-3414E73AD14D",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:TransferListChallenge.xcodeproj",
+        "identifier" : "A897C26E29EFB5F600B91E54",
+        "name" : "TransferListChallengeTests"
+      }
+    }
+  ],
+  "version" : 1
+}
