@@ -37,23 +37,22 @@ final class URLSessionHTTPClientTests: XCTestCase {
     }
    
     func test_getFromURL_performsGETRequestWithURL() {
-        let url = URL(string: "http://any-url.com")!
         let exp = expectation(description: "Wait for request")
-        
+        let url = anyURL()
         URLProtocolStub.observeRequests { request in
             XCTAssertEqual(request.url, url)
             XCTAssertEqual(request.httpMethod, "GET")
             exp.fulfill()
         }
         
-        makeSUT().get(from: url) { _ in }
+        makeSUT().get(from: anyURL()) { _ in }
         
         wait(for: [exp], timeout: 1.0)
     }
     
     
     func test_getFromURL_failsOnRequestError() throws {
-        let url = URL(string: "http://any-url.com")!
+        
         let error = NSError(domain: "any error", code: 1)
         URLProtocolStub.stub(data: nil, response: nil, error: error)
 
@@ -61,7 +60,7 @@ final class URLSessionHTTPClientTests: XCTestCase {
 
         let exp = expectation(description: "Wait for completion")
         
-        makeSUT().get(from: url) { result in
+        makeSUT().get(from: anyURL()) { result in
             switch result {
             case let .failure(receivedError as NSError):
                 XCTAssertEqual(receivedError.domain, error.domain)
@@ -141,5 +140,8 @@ final class URLSessionHTTPClientTests: XCTestCase {
         
         override func stopLoading() {}
         
+    }
+    private func anyURL() -> URL {
+        URL(string: "http://any-url.com")!
     }
 }
