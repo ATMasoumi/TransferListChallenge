@@ -43,7 +43,7 @@ public final class RemoteTransferLoader: TransferLoader {
         client.get(from: url) { result in
             switch result {
             case .success:
-                break
+                completion(.failure(Error.invalidData))
             case .failure:
                 completion(.failure(Error.connectivity))
             }
@@ -84,27 +84,12 @@ final class LoadTransferFromRemoteUseCase: XCTestCase {
         let (sut, client) = makeSUT()
         
         let expectedResult = TransferLoader.Result.failure(RemoteTransferLoader.Error.connectivity)
-        let exp = expectation(description: "Wait for load completion")
-
-        sut.load { receivedResult in
-            switch (receivedResult, expectedResult) {
-                
-            case let (.failure(receivedError as RemoteTransferLoader.Error), .failure(expectedError as RemoteTransferLoader.Error)):
-                XCTAssertEqual(receivedError, expectedError)
-                
-            default:
-                XCTFail("Expected result \(expectedResult) got \(receivedResult) instead")
-            }
-            
-            exp.fulfill()
+        expect(sut, toCompleteWith: expectedResult) {
+            let clientError = NSError(domain: "Test", code: 0)
+            client.complete(with: clientError)
         }
-        
-        let clientError = NSError(domain: "Test", code: 0)
-        client.complete(with: clientError)
-        
-        wait(for: [exp], timeout: 1.0)
-
     }
+    
     
     
     // MARK: - Helpers
@@ -113,6 +98,29 @@ final class LoadTransferFromRemoteUseCase: XCTestCase {
         let client = HTTPClientSpy()
         let sut = RemoteTransferLoader(url: url, client: client)
         return (sut, client)
+    }
+    
+    private func expect(_ sut: RemoteTransferLoader, toCompleteWith expectedResult: RemoteTransferLoader.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+        let exp = expectation(description: "Wait for load completion")
+        
+        sut.load { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedItems), .success(expectedItems)):
+                XCTAssertEqual(receivedItems, expectedItems, file: file, line: line)
+                
+            case let (.failure(receivedError as RemoteTransferLoader.Error), .failure(expectedError as RemoteTransferLoader.Error)):
+                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+                
+            default:
+                XCTFail("Expected result \(expectedResult) got \(receivedResult) instead", file: file, line: line)
+            }
+            
+            exp.fulfill()
+        }
+        
+        action()
+        
+        wait(for: [exp], timeout: 1.0)
     }
     
     private class HTTPClientSpy: HTTPClient {
@@ -130,8 +138,7 @@ final class LoadTransferFromRemoteUseCase: XCTestCase {
         func complete(with error: Error, at index: Int = 0) {
             messages[index].completion(.failure(error))
         }
-        
-        
+
     }
 
 }
