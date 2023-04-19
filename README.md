@@ -16,7 +16,7 @@ Then the app should display the latest transfers from remote
 Given the customer has favorites transfers(locally)
 When the customer requests to see their favorites transfers
 Then the app should display the latest favorites transfers from local cache
-otherwise should not display favorites section
+Otherwise should not display favorites section
 
 Given the customer doesn't have connectivity
 When the customer requests to see their favorites transfers
@@ -29,9 +29,9 @@ Then the app should display details page
 Given the customer might have many transfers
 When the customer requests to see transfers
 Then the app should display first 10 item 
-and with requesting more items
-then the app should fetch more items from remote 
-and show to the user new received items from remote
+And with requesting more items
+Then the app should fetch more items from remote 
+And show to the user new received items from remote
 
 Given the frequency of the transfers
 When the customer swipes down the list 
@@ -48,11 +48,11 @@ Then the app should display detail page with more information
 
 When the customer taps on add to favorites 
 Then the app should saves transfer locally 
-and show as favorites on home page
+And show as favorites on home page
 
 When the customer taps on remove from favorites 
 Then the app should remove transfer from local cache 
-and update favorites transfers on home page
+And update favorites transfers on home page
 ```
 
 #### Scenarios (Acceptance criteria, Search)(*optional*)
@@ -61,10 +61,10 @@ and update favorites transfers on home page
 Given the customer has transfers
 When the customer searches by full_name  
 Then the app should search for local items 
-and display them in the home page 
+And display them in the home page 
 
 Given the customer searched for transfers
-when taps on the result   
+When taps on the result   
 Then the app should navigate to detail page of that item 
 
 ```
