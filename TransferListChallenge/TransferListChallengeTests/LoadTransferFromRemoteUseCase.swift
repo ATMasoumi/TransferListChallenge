@@ -8,9 +8,6 @@
 import XCTest
 import TransferListChallenge
 
-
-
-
 final class LoadTransferFromRemoteUseCase: XCTestCase {
 
     func test_init_doesNotRequestDataFromURL() {
@@ -183,12 +180,6 @@ final class LoadTransferFromRemoteUseCase: XCTestCase {
         ].compactMapValues { $0 }
         
         return (item, json)
-    }
-    
-    func trackForMemoryLeaks(_ instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(instance, "Instance should have been deallocated. Potential memory leak.", file: file, line: line)
-        }
     }
     
 }
