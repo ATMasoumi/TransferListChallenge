@@ -9,11 +9,14 @@ import XCTest
 import TransferListChallenge
 
 public protocol HTTPClient {
-    func get(from url: URL)
+    typealias Result = Swift.Result<(Data, HTTPURLResponse),Error>
+    func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void)
 }
 
 public protocol TransferLoader {
-    func load()
+    typealias Result = Swift.Result<[String], Error>
+
+    func load(completion: @escaping (Result) -> Void)
 }
 
 public struct Transfer {
@@ -21,17 +24,30 @@ public struct Transfer {
 }
 
 public final class RemoteTransferLoader: TransferLoader {
+    
+    
     private let url: URL
     private let client: HTTPClient
 
-
+    public enum Error: Swift.Error , Equatable{
+        case connectivity
+        case invalidData
+    }
+    
     public init(url: URL, client: HTTPClient) {
         self.url = url
         self.client = client
     }
     
-    public func load() {
-        client.get(from: url)
+    public func load(completion: @escaping (TransferLoader.Result) -> Void) {
+        client.get(from: url) { result in
+            switch result {
+            case .success:
+                break
+            case .failure:
+                completion(.failure(Error.connectivity))
+            }
+        }
     }
     
     
@@ -49,7 +65,7 @@ final class LoadTransferFromRemoteUseCase: XCTestCase {
         let url = URL(string: "https://a-given-url.com")!
         let (sut, client) = makeSUT(url: url)
         
-        sut.load ()
+        sut.load { _ in }
         
         XCTAssertEqual(client.requestedURLs, [url])
     }
@@ -58,10 +74,36 @@ final class LoadTransferFromRemoteUseCase: XCTestCase {
         let url = URL(string: "https://a-given-url.com")!
         let (sut, client) = makeSUT(url: url)
         
-        sut.load()
-        sut.load()
+        sut.load { _ in }
+        sut.load { _ in }
         
         XCTAssertEqual(client.requestedURLs, [url, url])
+    }
+    
+    func test_load_deliversErrorOnClientError() {
+        let (sut, client) = makeSUT()
+        
+        let expectedResult = TransferLoader.Result.failure(RemoteTransferLoader.Error.connectivity)
+        let exp = expectation(description: "Wait for load completion")
+
+        sut.load { receivedResult in
+            switch (receivedResult, expectedResult) {
+                
+            case let (.failure(receivedError as RemoteTransferLoader.Error), .failure(expectedError as RemoteTransferLoader.Error)):
+                XCTAssertEqual(receivedError, expectedError)
+                
+            default:
+                XCTFail("Expected result \(expectedResult) got \(receivedResult) instead")
+            }
+            
+            exp.fulfill()
+        }
+        
+        let clientError = NSError(domain: "Test", code: 0)
+        client.complete(with: clientError)
+        
+        wait(for: [exp], timeout: 1.0)
+
     }
     
     
@@ -75,15 +117,20 @@ final class LoadTransferFromRemoteUseCase: XCTestCase {
     
     private class HTTPClientSpy: HTTPClient {
         
-        private var messages = [URL]()
+        private var messages = [(url: URL,completion: (HTTPClient.Result) -> Void)]()
         
         var requestedURLs: [URL] {
-            return messages.map { $0 }
+            return messages.map { $0.url }
         }
         
-        func get(from url: URL) {
-            messages.append(url)
+        func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) {
+            messages.append((url, completion))
         }
+        
+        func complete(with error: Error, at index: Int = 0) {
+            messages[index].completion(.failure(error))
+        }
+        
         
     }
 
