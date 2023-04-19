@@ -20,6 +20,7 @@
 		A8FD712329F0605B00817E8D /* RemoteTransferItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD712229F0605B00817E8D /* RemoteTransferItem.swift */; };
 		A8FD712729F060B400817E8D /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD712629F060B400817E8D /* HTTPURLResponse+StatusCode.swift */; };
 		A8FD712B29F0655900817E8D /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD712A29F0655900817E8D /* XCTestCase+MemoryLeakTracking.swift */; };
+		A8FD712D29F06B0F00817E8D /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD712C29F06B0F00817E8D /* URLSessionHTTPClientTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		A8FD712229F0605B00817E8D /* RemoteTransferItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteTransferItem.swift; sourceTree = "<group>"; };
 		A8FD712629F060B400817E8D /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
 		A8FD712A29F0655900817E8D /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
+		A8FD712C29F06B0F00817E8D /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			children = (
 				A8FD712929F0651300817E8D /* Helpers */,
 				A897C27429EFB5F600B91E54 /* LoadTransferFromRemoteUseCase.swift */,
+				A8FD712C29F06B0F00817E8D /* URLSessionHTTPClientTests.swift */,
 			);
 			path = TransferListChallengeTests;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A897C27529EFB5F600B91E54 /* LoadTransferFromRemoteUseCase.swift in Sources */,
+				A8FD712D29F06B0F00817E8D /* URLSessionHTTPClientTests.swift in Sources */,
 				A8FD712B29F0655900817E8D /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
