@@ -71,7 +71,7 @@ Then the app should navigate to detail page of that item
 
 ## Transfer List API
 
-###https://4e6774cc-4d63-41b2-8003-336545c0a86d.mock.pstmn.io/transfer-list/{page-number}
+https://4e6774cc-4d63-41b2-8003-336545c0a86d.mock.pstmn.io/transfer-list/{page-number}
 
 example: https://4e6774cc-4d63-41b2-8003-336545c0a86d.mock.pstmn.io/transfer-list/1
 
