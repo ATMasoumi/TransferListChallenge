@@ -89,7 +89,7 @@ https://4e6774cc-4d63-41b2-8003-336545c0a86d.mock.pstmn.io/transfer-list/{page-n
 | Property          | Type                |
 |-------------------|---------------------|
 | `full_name`       | `String`            |
-| `email`           | `String`(optional)  |
+| `email`           | `String` (optional) |
 | `avatar`          | `String`            |
 
 ### Card
@@ -97,7 +97,7 @@ https://4e6774cc-4d63-41b2-8003-336545c0a86d.mock.pstmn.io/transfer-list/{page-n
 | Property          | Type                |
 |-------------------|---------------------|
 | `card_number`     | `String`            |
-| `card_type`       | `String`(optional)  |
+| `card_type`       | `String`            |
 
 ### MoreInfo
 
