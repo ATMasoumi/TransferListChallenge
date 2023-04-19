@@ -12,6 +12,10 @@
 		A897C27529EFB5F600B91E54 /* LoadTransferFromRemoteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A897C27429EFB5F600B91E54 /* LoadTransferFromRemoteUseCase.swift */; };
 		A897C27629EFB5F600B91E54 /* TransferListChallenge.h in Headers */ = {isa = PBXBuildFile; fileRef = A897C26829EFB5F600B91E54 /* TransferListChallenge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A897C28E29EFC6D500B91E54 /* Transfer App Object Graphpdf.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A897C28D29EFC6D500B91E54 /* Transfer App Object Graphpdf.pdf */; };
+		A8FD711A29F05D6E00817E8D /* TransferLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711829F05D6E00817E8D /* TransferLoader.swift */; };
+		A8FD711B29F05D6E00817E8D /* RemoteTransferLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711929F05D6E00817E8D /* RemoteTransferLoader.swift */; };
+		A8FD711C29F05D6E00817E8D /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711629F05D6E00817E8D /* HTTPClient.swift */; };
+		A8FD711D29F05D6E00817E8D /* Transfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711729F05D6E00817E8D /* Transfer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +35,10 @@
 		A897C26F29EFB5F600B91E54 /* TransferListChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransferListChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A897C27429EFB5F600B91E54 /* LoadTransferFromRemoteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTransferFromRemoteUseCase.swift; sourceTree = "<group>"; };
 		A897C28D29EFC6D500B91E54 /* Transfer App Object Graphpdf.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Transfer App Object Graphpdf.pdf"; sourceTree = "<group>"; };
+		A8FD711629F05D6E00817E8D /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		A8FD711729F05D6E00817E8D /* Transfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
+		A8FD711829F05D6E00817E8D /* TransferLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferLoader.swift; sourceTree = "<group>"; };
+		A8FD711929F05D6E00817E8D /* RemoteTransferLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteTransferLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +82,10 @@
 		A897C26729EFB5F600B91E54 /* TransferListChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				A8FD711629F05D6E00817E8D /* HTTPClient.swift */,
+				A8FD711929F05D6E00817E8D /* RemoteTransferLoader.swift */,
+				A8FD711729F05D6E00817E8D /* Transfer.swift */,
+				A8FD711829F05D6E00817E8D /* TransferLoader.swift */,
 				A897C26829EFB5F600B91E54 /* TransferListChallenge.h */,
 				A897C26929EFB5F600B91E54 /* TransferListChallenge.docc */,
 			);
@@ -198,7 +210,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8FD711B29F05D6E00817E8D /* RemoteTransferLoader.swift in Sources */,
+				A8FD711D29F05D6E00817E8D /* Transfer.swift in Sources */,
 				A897C26A29EFB5F600B91E54 /* TransferListChallenge.docc in Sources */,
+				A8FD711C29F05D6E00817E8D /* HTTPClient.swift in Sources */,
+				A8FD711A29F05D6E00817E8D /* TransferLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +421,7 @@
 		A897C27D29EFB5F600B91E54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 99TB4TR395;
@@ -420,6 +437,7 @@
 		A897C27E29EFB5F600B91E54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 99TB4TR395;
