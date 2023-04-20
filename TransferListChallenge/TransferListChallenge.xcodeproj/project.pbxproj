@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A88E7FAF29F1C55700F63416 /* FavoritesTransferStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A88E7FAD29F1C55700F63416 /* FavoritesTransferStore.xcdatamodeld */; };
+		A88E7FC129F1C78C00F63416 /* ManagedObjects in Resources */ = {isa = PBXBuildFile; fileRef = A88E7FC029F1C78C00F63416 /* ManagedObjects */; };
 		A897C26A29EFB5F600B91E54 /* TransferListChallenge.docc in Sources */ = {isa = PBXBuildFile; fileRef = A897C26929EFB5F600B91E54 /* TransferListChallenge.docc */; };
 		A897C27029EFB5F600B91E54 /* TransferListChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A897C26529EFB5F600B91E54 /* TransferListChallenge.framework */; };
 		A897C27529EFB5F600B91E54 /* LoadTransferFromRemoteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A897C27429EFB5F600B91E54 /* LoadTransferFromRemoteUseCase.swift */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		A87C53CA29F08C4D005A8F24 /* TransferListChallenge.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TransferListChallenge.xctestplan; sourceTree = "<group>"; };
 		A88E7FAE29F1C55700F63416 /* FavoritesTransferStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritesTransferStore.xcdatamodel; sourceTree = "<group>"; };
+		A88E7FC029F1C78C00F63416 /* ManagedObjects */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ManagedObjects; sourceTree = "<group>"; };
 		A897C26529EFB5F600B91E54 /* TransferListChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TransferListChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A897C26829EFB5F600B91E54 /* TransferListChallenge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransferListChallenge.h; sourceTree = "<group>"; };
 		A897C26929EFB5F600B91E54 /* TransferListChallenge.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = TransferListChallenge.docc; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		A8E7563529F1B6C300A149D3 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				A88E7FC029F1C78C00F63416 /* ManagedObjects */,
 				A8E7563629F1B6E500A149D3 /* CoreDataHelpers.swift */,
 				A8E7563829F1B72000A149D3 /* CoreDataFavoritesTransferStore.swift */,
 				A8E7563A29F1B78D00A149D3 /* CoreDataFavoritesTransferStore+FavoritesTransferStore.swift */,
@@ -371,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A897C28E29EFC6D500B91E54 /* Transfer App Object Graphpdf.pdf in Resources */,
+				A88E7FC129F1C78C00F63416 /* ManagedObjects in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
