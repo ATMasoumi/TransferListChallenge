@@ -83,6 +83,14 @@ final class CacheTransferUseCaseTests: XCTestCase {
         })
     }
     
+    func test_load_deliversEmptyCachedFavoritesTransfers() {
+        let (sut, store) = makeSUT()
+        
+        expect(sut, toCompleteWith: .success([]), when: {
+            store.completeRetrieval(with: [])
+        })
+    }
+    
     // MARK: - Helpers
     
     func makeSUT() -> (LocalFavoritesTransferLoader,FavoritesTransferStoreSpy) {
