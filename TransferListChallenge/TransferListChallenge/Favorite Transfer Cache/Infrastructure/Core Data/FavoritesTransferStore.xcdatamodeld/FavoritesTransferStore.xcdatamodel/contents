@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22E252" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Card" representedClassName="Card" syncable="YES" codeGenerationType="class">
+    <entity name="ManagedCard" representedClassName="ManagedCard" syncable="YES">
         <attribute name="cardNumber" attributeType="String"/>
         <attribute name="cardType" attributeType="String"/>
-        <relationship name="favTransfer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FavTransfer" inverseName="card" inverseEntity="FavTransfer"/>
+        <relationship name="favTransfer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedFavTransfer" inverseName="card" inverseEntity="ManagedFavTransfer"/>
     </entity>
-    <entity name="FavTransfer" representedClassName="FavTransfer" syncable="YES" codeGenerationType="class">
+    <entity name="ManagedFavTransfer" representedClassName="ManagedFavTransfer" syncable="YES">
         <attribute name="lastTransfer" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="note" optional="YES" attributeType="String"/>
-        <relationship name="card" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Card" inverseName="favTransfer" inverseEntity="Card"/>
-        <relationship name="moreInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MoreInfo" inverseName="favTransfer" inverseEntity="MoreInfo"/>
-        <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="favTransfer" inverseEntity="Person"/>
+        <relationship name="card" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedCard" inverseName="favTransfer" inverseEntity="ManagedCard"/>
+        <relationship name="moreInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedMoreInfo" inverseName="favTransfer" inverseEntity="ManagedMoreInfo"/>
+        <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedPerson" inverseName="favTransfer" inverseEntity="ManagedPerson"/>
     </entity>
-    <entity name="MoreInfo" representedClassName="MoreInfo" syncable="YES" codeGenerationType="class">
+    <entity name="ManagedMoreInfo" representedClassName="ManagedMoreInfo" syncable="YES">
         <attribute name="numberOfTransfers" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="totalTransfers" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="favTransfer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FavTransfer" inverseName="moreInfo" inverseEntity="FavTransfer"/>
+        <attribute name="totalTransfer" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="favTransfer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedFavTransfer" inverseName="moreInfo" inverseEntity="ManagedFavTransfer"/>
     </entity>
-    <entity name="Person" representedClassName="Person" syncable="YES" codeGenerationType="class">
+    <entity name="ManagedPerson" representedClassName="ManagedPerson" syncable="YES">
         <attribute name="avatar" attributeType="URI"/>
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="fullName" attributeType="String"/>
-        <relationship name="favTransfer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FavTransfer" inverseName="person" inverseEntity="FavTransfer"/>
+        <relationship name="favTransfer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedFavTransfer" inverseName="person" inverseEntity="ManagedFavTransfer"/>
     </entity>
 </model>

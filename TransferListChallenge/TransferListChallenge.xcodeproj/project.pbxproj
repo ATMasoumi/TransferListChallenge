@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A88E7FAF29F1C55700F63416 /* FavoritesTransferStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A88E7FAD29F1C55700F63416 /* FavoritesTransferStore.xcdatamodeld */; };
 		A897C26A29EFB5F600B91E54 /* TransferListChallenge.docc in Sources */ = {isa = PBXBuildFile; fileRef = A897C26929EFB5F600B91E54 /* TransferListChallenge.docc */; };
 		A897C27029EFB5F600B91E54 /* TransferListChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A897C26529EFB5F600B91E54 /* TransferListChallenge.framework */; };
 		A897C27529EFB5F600B91E54 /* LoadTransferFromRemoteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A897C27429EFB5F600B91E54 /* LoadTransferFromRemoteUseCase.swift */; };
@@ -25,7 +26,6 @@
 		A8E7563729F1B6E500A149D3 /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E7563629F1B6E500A149D3 /* CoreDataHelpers.swift */; };
 		A8E7563929F1B72000A149D3 /* CoreDataFavoritesTransferStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E7563829F1B72000A149D3 /* CoreDataFavoritesTransferStore.swift */; };
 		A8E7563B29F1B78D00A149D3 /* CoreDataFavoritesTransferStore+FavoritesTransferStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E7563A29F1B78D00A149D3 /* CoreDataFavoritesTransferStore+FavoritesTransferStore.swift */; };
-		A8E7563E29F1B87200A149D3 /* FavoritesTransferStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8E7563C29F1B87200A149D3 /* FavoritesTransferStore.xcdatamodeld */; };
 		A8FD711A29F05D6E00817E8D /* TransferLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711829F05D6E00817E8D /* TransferLoader.swift */; };
 		A8FD711B29F05D6E00817E8D /* RemoteTransferLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711929F05D6E00817E8D /* RemoteTransferLoader.swift */; };
 		A8FD711C29F05D6E00817E8D /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711629F05D6E00817E8D /* HTTPClient.swift */; };
@@ -56,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		A87C53CA29F08C4D005A8F24 /* TransferListChallenge.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TransferListChallenge.xctestplan; sourceTree = "<group>"; };
+		A88E7FAE29F1C55700F63416 /* FavoritesTransferStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritesTransferStore.xcdatamodel; sourceTree = "<group>"; };
 		A897C26529EFB5F600B91E54 /* TransferListChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TransferListChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A897C26829EFB5F600B91E54 /* TransferListChallenge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransferListChallenge.h; sourceTree = "<group>"; };
 		A897C26929EFB5F600B91E54 /* TransferListChallenge.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = TransferListChallenge.docc; sourceTree = "<group>"; };
@@ -76,7 +77,6 @@
 		A8E7563629F1B6E500A149D3 /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
 		A8E7563829F1B72000A149D3 /* CoreDataFavoritesTransferStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFavoritesTransferStore.swift; sourceTree = "<group>"; };
 		A8E7563A29F1B78D00A149D3 /* CoreDataFavoritesTransferStore+FavoritesTransferStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataFavoritesTransferStore+FavoritesTransferStore.swift"; sourceTree = "<group>"; };
-		A8E7563D29F1B87200A149D3 /* FavoritesTransferStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritesTransferStore.xcdatamodel; sourceTree = "<group>"; };
 		A8FD711629F05D6E00817E8D /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		A8FD711729F05D6E00817E8D /* Transfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
 		A8FD711829F05D6E00817E8D /* TransferLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferLoader.swift; sourceTree = "<group>"; };
@@ -211,7 +211,7 @@
 				A8E7563629F1B6E500A149D3 /* CoreDataHelpers.swift */,
 				A8E7563829F1B72000A149D3 /* CoreDataFavoritesTransferStore.swift */,
 				A8E7563A29F1B78D00A149D3 /* CoreDataFavoritesTransferStore+FavoritesTransferStore.swift */,
-				A8E7563C29F1B87200A149D3 /* FavoritesTransferStore.xcdatamodeld */,
+				A88E7FAD29F1C55700F63416 /* FavoritesTransferStore.xcdatamodeld */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -405,7 +405,7 @@
 				A8E7563929F1B72000A149D3 /* CoreDataFavoritesTransferStore.swift in Sources */,
 				A897C26A29EFB5F600B91E54 /* TransferListChallenge.docc in Sources */,
 				A8FD711C29F05D6E00817E8D /* HTTPClient.swift in Sources */,
-				A8E7563E29F1B87200A149D3 /* FavoritesTransferStore.xcdatamodeld in Sources */,
+				A88E7FAF29F1C55700F63416 /* FavoritesTransferStore.xcdatamodeld in Sources */,
 				A8E7563B29F1B78D00A149D3 /* CoreDataFavoritesTransferStore+FavoritesTransferStore.swift in Sources */,
 				A8FD712129F0602A00817E8D /* TransferItemsMapper.swift in Sources */,
 				A8A9682B29F147B600B8E220 /* String+DateConverter.swift in Sources */,
@@ -737,12 +737,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		A8E7563C29F1B87200A149D3 /* FavoritesTransferStore.xcdatamodeld */ = {
+		A88E7FAD29F1C55700F63416 /* FavoritesTransferStore.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				A8E7563D29F1B87200A149D3 /* FavoritesTransferStore.xcdatamodel */,
+				A88E7FAE29F1C55700F63416 /* FavoritesTransferStore.xcdatamodel */,
 			);
-			currentVersion = A8E7563D29F1B87200A149D3 /* FavoritesTransferStore.xcdatamodel */;
+			currentVersion = A88E7FAE29F1C55700F63416 /* FavoritesTransferStore.xcdatamodel */;
 			path = FavoritesTransferStore.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
