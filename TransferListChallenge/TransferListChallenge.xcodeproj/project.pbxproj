@@ -132,9 +132,9 @@
 		A897C27329EFB5F600B91E54 /* TransferListChallengeTests */ = {
 			isa = PBXGroup;
 			children = (
+				A8A9682E29F14E9500B8E220 /* Transfer Cache */,
+				A8A9682D29F14E6300B8E220 /* Transfer API */,
 				A8FD712929F0651300817E8D /* Helpers */,
-				A897C27429EFB5F600B91E54 /* LoadTransferFromRemoteUseCase.swift */,
-				A8FD712C29F06B0F00817E8D /* URLSessionHTTPClientTests.swift */,
 			);
 			path = TransferListChallengeTests;
 			sourceTree = "<group>";
@@ -145,6 +145,22 @@
 				A8A9682229F1164500B8E220 /* TransferListEndToEndTests.swift */,
 			);
 			path = TransferListEndToEndTests;
+			sourceTree = "<group>";
+		};
+		A8A9682D29F14E6300B8E220 /* Transfer API */ = {
+			isa = PBXGroup;
+			children = (
+				A897C27429EFB5F600B91E54 /* LoadTransferFromRemoteUseCase.swift */,
+				A8FD712C29F06B0F00817E8D /* URLSessionHTTPClientTests.swift */,
+			);
+			path = "Transfer API";
+			sourceTree = "<group>";
+		};
+		A8A9682E29F14E9500B8E220 /* Transfer Cache */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Transfer Cache";
 			sourceTree = "<group>";
 		};
 		A8FD712429F0608800817E8D /* Transfer API */ = {
