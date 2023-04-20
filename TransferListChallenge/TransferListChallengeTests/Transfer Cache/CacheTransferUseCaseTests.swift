@@ -51,7 +51,12 @@ class LocalFavoritesTransferLoader: FavoritesTransferLoader {
         let localTransfer = LocalTransfer(person: LocalPerson(fullName: transfer.person.fullName, email: transfer.person.email, avatar: transfer.person.avatar), card: LocalCard(cardNumber: transfer.card.cardNumber, cardType: transfer.card.cardType), lastTransfer: transfer.lastTransfer, note: transfer.note, moreInfo: LocalMoreInfo(numberOfTransfers: transfer.moreInfo.numberOfTransfers, totalTransfer: transfer.moreInfo.totalTransfer))
         
         store.insert(localTransfer) { result in
-            completion(.success(()))
+            switch result {
+            case .success:
+                completion(.success(()))
+            case let .failure(error):
+                completion(.failure(error))
+            }
         }
     }
 }
@@ -118,6 +123,15 @@ final class CacheTransferUseCaseTests: XCTestCase {
         
         expect(sut, toCompleteWithError: nil, when: {
             store.completeInsertionSuccessfully()
+        })
+    }
+    
+    func test_save_failsOnInsertionError() {
+        let (sut, store) = makeSUT()
+        let insertionError = anyNSError()
+        
+        expect(sut, toCompleteWithError: insertionError, when: {
+            store.completeInsertion(with: insertionError)
         })
     }
 
@@ -217,6 +231,10 @@ final class CacheTransferUseCaseTests: XCTestCase {
         
         func completeInsertionSuccessfully(at index: Int = 0) {
             insertionCompletions[index](.success(()))
+        }
+        
+        func completeInsertion(with error: Error, at index: Int = 0) {
+            insertionCompletions[index](.failure(error))
         }
         
     }
