@@ -49,18 +49,26 @@ public final class RemoteTransferLoader: TransferLoader {
 
 private extension Array where Element == RemoteTransferItem {
     func toModels() -> [Transfer] {
-        return map { Transfer(note: $0.note) }
+        return map { Transfer(person: Person(fullName: $0.person.fullName,
+                                             email: $0.person.email,
+                                             avatar: URL(string: $0.person.avatar)!
+                                            ),
+                              card: Card(cardNumber: $0.card.cardNumber,
+                                         cardType: $0.card.cardType),
+                              lastTransfer: $0.lastTransfer.toDate(),
+                              note: $0.note,
+                              moreInfo: MoreInfo(numberOfTransfers: $0.moreInfo.numberOfTransfers,
+                                                 totalTransfer: $0.moreInfo.totalTransfer))
+        }
     }
 }
 
-private struct Root: Decodable {
-    let items: [Item]
-}
-
-private struct Item: Decodable {
-    let note: String
-    
-    var item: Transfer {
-        return Transfer(note: note)
+private extension String {
+    func toDate() -> Date{
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let date = dateFormatter.date(from: self)
+        return date ?? Date()
     }
 }

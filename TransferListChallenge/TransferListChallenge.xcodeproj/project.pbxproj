@@ -13,6 +13,8 @@
 		A897C27629EFB5F600B91E54 /* TransferListChallenge.h in Headers */ = {isa = PBXBuildFile; fileRef = A897C26829EFB5F600B91E54 /* TransferListChallenge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A897C28E29EFC6D500B91E54 /* Transfer App Object Graphpdf.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A897C28D29EFC6D500B91E54 /* Transfer App Object Graphpdf.pdf */; };
 		A8A9681B29F0904200B8E220 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9681A29F0904200B8E220 /* URLSessionHTTPClient.swift */; };
+		A8A9682329F1164500B8E220 /* TransferListEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9682229F1164500B8E220 /* TransferListEndToEndTests.swift */; };
+		A8A9682429F1164500B8E220 /* TransferListChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A897C26529EFB5F600B91E54 /* TransferListChallenge.framework */; };
 		A8FD711A29F05D6E00817E8D /* TransferLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711829F05D6E00817E8D /* TransferLoader.swift */; };
 		A8FD711B29F05D6E00817E8D /* RemoteTransferLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711929F05D6E00817E8D /* RemoteTransferLoader.swift */; };
 		A8FD711C29F05D6E00817E8D /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711629F05D6E00817E8D /* HTTPClient.swift */; };
@@ -32,6 +34,13 @@
 			remoteGlobalIDString = A897C26429EFB5F600B91E54;
 			remoteInfo = TransferListChallenge;
 		};
+		A8A9682529F1164500B8E220 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A897C25C29EFB5F600B91E54 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A897C26429EFB5F600B91E54;
+			remoteInfo = TransferListChallenge;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +52,8 @@
 		A897C27429EFB5F600B91E54 /* LoadTransferFromRemoteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTransferFromRemoteUseCase.swift; sourceTree = "<group>"; };
 		A897C28D29EFC6D500B91E54 /* Transfer App Object Graphpdf.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Transfer App Object Graphpdf.pdf"; sourceTree = "<group>"; };
 		A8A9681A29F0904200B8E220 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
+		A8A9682029F1164500B8E220 /* TransferListEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransferListEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8A9682229F1164500B8E220 /* TransferListEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferListEndToEndTests.swift; sourceTree = "<group>"; };
 		A8FD711629F05D6E00817E8D /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		A8FD711729F05D6E00817E8D /* Transfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
 		A8FD711829F05D6E00817E8D /* TransferLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferLoader.swift; sourceTree = "<group>"; };
@@ -70,6 +81,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A8A9681D29F1164500B8E220 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8A9682429F1164500B8E220 /* TransferListChallenge.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -80,6 +99,7 @@
 				A897C28D29EFC6D500B91E54 /* Transfer App Object Graphpdf.pdf */,
 				A897C26729EFB5F600B91E54 /* TransferListChallenge */,
 				A897C27329EFB5F600B91E54 /* TransferListChallengeTests */,
+				A8A9682129F1164500B8E220 /* TransferListEndToEndTests */,
 				A897C26629EFB5F600B91E54 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,6 +109,7 @@
 			children = (
 				A897C26529EFB5F600B91E54 /* TransferListChallenge.framework */,
 				A897C26F29EFB5F600B91E54 /* TransferListChallengeTests.xctest */,
+				A8A9682029F1164500B8E220 /* TransferListEndToEndTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,6 +133,14 @@
 				A8FD712C29F06B0F00817E8D /* URLSessionHTTPClientTests.swift */,
 			);
 			path = TransferListChallengeTests;
+			sourceTree = "<group>";
+		};
+		A8A9682129F1164500B8E220 /* TransferListEndToEndTests */ = {
+			isa = PBXGroup;
+			children = (
+				A8A9682229F1164500B8E220 /* TransferListEndToEndTests.swift */,
+			);
+			path = TransferListEndToEndTests;
 			sourceTree = "<group>";
 		};
 		A8FD712429F0608800817E8D /* Transfer API */ = {
@@ -202,6 +231,24 @@
 			productReference = A897C26F29EFB5F600B91E54 /* TransferListChallengeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		A8A9681F29F1164500B8E220 /* TransferListEndToEndTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8A9682929F1164500B8E220 /* Build configuration list for PBXNativeTarget "TransferListEndToEndTests" */;
+			buildPhases = (
+				A8A9681C29F1164500B8E220 /* Sources */,
+				A8A9681D29F1164500B8E220 /* Frameworks */,
+				A8A9681E29F1164500B8E220 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A8A9682629F1164500B8E220 /* PBXTargetDependency */,
+			);
+			name = TransferListEndToEndTests;
+			productName = TransferListEndToEndTests;
+			productReference = A8A9682029F1164500B8E220 /* TransferListEndToEndTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -216,6 +263,9 @@
 						CreatedOnToolsVersion = 14.3;
 					};
 					A897C26E29EFB5F600B91E54 = {
+						CreatedOnToolsVersion = 14.3;
+					};
+					A8A9681F29F1164500B8E220 = {
 						CreatedOnToolsVersion = 14.3;
 					};
 				};
@@ -235,6 +285,7 @@
 			targets = (
 				A897C26429EFB5F600B91E54 /* TransferListChallenge */,
 				A897C26E29EFB5F600B91E54 /* TransferListChallengeTests */,
+				A8A9681F29F1164500B8E220 /* TransferListEndToEndTests */,
 			);
 		};
 /* End PBXProject section */
@@ -249,6 +300,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A897C26D29EFB5F600B91E54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8A9681E29F1164500B8E220 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -284,6 +342,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A8A9681C29F1164500B8E220 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8A9682329F1164500B8E220 /* TransferListEndToEndTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -291,6 +357,11 @@
 			isa = PBXTargetDependency;
 			target = A897C26429EFB5F600B91E54 /* TransferListChallenge */;
 			targetProxy = A897C27129EFB5F600B91E54 /* PBXContainerItemProxy */;
+		};
+		A8A9682629F1164500B8E220 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A897C26429EFB5F600B91E54 /* TransferListChallenge */;
+			targetProxy = A8A9682529F1164500B8E220 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -508,6 +579,36 @@
 			};
 			name = Release;
 		};
+		A8A9682729F1164500B8E220 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99TB4TR395;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Amin.TransferListEndToEndTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A8A9682829F1164500B8E220 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99TB4TR395;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Amin.TransferListEndToEndTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -534,6 +635,15 @@
 			buildConfigurations = (
 				A897C27D29EFB5F600B91E54 /* Debug */,
 				A897C27E29EFB5F600B91E54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8A9682929F1164500B8E220 /* Build configuration list for PBXNativeTarget "TransferListEndToEndTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8A9682729F1164500B8E220 /* Debug */,
+				A8A9682829F1164500B8E220 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
