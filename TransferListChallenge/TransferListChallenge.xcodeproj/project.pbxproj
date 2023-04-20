@@ -18,6 +18,9 @@
 		A8A9682B29F147B600B8E220 /* String+DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9682A29F147B600B8E220 /* String+DateConverter.swift */; };
 		A8A9683029F15C2200B8E220 /* CacheTransferUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9682F29F15C2200B8E220 /* CacheTransferUseCaseTests.swift */; };
 		A8E7562A29F1998000A149D3 /* FavoritesTransferLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E7562929F1998000A149D3 /* FavoritesTransferLoader.swift */; };
+		A8E7562D29F19DDD00A149D3 /* FavoritesTransferStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E7562C29F19DDD00A149D3 /* FavoritesTransferStore.swift */; };
+		A8E7562F29F19E1500A149D3 /* LocalTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E7562E29F19E1500A149D3 /* LocalTransfer.swift */; };
+		A8E7563129F19E6C00A149D3 /* LocalFavoritesTransferLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E7563029F19E6C00A149D3 /* LocalFavoritesTransferLoader.swift */; };
 		A8FD711A29F05D6E00817E8D /* TransferLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711829F05D6E00817E8D /* TransferLoader.swift */; };
 		A8FD711B29F05D6E00817E8D /* RemoteTransferLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711929F05D6E00817E8D /* RemoteTransferLoader.swift */; };
 		A8FD711C29F05D6E00817E8D /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711629F05D6E00817E8D /* HTTPClient.swift */; };
@@ -61,6 +64,9 @@
 		A8A9682C29F14B7000B8E220 /* CI.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI.xctestplan; sourceTree = "<group>"; };
 		A8A9682F29F15C2200B8E220 /* CacheTransferUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheTransferUseCaseTests.swift; sourceTree = "<group>"; };
 		A8E7562929F1998000A149D3 /* FavoritesTransferLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTransferLoader.swift; sourceTree = "<group>"; };
+		A8E7562C29F19DDD00A149D3 /* FavoritesTransferStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTransferStore.swift; sourceTree = "<group>"; };
+		A8E7562E29F19E1500A149D3 /* LocalTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTransfer.swift; sourceTree = "<group>"; };
+		A8E7563029F19E6C00A149D3 /* LocalFavoritesTransferLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFavoritesTransferLoader.swift; sourceTree = "<group>"; };
 		A8FD711629F05D6E00817E8D /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		A8FD711729F05D6E00817E8D /* Transfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
 		A8FD711829F05D6E00817E8D /* TransferLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferLoader.swift; sourceTree = "<group>"; };
@@ -125,6 +131,7 @@
 		A897C26729EFB5F600B91E54 /* TransferListChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				A8E7562B29F19D2400A149D3 /* Favorite Transfer Cache */,
 				A8FD712829F063D500817E8D /* Transfer Feature */,
 				A8FD712429F0608800817E8D /* Transfer API */,
 				A897C26829EFB5F600B91E54 /* TransferListChallenge.h */,
@@ -166,6 +173,16 @@
 				A8A9682F29F15C2200B8E220 /* CacheTransferUseCaseTests.swift */,
 			);
 			path = "Transfer Cache";
+			sourceTree = "<group>";
+		};
+		A8E7562B29F19D2400A149D3 /* Favorite Transfer Cache */ = {
+			isa = PBXGroup;
+			children = (
+				A8E7562C29F19DDD00A149D3 /* FavoritesTransferStore.swift */,
+				A8E7562E29F19E1500A149D3 /* LocalTransfer.swift */,
+				A8E7563029F19E6C00A149D3 /* LocalFavoritesTransferLoader.swift */,
+			);
+			path = "Favorite Transfer Cache";
 			sourceTree = "<group>";
 		};
 		A8FD712429F0608800817E8D /* Transfer API */ = {
@@ -347,9 +364,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8E7562D29F19DDD00A149D3 /* FavoritesTransferStore.swift in Sources */,
+				A8E7562F29F19E1500A149D3 /* LocalTransfer.swift in Sources */,
 				A8FD711B29F05D6E00817E8D /* RemoteTransferLoader.swift in Sources */,
 				A8E7562A29F1998000A149D3 /* FavoritesTransferLoader.swift in Sources */,
 				A8FD711D29F05D6E00817E8D /* Transfer.swift in Sources */,
+				A8E7563129F19E6C00A149D3 /* LocalFavoritesTransferLoader.swift in Sources */,
 				A897C26A29EFB5F600B91E54 /* TransferListChallenge.docc in Sources */,
 				A8FD711C29F05D6E00817E8D /* HTTPClient.swift in Sources */,
 				A8FD712129F0602A00817E8D /* TransferItemsMapper.swift in Sources */,
