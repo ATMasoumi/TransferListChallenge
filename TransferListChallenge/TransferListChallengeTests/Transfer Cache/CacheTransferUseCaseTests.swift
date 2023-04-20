@@ -13,8 +13,11 @@ protocol FavoritesTransferLoader {
     typealias LoadResult = Swift.Result<[Transfer], Error>
     func load(completion: @escaping (LoadResult) -> Void)
     
-    typealias Result = Swift.Result<Void, Error>
-    func save(_ transfer: Transfer, completion: @escaping (Result) -> Void)
+    typealias SaveResult = Swift.Result<Void, Error>
+    func save(_ transfer: Transfer, completion: @escaping (SaveResult) -> Void)
+    
+    typealias DeleteResult = Swift.Result<Void, Error>
+    func delete(_ transfer: Transfer, completion: @escaping (DeleteResult) -> Void)
 }
 
 protocol FavoritesTransferStore {
@@ -23,12 +26,13 @@ protocol FavoritesTransferStore {
     
     typealias InsertionResult = Result<Void, Error>
     func insert(_ transfer: LocalTransfer, completion: @escaping (InsertionResult) -> Void)
+    
+    typealias DeletionResult = Result<Void, Error>
+    func delete(_ transfer: LocalTransfer, completion: @escaping (DeletionResult) -> Void)
 
 }
 
 class LocalFavoritesTransferLoader: FavoritesTransferLoader {
-   
-    
     
     let store: FavoritesTransferStore
     init(store: FavoritesTransferStore) {
@@ -46,7 +50,7 @@ class LocalFavoritesTransferLoader: FavoritesTransferLoader {
         }
     }
     
-    func save(_ transfer: TransferListChallenge.Transfer, completion: @escaping (FavoritesTransferLoader.Result) -> Void) {
+    func save(_ transfer: TransferListChallenge.Transfer, completion: @escaping (FavoritesTransferLoader.SaveResult) -> Void) {
         
         let localTransfer = LocalTransfer(person: LocalPerson(fullName: transfer.person.fullName, email: transfer.person.email, avatar: transfer.person.avatar), card: LocalCard(cardNumber: transfer.card.cardNumber, cardType: transfer.card.cardType), lastTransfer: transfer.lastTransfer, note: transfer.note, moreInfo: LocalMoreInfo(numberOfTransfers: transfer.moreInfo.numberOfTransfers, totalTransfer: transfer.moreInfo.totalTransfer))
         
@@ -59,6 +63,21 @@ class LocalFavoritesTransferLoader: FavoritesTransferLoader {
             }
         }
     }
+    
+    func delete(_ transfer: TransferListChallenge.Transfer, completion: @escaping (DeleteResult) -> Void) {
+       
+        let localTransfer = LocalTransfer(person: LocalPerson(fullName: transfer.person.fullName, email: transfer.person.email, avatar: transfer.person.avatar), card: LocalCard(cardNumber: transfer.card.cardNumber, cardType: transfer.card.cardType), lastTransfer: transfer.lastTransfer, note: transfer.note, moreInfo: LocalMoreInfo(numberOfTransfers: transfer.moreInfo.numberOfTransfers, totalTransfer: transfer.moreInfo.totalTransfer))
+        
+        store.delete(localTransfer) { result in
+            switch result {
+            case .success:
+                completion(.success(()))
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
 }
 
 private extension Array where Element == LocalTransfer {
@@ -135,6 +154,17 @@ final class CacheTransferUseCaseTests: XCTestCase {
         })
     }
 
+    // MARK: - Deletion
+    
+    func test_delete_failsOnDeletionError() {
+        let (sut, store) = makeSUT()
+        let insertionError = anyNSError()
+        
+        expectDelete(sut, toCompleteWithError: insertionError, when: {
+            store.completeDeletion(with: insertionError)
+        })
+    }
+
     
     // MARK: - Helpers
     
@@ -182,6 +212,21 @@ final class CacheTransferUseCaseTests: XCTestCase {
         XCTAssertEqual(receivedError as NSError?, expectedError, file: file, line: line)
     }
     
+    private func expectDelete(_ sut: LocalFavoritesTransferLoader, toCompleteWithError expectedError: NSError?, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+        let exp = expectation(description: "Wait for save completion")
+        
+        var receivedError: Error?
+        sut.delete(makeItem(name: "amin", cardNumber: "1", note: "note").model) { result in
+            if case let Result.failure(error) = result { receivedError = error }
+            exp.fulfill()
+        }
+        
+        action()
+        wait(for: [exp], timeout: 1.0)
+        
+        XCTAssertEqual(receivedError as NSError?, expectedError, file: file, line: line)
+    }
+    
     private func makeItem(name: String, cardNumber: String, note: String) -> (model: Transfer, local: LocalTransfer) {
         let person = Person(fullName: name, email: "Torabi.dsd@gmail.com", avatar: URL(string: "any-url.com")!)
         let card = Card(cardNumber: cardNumber, cardType: "Personal")
@@ -195,11 +240,7 @@ final class CacheTransferUseCaseTests: XCTestCase {
     }
     
     class FavoritesTransferStoreSpy: FavoritesTransferStore {
-        
-        
-       
-        
-       
+
         enum ReceivedMessage: Equatable {
             case retrieve([LocalTransfer])
             case insert
@@ -208,6 +249,7 @@ final class CacheTransferUseCaseTests: XCTestCase {
         
         private var retrievalCompletions = [(RetrievalResult) -> Void]()
         private var insertionCompletions = [(InsertionResult) -> Void]()
+        private var deletionCompletions = [(DeletionResult) -> Void]()
 
         var receivedMessages: [ReceivedMessage] = []
         
@@ -236,6 +278,16 @@ final class CacheTransferUseCaseTests: XCTestCase {
         func completeInsertion(with error: Error, at index: Int = 0) {
             insertionCompletions[index](.failure(error))
         }
+        
+        func delete(_ transfer: LocalTransfer, completion: @escaping (DeletionResult) -> Void) {
+            deletionCompletions.append(completion)
+            receivedMessages.append(.delete)
+        }
+        
+        func completeDeletion(with error: Error, at index: Int = 0) {
+            deletionCompletions[index](.failure(error))
+        }
+        
         
     }
     
