@@ -31,7 +31,12 @@ class LocalFavoritesTransferLoader: FavoritesTransferLoader {
     
     func load(completion: @escaping (LoadResult) -> Void) {
         store.retrieve { result in
-            
+            switch result {
+            case .success:
+                break
+            case let .failure(error):
+                completion(.failure(error))
+            }
         }
     }
 }
@@ -51,6 +56,15 @@ final class CacheTransferUseCaseTests: XCTestCase {
         XCTAssertEqual(store.receivedMessages, [.retrieve([])])
     }
     
+    func test_load_failsOnRetrievalError() {
+        let (sut, store) = makeSUT()
+        let retrievalError = anyNSError()
+        
+        expect(sut, toCompleteWith: .failure(retrievalError), when: {
+            store.completeRetrieval(with: retrievalError)
+        })
+    }
+    
     // MARK: - Helpers
     
     func makeSUT() -> (LocalFavoritesTransferLoader,FavoritesTransferStoreSpy) {
@@ -59,16 +73,51 @@ final class CacheTransferUseCaseTests: XCTestCase {
         return (sut, store)
     }
     
+    private func expect(_ sut: LocalFavoritesTransferLoader, toCompleteWith expectedResult: LocalFavoritesTransferLoader.LoadResult, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+        let exp = expectation(description: "Wait for load completion")
+        
+        sut.load { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedTransfers), .success(expectedTransfers)):
+                XCTAssertEqual(receivedTransfers, expectedTransfers, file: file, line: line)
+            
+            case let (.failure(receivedError as NSError), .failure(expectedError as NSError)):
+                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+                
+            default:
+                XCTFail("Expected result \(expectedResult), got \(receivedResult) instead", file: file, line: line)
+            }
+            
+            exp.fulfill()
+        }
+        
+        action()
+        wait(for: [exp], timeout: 1.0)
+    }
+    
     class FavoritesTransferStoreSpy: FavoritesTransferStore {
        
         enum ReceivedMessage: Equatable {
             case retrieve([LocalTransfer])
         }
         
+        private var retrievalCompletions = [(RetrievalResult) -> Void]()
+
         var receivedMessages: [ReceivedMessage] = []
         
         func retrieve(completion: @escaping (RetrievalResult) -> Void) {
+            retrievalCompletions.append(completion)
             receivedMessages.append(.retrieve([]))
         }
+       
+        func completeRetrieval(with error: Error, at index: Int = 0) {
+            retrievalCompletions[index](.failure(error))
+        }
+        
     }
+    
+    func anyNSError() -> NSError {
+        return NSError(domain: "any error", code: 0)
+    }
+
 }

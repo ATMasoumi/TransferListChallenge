@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class FeedItemsMapper {
+final class TransferItemsMapper {
    
     static func map(_ data: Data, from response: HTTPURLResponse) throws -> [RemoteTransferItem] {
         guard response.isOK, let root = try? JSONDecoder().decode([RemoteTransferItem].self, from: data) else {

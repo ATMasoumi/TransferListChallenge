@@ -38,7 +38,7 @@ public final class RemoteTransferLoader: TransferLoader {
     }
     private static func map(_ data: Data, from response: HTTPURLResponse) -> Result {
         do {
-            let items = try FeedItemsMapper.map(data, from: response)
+            let items = try TransferItemsMapper.map(data, from: response)
             return .success(items.toModels())
         } catch {
             return .failure(error)
