@@ -81,8 +81,9 @@ example: https://4e6774cc-4d63-41b2-8003-336545c0a86d.mock.pstmn.io/transfer-lis
 |-------------------|---------------------|
 | `Person`          | `Person`            |
 | `card`            | `Card`              |
+| `note`            | `String` (optional) |
 | `last_transfer`   | `Date`              |
-| `more_info`       | `MoreInfo`         |
+| `more_info`       | `MoreInfo`          |
 
 
 ### person
