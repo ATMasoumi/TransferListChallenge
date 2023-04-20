@@ -9,17 +9,6 @@ import XCTest
 import TransferListChallenge
 
 
-protocol FavoritesTransferLoader {
-    typealias LoadResult = Swift.Result<[Transfer], Error>
-    func load(completion: @escaping (LoadResult) -> Void)
-    
-    typealias SaveResult = Swift.Result<Void, Error>
-    func save(_ transfer: Transfer, completion: @escaping (SaveResult) -> Void)
-    
-    typealias DeleteResult = Swift.Result<Void, Error>
-    func delete(_ transfer: Transfer, completion: @escaping (DeleteResult) -> Void)
-}
-
 protocol FavoritesTransferStore {
     typealias RetrievalResult = Result<[LocalTransfer], Error>
     func retrieve(completion: @escaping (RetrievalResult) -> Void)
