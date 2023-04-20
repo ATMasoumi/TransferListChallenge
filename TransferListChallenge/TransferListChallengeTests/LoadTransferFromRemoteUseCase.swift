@@ -80,8 +80,9 @@ final class LoadTransferFromRemoteUseCase: XCTestCase {
     func test_load_deliversItemsOn200HTTPResponseWithJSONItems() {
         let (sut, client) = makeSUT()
         
-        let item1 = makeItem(note: "note1")
-        let item2 = makeItem(note: "note2")
+        let item1 = makeItem(name: "Amin", cardNumber: "1", note: "note1")
+        let item2 = makeItem(name: "Amin2", cardNumber: "2", note: "note2")
+        
         
         let items = [item1.model, item2.model]
         
@@ -168,18 +169,39 @@ final class LoadTransferFromRemoteUseCase: XCTestCase {
     }
     
     private func makeItemsJSON(_ items: [[String: Any]]) -> Data {
-        let json = ["items": items]
+        let json = items
         return try! JSONSerialization.data(withJSONObject: json)
     }
     
-    private func makeItem(note: String) -> (model: Transfer, json: [String: Any]) {
-        let item = Transfer(note: note)
+    private func makeItem(name: String, cardNumber: String, note: String) -> (model: Transfer, json: [String: Any]) {
+        let person = Person(fullName: name, email: "Torabi.dsd@gmail.com", avatar: URL(string: "any-url.com")!)
+        let card = Card(cardNumber: cardNumber, cardType: "Personal")
+        let transferDate : String = "2022-07-14T02:47:58Z"
+        let moreInfo = MoreInfo(numberOfTransfers: 5, totalTransfer: 100)
+        let item = Transfer(person: person, card: card, lastTransfer: transferDate.toDate(), note: note, moreInfo: moreInfo)
         
-        let json = [
-            "note": note
-        ].compactMapValues { $0 }
+        let json: [String: Any] = [
+            "person": [
+                "full_name": name,
+                "email": "Torabi.dsd@gmail.com",
+                "avatar": "any-url.com"
+            ],
+            "card": [
+                "card_number": cardNumber,
+                "card_type": "Personal"
+            ],
+            
+            "last_transfer": transferDate,
+            "note": note,
+            
+            "more_info": [
+                "number_of_transfers": 5,
+                "total_transfer": 100
+            ]
+        ]
         
         return (item, json)
     }
     
 }
+

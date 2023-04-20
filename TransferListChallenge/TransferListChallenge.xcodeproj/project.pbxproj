@@ -15,6 +15,7 @@
 		A8A9681B29F0904200B8E220 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9681A29F0904200B8E220 /* URLSessionHTTPClient.swift */; };
 		A8A9682329F1164500B8E220 /* TransferListEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9682229F1164500B8E220 /* TransferListEndToEndTests.swift */; };
 		A8A9682429F1164500B8E220 /* TransferListChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A897C26529EFB5F600B91E54 /* TransferListChallenge.framework */; };
+		A8A9682B29F147B600B8E220 /* String+DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9682A29F147B600B8E220 /* String+DateConverter.swift */; };
 		A8FD711A29F05D6E00817E8D /* TransferLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711829F05D6E00817E8D /* TransferLoader.swift */; };
 		A8FD711B29F05D6E00817E8D /* RemoteTransferLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711929F05D6E00817E8D /* RemoteTransferLoader.swift */; };
 		A8FD711C29F05D6E00817E8D /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711629F05D6E00817E8D /* HTTPClient.swift */; };
@@ -54,6 +55,7 @@
 		A8A9681A29F0904200B8E220 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		A8A9682029F1164500B8E220 /* TransferListEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransferListEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8A9682229F1164500B8E220 /* TransferListEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferListEndToEndTests.swift; sourceTree = "<group>"; };
+		A8A9682A29F147B600B8E220 /* String+DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DateConverter.swift"; sourceTree = "<group>"; };
 		A8FD711629F05D6E00817E8D /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		A8FD711729F05D6E00817E8D /* Transfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
 		A8FD711829F05D6E00817E8D /* TransferLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferLoader.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				A8FD712629F060B400817E8D /* HTTPURLResponse+StatusCode.swift */,
+				A8A9682A29F147B600B8E220 /* String+DateConverter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				A897C26A29EFB5F600B91E54 /* TransferListChallenge.docc in Sources */,
 				A8FD711C29F05D6E00817E8D /* HTTPClient.swift in Sources */,
 				A8FD712129F0602A00817E8D /* TransferItemsMapper.swift in Sources */,
+				A8A9682B29F147B600B8E220 /* String+DateConverter.swift in Sources */,
 				A8FD712329F0605B00817E8D /* RemoteTransferItem.swift in Sources */,
 				A8FD712729F060B400817E8D /* HTTPURLResponse+StatusCode.swift in Sources */,
 				A8FD711A29F05D6E00817E8D /* TransferLoader.swift in Sources */,
