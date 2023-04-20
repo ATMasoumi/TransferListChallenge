@@ -164,6 +164,14 @@ final class CacheTransferUseCaseTests: XCTestCase {
             store.completeDeletion(with: insertionError)
         })
     }
+    
+    func test_delete_succeedsOnSuccessfulCacheDeletion() {
+        let (sut, store) = makeSUT()
+        
+        expectDelete(sut, toCompleteWithError: nil, when: {
+            store.completeDeletionSuccessfully()
+        })
+    }
 
     
     // MARK: - Helpers
@@ -287,6 +295,11 @@ final class CacheTransferUseCaseTests: XCTestCase {
         func completeDeletion(with error: Error, at index: Int = 0) {
             deletionCompletions[index](.failure(error))
         }
+        
+        func completeDeletionSuccessfully(at index: Int = 0) {
+            deletionCompletions[index](.success(()))
+        }
+        
         
         
     }
