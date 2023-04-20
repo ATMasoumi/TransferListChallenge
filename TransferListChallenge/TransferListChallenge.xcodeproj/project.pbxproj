@@ -21,6 +21,11 @@
 		A8E7562D29F19DDD00A149D3 /* FavoritesTransferStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E7562C29F19DDD00A149D3 /* FavoritesTransferStore.swift */; };
 		A8E7562F29F19E1500A149D3 /* LocalTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E7562E29F19E1500A149D3 /* LocalTransfer.swift */; };
 		A8E7563129F19E6C00A149D3 /* LocalFavoritesTransferLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E7563029F19E6C00A149D3 /* LocalFavoritesTransferLoader.swift */; };
+		A8E7563329F1A7A000A149D3 /* CoreDataTransferStoreUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E7563229F1A7A000A149D3 /* CoreDataTransferStoreUseCase.swift */; };
+		A8E7563729F1B6E500A149D3 /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E7563629F1B6E500A149D3 /* CoreDataHelpers.swift */; };
+		A8E7563929F1B72000A149D3 /* CoreDataFavoritesTransferStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E7563829F1B72000A149D3 /* CoreDataFavoritesTransferStore.swift */; };
+		A8E7563B29F1B78D00A149D3 /* CoreDataFavoritesTransferStore+FavoritesTransferStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E7563A29F1B78D00A149D3 /* CoreDataFavoritesTransferStore+FavoritesTransferStore.swift */; };
+		A8E7563E29F1B87200A149D3 /* FavoritesTransferStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8E7563C29F1B87200A149D3 /* FavoritesTransferStore.xcdatamodeld */; };
 		A8FD711A29F05D6E00817E8D /* TransferLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711829F05D6E00817E8D /* TransferLoader.swift */; };
 		A8FD711B29F05D6E00817E8D /* RemoteTransferLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711929F05D6E00817E8D /* RemoteTransferLoader.swift */; };
 		A8FD711C29F05D6E00817E8D /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711629F05D6E00817E8D /* HTTPClient.swift */; };
@@ -67,6 +72,11 @@
 		A8E7562C29F19DDD00A149D3 /* FavoritesTransferStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTransferStore.swift; sourceTree = "<group>"; };
 		A8E7562E29F19E1500A149D3 /* LocalTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTransfer.swift; sourceTree = "<group>"; };
 		A8E7563029F19E6C00A149D3 /* LocalFavoritesTransferLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFavoritesTransferLoader.swift; sourceTree = "<group>"; };
+		A8E7563229F1A7A000A149D3 /* CoreDataTransferStoreUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTransferStoreUseCase.swift; sourceTree = "<group>"; };
+		A8E7563629F1B6E500A149D3 /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
+		A8E7563829F1B72000A149D3 /* CoreDataFavoritesTransferStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFavoritesTransferStore.swift; sourceTree = "<group>"; };
+		A8E7563A29F1B78D00A149D3 /* CoreDataFavoritesTransferStore+FavoritesTransferStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataFavoritesTransferStore+FavoritesTransferStore.swift"; sourceTree = "<group>"; };
+		A8E7563D29F1B87200A149D3 /* FavoritesTransferStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritesTransferStore.xcdatamodel; sourceTree = "<group>"; };
 		A8FD711629F05D6E00817E8D /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		A8FD711729F05D6E00817E8D /* Transfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
 		A8FD711829F05D6E00817E8D /* TransferLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferLoader.swift; sourceTree = "<group>"; };
@@ -171,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				A8A9682F29F15C2200B8E220 /* CacheTransferUseCaseTests.swift */,
+				A8E7563229F1A7A000A149D3 /* CoreDataTransferStoreUseCase.swift */,
 			);
 			path = "Transfer Cache";
 			sourceTree = "<group>";
@@ -178,11 +189,31 @@
 		A8E7562B29F19D2400A149D3 /* Favorite Transfer Cache */ = {
 			isa = PBXGroup;
 			children = (
+				A8E7563429F1B66A00A149D3 /* Infrastructure */,
 				A8E7562C29F19DDD00A149D3 /* FavoritesTransferStore.swift */,
 				A8E7562E29F19E1500A149D3 /* LocalTransfer.swift */,
 				A8E7563029F19E6C00A149D3 /* LocalFavoritesTransferLoader.swift */,
 			);
 			path = "Favorite Transfer Cache";
+			sourceTree = "<group>";
+		};
+		A8E7563429F1B66A00A149D3 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				A8E7563529F1B6C300A149D3 /* Core Data */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		A8E7563529F1B6C300A149D3 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				A8E7563629F1B6E500A149D3 /* CoreDataHelpers.swift */,
+				A8E7563829F1B72000A149D3 /* CoreDataFavoritesTransferStore.swift */,
+				A8E7563A29F1B78D00A149D3 /* CoreDataFavoritesTransferStore+FavoritesTransferStore.swift */,
+				A8E7563C29F1B87200A149D3 /* FavoritesTransferStore.xcdatamodeld */,
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 		A8FD712429F0608800817E8D /* Transfer API */ = {
@@ -364,14 +395,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8E7563729F1B6E500A149D3 /* CoreDataHelpers.swift in Sources */,
 				A8E7562D29F19DDD00A149D3 /* FavoritesTransferStore.swift in Sources */,
 				A8E7562F29F19E1500A149D3 /* LocalTransfer.swift in Sources */,
 				A8FD711B29F05D6E00817E8D /* RemoteTransferLoader.swift in Sources */,
 				A8E7562A29F1998000A149D3 /* FavoritesTransferLoader.swift in Sources */,
 				A8FD711D29F05D6E00817E8D /* Transfer.swift in Sources */,
 				A8E7563129F19E6C00A149D3 /* LocalFavoritesTransferLoader.swift in Sources */,
+				A8E7563929F1B72000A149D3 /* CoreDataFavoritesTransferStore.swift in Sources */,
 				A897C26A29EFB5F600B91E54 /* TransferListChallenge.docc in Sources */,
 				A8FD711C29F05D6E00817E8D /* HTTPClient.swift in Sources */,
+				A8E7563E29F1B87200A149D3 /* FavoritesTransferStore.xcdatamodeld in Sources */,
+				A8E7563B29F1B78D00A149D3 /* CoreDataFavoritesTransferStore+FavoritesTransferStore.swift in Sources */,
 				A8FD712129F0602A00817E8D /* TransferItemsMapper.swift in Sources */,
 				A8A9682B29F147B600B8E220 /* String+DateConverter.swift in Sources */,
 				A8FD712329F0605B00817E8D /* RemoteTransferItem.swift in Sources */,
@@ -385,6 +420,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8E7563329F1A7A000A149D3 /* CoreDataTransferStoreUseCase.swift in Sources */,
 				A897C27529EFB5F600B91E54 /* LoadTransferFromRemoteUseCase.swift in Sources */,
 				A8FD712D29F06B0F00817E8D /* URLSessionHTTPClientTests.swift in Sources */,
 				A8FD712B29F0655900817E8D /* XCTestCase+MemoryLeakTracking.swift in Sources */,
@@ -699,6 +735,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A8E7563C29F1B87200A149D3 /* FavoritesTransferStore.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A8E7563D29F1B87200A149D3 /* FavoritesTransferStore.xcdatamodel */,
+			);
+			currentVersion = A8E7563D29F1B87200A149D3 /* FavoritesTransferStore.xcdatamodel */;
+			path = FavoritesTransferStore.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A897C25C29EFB5F600B91E54 /* Project object */;
 }
