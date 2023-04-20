@@ -56,6 +56,7 @@
 		A8A9682029F1164500B8E220 /* TransferListEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransferListEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8A9682229F1164500B8E220 /* TransferListEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferListEndToEndTests.swift; sourceTree = "<group>"; };
 		A8A9682A29F147B600B8E220 /* String+DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DateConverter.swift"; sourceTree = "<group>"; };
+		A8A9682C29F14B7000B8E220 /* CI.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI.xctestplan; sourceTree = "<group>"; };
 		A8FD711629F05D6E00817E8D /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		A8FD711729F05D6E00817E8D /* Transfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
 		A8FD711829F05D6E00817E8D /* TransferLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferLoader.swift; sourceTree = "<group>"; };
@@ -97,6 +98,7 @@
 		A897C25B29EFB5F500B91E54 = {
 			isa = PBXGroup;
 			children = (
+				A8A9682C29F14B7000B8E220 /* CI.xctestplan */,
 				A87C53CA29F08C4D005A8F24 /* TransferListChallenge.xctestplan */,
 				A897C28D29EFC6D500B91E54 /* Transfer App Object Graphpdf.pdf */,
 				A897C26729EFB5F600B91E54 /* TransferListChallenge */,
