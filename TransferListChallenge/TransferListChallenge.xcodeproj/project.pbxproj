@@ -16,6 +16,7 @@
 		A8A9682329F1164500B8E220 /* TransferListEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9682229F1164500B8E220 /* TransferListEndToEndTests.swift */; };
 		A8A9682429F1164500B8E220 /* TransferListChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A897C26529EFB5F600B91E54 /* TransferListChallenge.framework */; };
 		A8A9682B29F147B600B8E220 /* String+DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9682A29F147B600B8E220 /* String+DateConverter.swift */; };
+		A8A9683029F15C2200B8E220 /* CacheTransferUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9682F29F15C2200B8E220 /* CacheTransferUseCaseTests.swift */; };
 		A8FD711A29F05D6E00817E8D /* TransferLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711829F05D6E00817E8D /* TransferLoader.swift */; };
 		A8FD711B29F05D6E00817E8D /* RemoteTransferLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711929F05D6E00817E8D /* RemoteTransferLoader.swift */; };
 		A8FD711C29F05D6E00817E8D /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD711629F05D6E00817E8D /* HTTPClient.swift */; };
@@ -57,6 +58,7 @@
 		A8A9682229F1164500B8E220 /* TransferListEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferListEndToEndTests.swift; sourceTree = "<group>"; };
 		A8A9682A29F147B600B8E220 /* String+DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DateConverter.swift"; sourceTree = "<group>"; };
 		A8A9682C29F14B7000B8E220 /* CI.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI.xctestplan; sourceTree = "<group>"; };
+		A8A9682F29F15C2200B8E220 /* CacheTransferUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheTransferUseCaseTests.swift; sourceTree = "<group>"; };
 		A8FD711629F05D6E00817E8D /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		A8FD711729F05D6E00817E8D /* Transfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
 		A8FD711829F05D6E00817E8D /* TransferLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferLoader.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		A8A9682E29F14E9500B8E220 /* Transfer Cache */ = {
 			isa = PBXGroup;
 			children = (
+				A8A9682F29F15C2200B8E220 /* CacheTransferUseCaseTests.swift */,
 			);
 			path = "Transfer Cache";
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				A897C27529EFB5F600B91E54 /* LoadTransferFromRemoteUseCase.swift in Sources */,
 				A8FD712D29F06B0F00817E8D /* URLSessionHTTPClientTests.swift in Sources */,
 				A8FD712B29F0655900817E8D /* XCTestCase+MemoryLeakTracking.swift in Sources */,
+				A8A9683029F15C2200B8E220 /* CacheTransferUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
