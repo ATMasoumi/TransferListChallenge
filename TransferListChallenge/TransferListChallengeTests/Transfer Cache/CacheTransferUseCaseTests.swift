@@ -12,14 +12,23 @@ import TransferListChallenge
 protocol FavoritesTransferLoader {
     typealias LoadResult = Swift.Result<[Transfer], Error>
     func load(completion: @escaping (LoadResult) -> Void)
+    
+    typealias Result = Swift.Result<Void, Error>
+    func save(_ transfer: Transfer, completion: @escaping (Result) -> Void)
 }
 
 protocol FavoritesTransferStore {
     typealias RetrievalResult = Result<[LocalTransfer], Error>
     func retrieve(completion: @escaping (RetrievalResult) -> Void)
+    
+    typealias InsertionResult = Result<Void, Error>
+    func insert(_ transfer: LocalTransfer, completion: @escaping (InsertionResult) -> Void)
+
 }
 
 class LocalFavoritesTransferLoader: FavoritesTransferLoader {
+   
+    
     
     let store: FavoritesTransferStore
     init(store: FavoritesTransferStore) {
@@ -34,6 +43,15 @@ class LocalFavoritesTransferLoader: FavoritesTransferLoader {
             case let .failure(error):
                 completion(.failure(error))
             }
+        }
+    }
+    
+    func save(_ transfer: TransferListChallenge.Transfer, completion: @escaping (FavoritesTransferLoader.Result) -> Void) {
+        
+        let localTransfer = LocalTransfer(person: LocalPerson(fullName: transfer.person.fullName, email: transfer.person.email, avatar: transfer.person.avatar), card: LocalCard(cardNumber: transfer.card.cardNumber, cardType: transfer.card.cardType), lastTransfer: transfer.lastTransfer, note: transfer.note, moreInfo: LocalMoreInfo(numberOfTransfers: transfer.moreInfo.numberOfTransfers, totalTransfer: transfer.moreInfo.totalTransfer))
+        
+        store.insert(localTransfer) { result in
+            completion(.success(()))
         }
     }
 }
@@ -56,6 +74,8 @@ final class CacheTransferUseCaseTests: XCTestCase {
         let (_, store) = makeSUT()
         XCTAssertEqual(store.receivedMessages, [])
     }
+    
+    // MARK: test Loading
     
     func test_load_requestsCacheRetrieval() {
         let (sut, store) = makeSUT()
@@ -91,6 +111,17 @@ final class CacheTransferUseCaseTests: XCTestCase {
         })
     }
     
+    // MARK: -test inserting
+    
+    func test_save_succeedsOnSuccessfulCacheInsertion() {
+        let (sut, store) = makeSUT()
+        
+        expect(sut, toCompleteWithError: nil, when: {
+            store.completeInsertionSuccessfully()
+        })
+    }
+
+    
     // MARK: - Helpers
     
     func makeSUT() -> (LocalFavoritesTransferLoader,FavoritesTransferStoreSpy) {
@@ -121,6 +152,22 @@ final class CacheTransferUseCaseTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
+    
+    private func expect(_ sut: LocalFavoritesTransferLoader, toCompleteWithError expectedError: NSError?, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+        let exp = expectation(description: "Wait for save completion")
+        
+        var receivedError: Error?
+        sut.save(makeItem(name: "amin", cardNumber: "1", note: "note").model) { result in
+            if case let Result.failure(error) = result { receivedError = error }
+            exp.fulfill()
+        }
+        
+        action()
+        wait(for: [exp], timeout: 1.0)
+        
+        XCTAssertEqual(receivedError as NSError?, expectedError, file: file, line: line)
+    }
+    
     private func makeItem(name: String, cardNumber: String, note: String) -> (model: Transfer, local: LocalTransfer) {
         let person = Person(fullName: name, email: "Torabi.dsd@gmail.com", avatar: URL(string: "any-url.com")!)
         let card = Card(cardNumber: cardNumber, cardType: "Personal")
@@ -134,12 +181,19 @@ final class CacheTransferUseCaseTests: XCTestCase {
     }
     
     class FavoritesTransferStoreSpy: FavoritesTransferStore {
+        
+        
+       
+        
        
         enum ReceivedMessage: Equatable {
             case retrieve([LocalTransfer])
+            case insert
+            case delete
         }
         
         private var retrievalCompletions = [(RetrievalResult) -> Void]()
+        private var insertionCompletions = [(InsertionResult) -> Void]()
 
         var receivedMessages: [ReceivedMessage] = []
         
@@ -154,6 +208,15 @@ final class CacheTransferUseCaseTests: XCTestCase {
         
         func completeRetrieval(with localTransfers: [LocalTransfer], at index: Int = 0) {
             retrievalCompletions[index](.success(localTransfers))
+        }
+       
+        func insert(_ transfer: LocalTransfer, completion: @escaping (InsertionResult) -> Void) {
+            insertionCompletions.append(completion)
+            receivedMessages.append(.insert)
+        }
+        
+        func completeInsertionSuccessfully(at index: Int = 0) {
+            insertionCompletions[index](.success(()))
         }
         
     }
