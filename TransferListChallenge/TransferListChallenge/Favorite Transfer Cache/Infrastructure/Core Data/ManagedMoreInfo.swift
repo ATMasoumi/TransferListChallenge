@@ -35,7 +35,6 @@ extension ManagedMoreInfo : Identifiable {
     }
     
     static func newUniqueInstance(in context: NSManagedObjectContext) throws -> ManagedMoreInfo {
-        try find(in: context).map(context.delete)
         return ManagedMoreInfo(context: context)
     }
     

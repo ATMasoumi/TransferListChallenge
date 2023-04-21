@@ -31,19 +31,18 @@ extension ManagedFavTransfer {
 extension ManagedFavTransfer : Identifiable {
    
     static func find(in context: NSManagedObjectContext) throws -> [ManagedFavTransfer]? {
-        let request = NSFetchRequest<ManagedFavTransfer>(entityName: entity().name!)
+        let request = fetchRequest()
         request.returnsObjectsAsFaults = false
         return try context.fetch(request)
     }
     
-    static func find(in context: NSManagedObjectContext) throws -> ManagedFavTransfer? {
+    static func findObject(in context: NSManagedObjectContext) throws -> ManagedFavTransfer? {
         let request = NSFetchRequest<ManagedFavTransfer>(entityName: entity().name!)
         request.returnsObjectsAsFaults = false
         return try context.fetch(request).first
     }
     
     static func newUniqueInstance(in context: NSManagedObjectContext) throws -> ManagedFavTransfer {
-        try find(in: context).map(context.delete)
         return ManagedFavTransfer(context: context)
     }
     

@@ -38,7 +38,6 @@ extension ManagedPerson : Identifiable {
     }
     
     static func newUniqueInstance(in context: NSManagedObjectContext) throws -> ManagedPerson {
-        try find(in: context).map(context.delete)
         return ManagedPerson(context: context)
     }
 }

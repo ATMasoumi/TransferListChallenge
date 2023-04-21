@@ -35,7 +35,6 @@ extension ManagedCard : Identifiable {
     }
     
     static func newUniqueInstance(in context: NSManagedObjectContext) throws -> ManagedCard {
-        try find(in: context).map(context.delete)
         return ManagedCard(context: context)
     }
     

@@ -10,7 +10,14 @@ import Foundation
 extension CoreDataFavoritesTransferStore: FavoritesTransferStore {
     
     public func retrieve(completion: @escaping (RetrievalResult) -> Void) {
-        completion(.success([]))
+        perform { context in
+            completion(Result {
+                let managedFavTransfer: [ManagedFavTransfer]? = try ManagedFavTransfer.find(in: context)
+                guard let managedFavTransfer = managedFavTransfer else { return []}
+                
+                return managedFavTransfer.map({LocalTransfer(person: LocalPerson(fullName: $0.person.fullName, email: $0.person.email, avatar: $0.person.avatar), card: LocalCard(cardNumber: $0.card.cardNumber, cardType: $0.card.cardType), lastTransfer: $0.lastTransfer, note: $0.note, moreInfo: LocalMoreInfo(numberOfTransfers: Int($0.moreInfo.numberOfTransfers), totalTransfer: Int($0.moreInfo.totalTransfer)))})
+            })
+        }
     }
     
     public func insert(_ transfer: TransferListChallenge.LocalTransfer, completion: @escaping (InsertionResult) -> Void) {

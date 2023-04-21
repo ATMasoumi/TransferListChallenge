@@ -38,15 +38,15 @@ public class CoreDataFavoritesTransferStore {
         context.perform { action(context) }
     }
     
-    private func cleanUpReferencesToPersistentStores() {
-        context.performAndWait {
-            let coordinator = self.container.persistentStoreCoordinator
-            try? coordinator.persistentStores.forEach(coordinator.remove)
-        }
-    }
+//    private func cleanUpReferencesToPersistentStores() {
+//        context.performAndWait {
+//            let coordinator = self.container.persistentStoreCoordinator
+//            try? coordinator.persistentStores.forEach(coordinator.remove)
+//        }
+//    }
     
-    deinit {
-        cleanUpReferencesToPersistentStores()
-    }
+//    deinit {
+//        cleanUpReferencesToPersistentStores()
+//    }
     
 }
