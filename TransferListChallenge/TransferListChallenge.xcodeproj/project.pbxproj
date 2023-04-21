@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A88E7FAF29F1C55700F63416 /* FavoritesTransferStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A88E7FAD29F1C55700F63416 /* FavoritesTransferStore.xcdatamodeld */; };
-		A88E7FC129F1C78C00F63416 /* ManagedObjects in Resources */ = {isa = PBXBuildFile; fileRef = A88E7FC029F1C78C00F63416 /* ManagedObjects */; };
 		A894C4FC29F1D12C0056D1B0 /* ManagedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A894C4FB29F1D12C0056D1B0 /* ManagedCard.swift */; };
 		A894C4FD29F1D12C0056D1B0 /* ManagedPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = A894C4FA29F1D12C0056D1B0 /* ManagedPerson.swift */; };
 		A894C4FE29F1D12C0056D1B0 /* ManagedFavTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A894C4F929F1D12C0056D1B0 /* ManagedFavTransfer.swift */; };
@@ -62,7 +61,6 @@
 /* Begin PBXFileReference section */
 		A87C53CA29F08C4D005A8F24 /* TransferListChallenge.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TransferListChallenge.xctestplan; sourceTree = "<group>"; };
 		A88E7FAE29F1C55700F63416 /* FavoritesTransferStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritesTransferStore.xcdatamodel; sourceTree = "<group>"; };
-		A88E7FC029F1C78C00F63416 /* ManagedObjects */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ManagedObjects; sourceTree = "<group>"; };
 		A894C4F829F1D12C0056D1B0 /* ManagedMoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedMoreInfo.swift; sourceTree = "<group>"; };
 		A894C4F929F1D12C0056D1B0 /* ManagedFavTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedFavTransfer.swift; sourceTree = "<group>"; };
 		A894C4FA29F1D12C0056D1B0 /* ManagedPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedPerson.swift; sourceTree = "<group>"; };
@@ -222,7 +220,6 @@
 				A894C4F929F1D12C0056D1B0 /* ManagedFavTransfer.swift */,
 				A894C4F829F1D12C0056D1B0 /* ManagedMoreInfo.swift */,
 				A894C4FA29F1D12C0056D1B0 /* ManagedPerson.swift */,
-				A88E7FC029F1C78C00F63416 /* ManagedObjects */,
 				A8E7563629F1B6E500A149D3 /* CoreDataHelpers.swift */,
 				A8E7563829F1B72000A149D3 /* CoreDataFavoritesTransferStore.swift */,
 				A8E7563A29F1B78D00A149D3 /* CoreDataFavoritesTransferStore+FavoritesTransferStore.swift */,
@@ -386,7 +383,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A897C28E29EFC6D500B91E54 /* Transfer App Object Graphpdf.pdf in Resources */,
-				A88E7FC129F1C78C00F63416 /* ManagedObjects in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
