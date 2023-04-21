@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		A88E7FAF29F1C55700F63416 /* FavoritesTransferStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A88E7FAD29F1C55700F63416 /* FavoritesTransferStore.xcdatamodeld */; };
 		A88E7FC129F1C78C00F63416 /* ManagedObjects in Resources */ = {isa = PBXBuildFile; fileRef = A88E7FC029F1C78C00F63416 /* ManagedObjects */; };
+		A894C4FC29F1D12C0056D1B0 /* ManagedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A894C4FB29F1D12C0056D1B0 /* ManagedCard.swift */; };
+		A894C4FD29F1D12C0056D1B0 /* ManagedPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = A894C4FA29F1D12C0056D1B0 /* ManagedPerson.swift */; };
+		A894C4FE29F1D12C0056D1B0 /* ManagedFavTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A894C4F929F1D12C0056D1B0 /* ManagedFavTransfer.swift */; };
+		A894C4FF29F1D12C0056D1B0 /* ManagedMoreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A894C4F829F1D12C0056D1B0 /* ManagedMoreInfo.swift */; };
 		A897C26A29EFB5F600B91E54 /* TransferListChallenge.docc in Sources */ = {isa = PBXBuildFile; fileRef = A897C26929EFB5F600B91E54 /* TransferListChallenge.docc */; };
 		A897C27029EFB5F600B91E54 /* TransferListChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A897C26529EFB5F600B91E54 /* TransferListChallenge.framework */; };
 		A897C27529EFB5F600B91E54 /* LoadTransferFromRemoteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A897C27429EFB5F600B91E54 /* LoadTransferFromRemoteUseCase.swift */; };
@@ -59,6 +63,10 @@
 		A87C53CA29F08C4D005A8F24 /* TransferListChallenge.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TransferListChallenge.xctestplan; sourceTree = "<group>"; };
 		A88E7FAE29F1C55700F63416 /* FavoritesTransferStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritesTransferStore.xcdatamodel; sourceTree = "<group>"; };
 		A88E7FC029F1C78C00F63416 /* ManagedObjects */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ManagedObjects; sourceTree = "<group>"; };
+		A894C4F829F1D12C0056D1B0 /* ManagedMoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedMoreInfo.swift; sourceTree = "<group>"; };
+		A894C4F929F1D12C0056D1B0 /* ManagedFavTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedFavTransfer.swift; sourceTree = "<group>"; };
+		A894C4FA29F1D12C0056D1B0 /* ManagedPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedPerson.swift; sourceTree = "<group>"; };
+		A894C4FB29F1D12C0056D1B0 /* ManagedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedCard.swift; sourceTree = "<group>"; };
 		A897C26529EFB5F600B91E54 /* TransferListChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TransferListChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A897C26829EFB5F600B91E54 /* TransferListChallenge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransferListChallenge.h; sourceTree = "<group>"; };
 		A897C26929EFB5F600B91E54 /* TransferListChallenge.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = TransferListChallenge.docc; sourceTree = "<group>"; };
@@ -210,6 +218,10 @@
 		A8E7563529F1B6C300A149D3 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				A894C4FB29F1D12C0056D1B0 /* ManagedCard.swift */,
+				A894C4F929F1D12C0056D1B0 /* ManagedFavTransfer.swift */,
+				A894C4F829F1D12C0056D1B0 /* ManagedMoreInfo.swift */,
+				A894C4FA29F1D12C0056D1B0 /* ManagedPerson.swift */,
 				A88E7FC029F1C78C00F63416 /* ManagedObjects */,
 				A8E7563629F1B6E500A149D3 /* CoreDataHelpers.swift */,
 				A8E7563829F1B72000A149D3 /* CoreDataFavoritesTransferStore.swift */,
@@ -409,12 +421,16 @@
 				A8E7563929F1B72000A149D3 /* CoreDataFavoritesTransferStore.swift in Sources */,
 				A897C26A29EFB5F600B91E54 /* TransferListChallenge.docc in Sources */,
 				A8FD711C29F05D6E00817E8D /* HTTPClient.swift in Sources */,
+				A894C4FE29F1D12C0056D1B0 /* ManagedFavTransfer.swift in Sources */,
+				A894C4FD29F1D12C0056D1B0 /* ManagedPerson.swift in Sources */,
 				A88E7FAF29F1C55700F63416 /* FavoritesTransferStore.xcdatamodeld in Sources */,
 				A8E7563B29F1B78D00A149D3 /* CoreDataFavoritesTransferStore+FavoritesTransferStore.swift in Sources */,
+				A894C4FF29F1D12C0056D1B0 /* ManagedMoreInfo.swift in Sources */,
 				A8FD712129F0602A00817E8D /* TransferItemsMapper.swift in Sources */,
 				A8A9682B29F147B600B8E220 /* String+DateConverter.swift in Sources */,
 				A8FD712329F0605B00817E8D /* RemoteTransferItem.swift in Sources */,
 				A8FD712729F060B400817E8D /* HTTPURLResponse+StatusCode.swift in Sources */,
+				A894C4FC29F1D12C0056D1B0 /* ManagedCard.swift in Sources */,
 				A8FD711A29F05D6E00817E8D /* TransferLoader.swift in Sources */,
 				A8A9681B29F0904200B8E220 /* URLSessionHTTPClient.swift in Sources */,
 			);
