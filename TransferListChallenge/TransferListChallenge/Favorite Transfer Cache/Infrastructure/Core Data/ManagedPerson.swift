@@ -31,4 +31,14 @@ extension ManagedPerson {
 
 extension ManagedPerson : Identifiable {
 
+    static func find(in context: NSManagedObjectContext) throws -> ManagedPerson? {
+        let request = NSFetchRequest<ManagedPerson>(entityName: entity().name!)
+        request.returnsObjectsAsFaults = false
+        return try context.fetch(request).first
+    }
+    
+    static func newUniqueInstance(in context: NSManagedObjectContext) throws -> ManagedPerson {
+        try find(in: context).map(context.delete)
+        return ManagedPerson(context: context)
+    }
 }

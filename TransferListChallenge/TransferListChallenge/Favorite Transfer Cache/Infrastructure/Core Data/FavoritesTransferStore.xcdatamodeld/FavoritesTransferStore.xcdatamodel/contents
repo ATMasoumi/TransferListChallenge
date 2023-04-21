@@ -14,7 +14,7 @@
     </entity>
     <entity name="ManagedMoreInfo" representedClassName="ManagedMoreInfo" syncable="YES">
         <attribute name="numberOfTransfers" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="totalTransfer" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="totalTransfer" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="favTransfer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedFavTransfer" inverseName="moreInfo" inverseEntity="ManagedFavTransfer"/>
     </entity>
     <entity name="ManagedPerson" representedClassName="ManagedPerson" syncable="YES">

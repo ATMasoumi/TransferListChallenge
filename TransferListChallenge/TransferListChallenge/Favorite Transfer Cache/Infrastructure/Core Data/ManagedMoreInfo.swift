@@ -20,12 +20,23 @@ extension ManagedMoreInfo {
         return NSFetchRequest<ManagedMoreInfo>(entityName: "ManagedMoreInfo")
     }
 
-    @NSManaged public var totalTransfer: Int
-    @NSManaged public var numberOfTransfers: Int
+    @NSManaged public var totalTransfer: Int32
+    @NSManaged public var numberOfTransfers: Int32
     @NSManaged public var favTransfer: ManagedFavTransfer
 
 }
 
 extension ManagedMoreInfo : Identifiable {
 
+    static func find(in context: NSManagedObjectContext) throws -> ManagedMoreInfo? {
+        let request = NSFetchRequest<ManagedMoreInfo>(entityName: entity().name!)
+        request.returnsObjectsAsFaults = false
+        return try context.fetch(request).first
+    }
+    
+    static func newUniqueInstance(in context: NSManagedObjectContext) throws -> ManagedMoreInfo {
+        try find(in: context).map(context.delete)
+        return ManagedMoreInfo(context: context)
+    }
+    
 }

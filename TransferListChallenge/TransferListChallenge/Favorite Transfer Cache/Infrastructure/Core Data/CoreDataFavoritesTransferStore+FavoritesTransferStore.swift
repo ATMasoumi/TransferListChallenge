@@ -14,7 +14,33 @@ extension CoreDataFavoritesTransferStore: FavoritesTransferStore {
     }
     
     public func insert(_ transfer: TransferListChallenge.LocalTransfer, completion: @escaping (InsertionResult) -> Void) {
-        
+        perform { context in
+            completion(Result {
+                
+                let managedFavTransfer = try ManagedFavTransfer.newUniqueInstance(in: context)
+                
+                let managedMoreInfo = try ManagedMoreInfo.newUniqueInstance(in: context)
+                managedMoreInfo.numberOfTransfers = Int32(transfer.moreInfo.numberOfTransfers)
+                managedMoreInfo.totalTransfer = Int32(transfer.moreInfo.totalTransfer)
+                
+                let managedCard = try ManagedCard.newUniqueInstance(in: context)
+                managedCard.cardNumber = transfer.card.cardNumber
+                managedCard.cardType = transfer.card.cardType
+                
+                let managedPerson = try ManagedPerson.newUniqueInstance(in: context)
+                managedPerson.avatar = transfer.person.avatar
+                managedPerson.email = transfer.person.email
+                managedPerson.fullName = transfer.person.fullName
+                
+                managedFavTransfer.lastTransfer = transfer.lastTransfer
+                managedFavTransfer.note = transfer.note
+                managedFavTransfer.person = managedPerson
+                managedFavTransfer.card = managedCard
+                managedFavTransfer.moreInfo = managedMoreInfo
+                
+                try context.save()
+            })
+        }
     }
     
     public func delete(_ transfer: TransferListChallenge.LocalTransfer, completion: @escaping (DeletionResult) -> Void) {

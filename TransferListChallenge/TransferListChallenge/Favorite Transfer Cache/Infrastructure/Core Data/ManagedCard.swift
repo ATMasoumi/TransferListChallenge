@@ -28,4 +28,15 @@ extension ManagedCard {
 
 extension ManagedCard : Identifiable {
 
+    static func find(in context: NSManagedObjectContext) throws -> ManagedCard? {
+        let request = NSFetchRequest<ManagedCard>(entityName: entity().name!)
+        request.returnsObjectsAsFaults = false
+        return try context.fetch(request).first
+    }
+    
+    static func newUniqueInstance(in context: NSManagedObjectContext) throws -> ManagedCard {
+        try find(in: context).map(context.delete)
+        return ManagedCard(context: context)
+    }
+    
 }
