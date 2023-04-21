@@ -11,6 +11,7 @@ import TransferListChallenge
 class TransferViewModel: ObservableObject {
     
     @Published var transfers: [Transfer] = []
+    @Published var isTransfersLoading: Bool = false
     
     let transferLoader: TransferLoader
     init(transferLoader: TransferLoader) {
@@ -18,10 +19,12 @@ class TransferViewModel: ObservableObject {
     }
     
     func load() {
+        isTransfersLoading = true
         transferLoader.load { result in
             switch result {
             case let .success(transfers):
                 self.transfers = transfers
+                self.isTransfersLoading = false
             case .failure:
                 break
             }
@@ -44,6 +47,17 @@ final class TransferViewModelTests: XCTestCase {
         sut.load()
         transferLoader.complete(with: [transfer])
         XCTAssertEqual(sut.transfers, [transfer])
+    }
+    
+    func test_transfersLoadingIsActivated_onLoadCall() throws {
+        let transfer = makeItem(name: "amin", cardNumber: "1", note: "note").model
+        let transferLoader = TransferLoaderSpy()
+        let sut = TransferViewModel(transferLoader: transferLoader)
+        XCTAssertEqual(sut.isTransfersLoading, false)
+        sut.load()
+        XCTAssertEqual(sut.isTransfersLoading, true)
+        transferLoader.complete(with: [transfer])
+        XCTAssertEqual(sut.isTransfersLoading, false)
     }
     
     class TransferLoaderSpy: TransferLoader {
