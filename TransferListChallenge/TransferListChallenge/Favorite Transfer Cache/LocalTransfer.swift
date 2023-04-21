@@ -14,12 +14,14 @@ public struct LocalTransfer: Equatable {
     public let lastTransfer: Date
     public let note: String?
     public let moreInfo: LocalMoreInfo
-    public init(person: LocalPerson, card: LocalCard, lastTransfer: Date, note: String?, moreInfo: LocalMoreInfo) {
+    public let identifier: String
+    public init(person: LocalPerson, card: LocalCard, lastTransfer: Date, note: String?, moreInfo: LocalMoreInfo, identifier: String = UUID().uuidString) {
         self.person = person
         self.card = card
         self.lastTransfer = lastTransfer
         self.note = note
         self.moreInfo = moreInfo
+        self.identifier = identifier
     }
 }
 

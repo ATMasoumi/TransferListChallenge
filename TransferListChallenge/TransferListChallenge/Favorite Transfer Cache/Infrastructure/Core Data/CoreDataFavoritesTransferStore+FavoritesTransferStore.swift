@@ -15,7 +15,7 @@ extension CoreDataFavoritesTransferStore: FavoritesTransferStore {
                 let managedFavTransfer: [ManagedFavTransfer]? = try ManagedFavTransfer.find(in: context)
                 guard let managedFavTransfer = managedFavTransfer else { return []}
                 
-                return managedFavTransfer.map({LocalTransfer(person: LocalPerson(fullName: $0.person.fullName, email: $0.person.email, avatar: $0.person.avatar), card: LocalCard(cardNumber: $0.card.cardNumber, cardType: $0.card.cardType), lastTransfer: $0.lastTransfer, note: $0.note, moreInfo: LocalMoreInfo(numberOfTransfers: Int($0.moreInfo.numberOfTransfers), totalTransfer: Int($0.moreInfo.totalTransfer)))})
+                return managedFavTransfer.map({LocalTransfer(person: LocalPerson(fullName: $0.person.fullName, email: $0.person.email, avatar: $0.person.avatar), card: LocalCard(cardNumber: $0.card.cardNumber, cardType: $0.card.cardType), lastTransfer: $0.lastTransfer, note: $0.note, moreInfo: LocalMoreInfo(numberOfTransfers: Int($0.moreInfo.numberOfTransfers), totalTransfer: Int($0.moreInfo.totalTransfer)), identifier: $0.identifier)})
             })
         }
     }
@@ -44,6 +44,8 @@ extension CoreDataFavoritesTransferStore: FavoritesTransferStore {
                 managedFavTransfer.person = managedPerson
                 managedFavTransfer.card = managedCard
                 managedFavTransfer.moreInfo = managedMoreInfo
+                managedFavTransfer.identifier = transfer.identifier
+                managedFavTransfer.addDate = Date()
                 
                 try context.save()
             })
@@ -51,7 +53,15 @@ extension CoreDataFavoritesTransferStore: FavoritesTransferStore {
     }
     
     public func delete(_ transfer: TransferListChallenge.LocalTransfer, completion: @escaping (DeletionResult) -> Void) {
-        
+        perform { context in
+            completion(Result {
+                do {
+                    try ManagedFavTransfer.findObject(with: transfer.identifier, in: context).map { context.delete($0)}
+                }catch {
+                    print(error)
+                }
+            })
+        }
     }
     
     

@@ -33,6 +33,19 @@ final class CoreDataTransferStoreUseCase: XCTestCase {
         expect(sut, toRetrieve: .success([favTransfer, fav2Transfer, fav3Transfer]))
     }
     
+    func test_delete_deliversNoErrorOnNonEmptyCache() {
+        let sut = makeSUT()
+        let favTransfer = makeItem(name: "amin", cardNumber: "1", note: "note").local
+        let fav2Transfer = makeItem(name: "torabi", cardNumber: "2", note: "note2").local
+        let fav3Transfer = makeItem(name: "masoumi", cardNumber: "3", note: "note3").local
+        insert(favTransfer: favTransfer, to: sut)
+        insert(favTransfer: fav2Transfer, to: sut)
+        insert(favTransfer: fav3Transfer, to: sut)
+        
+        delete(favTransfer: fav3Transfer, to: sut)
+        expect(sut, toRetrieve: .success([favTransfer, fav2Transfer]))
+    }
+    
     private func makeSUT() -> FavoritesTransferStore {
         let storeURL = URL(fileURLWithPath: "/dev/null")
         let sut = try! CoreDataFavoritesTransferStore(storeURL: storeURL)
@@ -67,6 +80,18 @@ final class CoreDataTransferStoreUseCase: XCTestCase {
         let exp = expectation(description: "Wait for cache insertion")
         var insertionError: Error?
         sut.insert(favTransfer) { result in
+            if case let Result.failure(error) = result { insertionError = error }
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
+        return insertionError
+    }
+    
+    @discardableResult
+    func delete(favTransfer: LocalTransfer, to sut: FavoritesTransferStore) -> Error? {
+        let exp = expectation(description: "Wait for cache insertion")
+        var insertionError: Error?
+        sut.delete(favTransfer) { result in
             if case let Result.failure(error) = result { insertionError = error }
             exp.fulfill()
         }

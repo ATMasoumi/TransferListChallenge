@@ -6,6 +6,8 @@
         <relationship name="favTransfer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedFavTransfer" inverseName="card" inverseEntity="ManagedFavTransfer"/>
     </entity>
     <entity name="ManagedFavTransfer" representedClassName="ManagedFavTransfer" syncable="YES">
+        <attribute name="addDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="identifier" attributeType="String"/>
         <attribute name="lastTransfer" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="note" optional="YES" attributeType="String"/>
         <relationship name="card" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedCard" inverseName="favTransfer" inverseEntity="ManagedCard"/>
