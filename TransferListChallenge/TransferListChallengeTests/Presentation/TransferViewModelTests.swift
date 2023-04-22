@@ -13,6 +13,7 @@ class TransferViewModel: ObservableObject {
     @Published var transfers: [Transfer] = []
     @Published var isTransfersLoading: Bool = false
     @Published var connectivityError : String? = nil
+    @Published var invalidDataError : String? = nil
     
     let transferLoader: TransferLoader
     init(transferLoader: TransferLoader) {
@@ -32,7 +33,7 @@ class TransferViewModel: ObservableObject {
                 case .connectivity:
                     self.connectivityError = "Please check your network!"
                 case .invalidData:
-                    break
+                    self.invalidDataError = "Could not reach our server!"
                 }
             }
         }
@@ -72,6 +73,14 @@ final class TransferViewModelTests: XCTestCase {
         transferLoader.complete(with: RemoteTransferLoader.Error.connectivity)
         
         XCTAssertNotNil(sut.connectivityError)
+    }
+    
+    func test_transferLoading_getsInvalidDataError() {
+        let (sut,transferLoader) = makeSUT()
+        sut.load()
+        transferLoader.complete(with: RemoteTransferLoader.Error.invalidData)
+        
+        XCTAssertNotNil(sut.invalidDataError)
     }
     
     func makeSUT() -> (sut: TransferViewModel, transferLoader: TransferLoaderSpy) {
