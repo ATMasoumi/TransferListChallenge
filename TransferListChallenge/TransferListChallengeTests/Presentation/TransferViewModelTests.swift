@@ -18,6 +18,7 @@ class TransferViewModel: ObservableObject {
     
     @Published var connectivityError : String? = nil
     @Published var invalidDataError : String? = nil
+    @Published var dataStoreError : String? = nil
     
     let transferLoader: TransferLoader
     let favTransferLoader: FavoritesTransferLoader
@@ -56,7 +57,8 @@ class TransferViewModel: ObservableObject {
             case let .success(favTransfers):
                 self.favTransfers = favTransfers
             case .failure:
-                break
+                self.dataStoreError = "Could not load favorite transfers!"
+
             }
         }
     }
@@ -150,8 +152,17 @@ final class TransferViewModelTests: XCTestCase {
         XCTAssertEqual(sut.isFavTransfersLoading, false)
         sut.loadFavTransfers()
         XCTAssertEqual(sut.isFavTransfersLoading, true)
-        favTransferLoader.complete(with: NSError(domain: "any error", code: 1))
+        favTransferLoader.complete(with: anyError())
         XCTAssertEqual(sut.isFavTransfersLoading, false)
+    }
+    
+    func test_loadingFavTransfers_getsDataStoreError() {
+        let (sut,_,favTransferLoader) = makeSUT()
+       
+        sut.loadFavTransfers()
+        favTransferLoader.complete(with: anyError())
+        
+        XCTAssertNotNil(sut.dataStoreError)
     }
     
     func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: TransferViewModel, transferLoader: TransferLoaderSpy, favTransferLoader: FavTransferLoaderSpy) {
@@ -223,4 +234,7 @@ final class TransferViewModelTests: XCTestCase {
         return (item, localItem)
     }
     
+    func anyError() -> NSError {
+        NSError(domain: "any error", code: 1)
+    }
 }
