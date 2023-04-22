@@ -63,16 +63,19 @@ public class TransferViewModel: ObservableObject {
         isFavTransfersLoading = true
         group.enter()
         favTransferLoader.load { [weak self] result in
-            guard let self = self else { return }
-            self.isFavTransfersLoading = false
-            switch result {
-            case let .success(favTransfers):
-                self.favTransfers = favTransfers
-            case .failure:
-                self.dataStoreError = "Could not load favorite transfers!"
-                
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.isFavTransfersLoading = false
+                switch result {
+                case let .success(favTransfers):
+                    self.favTransfers = favTransfers
+                case .failure:
+                    self.dataStoreError = "Could not load favorite transfers!"
+                    
+                }
+                self.group.leave()
             }
-            group.leave()
+           
         }
     }
     

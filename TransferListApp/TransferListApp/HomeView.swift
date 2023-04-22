@@ -37,16 +37,7 @@ struct HomeView: View {
     }
     func transferListCell(url: URL, name: String, email: String?) -> some View {
         HStack {
-            AsyncImage(url: url) { phase in
-                if let image = phase.image {
-                    image
-                        .resizable()
-                } else if phase.error != nil {
-                    Color.gray
-                } else {
-                    ProgressView()
-                }
-            }
+            avatarImage(url: url)
             .frame(width: 60, height: 60)
                 .clipShape(Circle())
             VStack (alignment: .leading, spacing: 10){
@@ -68,22 +59,25 @@ struct HomeView: View {
     var favoritesItems: some View {
         ScrollView(.horizontal) {
             HStack {
-                ForEach(1...5, id: \.self) { item in
-                    favoritesCell(url: "", title: "name ", subTitle: "subtitle")
+                ForEach(viewModel.favTransfers, id: \.lastTransfer) { item in
+                    favoritesCell(url: item.person.avatar, name: item.person.fullName, email: item.person.email)
                 }
             }
             .padding(.leading)
         }
     }
    
-    func favoritesCell(url: String, title: String, subTitle: String) -> some View {
+    func favoritesCell(url: URL, name: String, email: String?) -> some View {
         VStack {
-            Circle()
+            avatarImage(url: url)
                 .frame(width: 60, height: 60)
-            Text(title)
+            Text(name)
                 .bold()
-            Text(subTitle)
-                .foregroundColor(.secondary)
+            if let email = email {
+                Text(email)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
         }
         .padding()
     }
@@ -96,6 +90,18 @@ struct HomeView: View {
             Spacer()
         }
         .padding(.leading)
+    }
+    func avatarImage(url: URL) -> some View {
+        AsyncImage(url: url) { phase in
+            if let image = phase.image {
+                image
+                    .resizable()
+            } else if phase.error != nil {
+                Color.gray
+            } else {
+                ProgressView()
+            }
+        }
     }
 }
 
