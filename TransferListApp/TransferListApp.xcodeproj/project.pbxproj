@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A82A510029F4394D004355CB /* TransferListAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82A50FF29F4394D004355CB /* TransferListAppApp.swift */; };
-		A82A510229F4394D004355CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82A510129F4394D004355CB /* ContentView.swift */; };
+		A82A510229F4394D004355CB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82A510129F4394D004355CB /* HomeView.swift */; };
 		A82A510429F4394E004355CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A82A510329F4394E004355CB /* Assets.xcassets */; };
 		A82A510729F4394E004355CB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A82A510629F4394E004355CB /* Preview Assets.xcassets */; };
 		A82A511129F4394E004355CB /* TransferListAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82A511029F4394E004355CB /* TransferListAppTests.swift */; };
@@ -52,7 +52,7 @@
 /* Begin PBXFileReference section */
 		A82A50FC29F4394D004355CB /* TransferListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransferListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A82A50FF29F4394D004355CB /* TransferListAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferListAppApp.swift; sourceTree = "<group>"; };
-		A82A510129F4394D004355CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A82A510129F4394D004355CB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A82A510329F4394E004355CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A82A510629F4394E004355CB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A82A510C29F4394E004355CB /* TransferListAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransferListAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,7 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				A82A50FF29F4394D004355CB /* TransferListAppApp.swift */,
-				A82A510129F4394D004355CB /* ContentView.swift */,
+				A82A510129F4394D004355CB /* HomeView.swift */,
 				A82A510329F4394E004355CB /* Assets.xcassets */,
 				A82A510529F4394E004355CB /* Preview Content */,
 			);
@@ -285,7 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A82A510229F4394D004355CB /* ContentView.swift in Sources */,
+				A82A510229F4394D004355CB /* HomeView.swift in Sources */,
 				A82A510029F4394D004355CB /* TransferListAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

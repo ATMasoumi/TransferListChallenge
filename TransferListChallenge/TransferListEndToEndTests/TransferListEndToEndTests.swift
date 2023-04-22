@@ -32,5 +32,4 @@ final class TransferListEndToEndTests: XCTestCase {
         
         return receivedResult
     }
-
 }

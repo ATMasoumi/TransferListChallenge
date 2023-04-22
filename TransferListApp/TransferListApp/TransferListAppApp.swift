@@ -11,7 +11,7 @@ import TransferListChallenge
 struct TransferListAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }
