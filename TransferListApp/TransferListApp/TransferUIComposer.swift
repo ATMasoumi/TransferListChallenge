@@ -19,11 +19,12 @@ struct TransferUIComposer: View {
             let store = try CoreDataFavoritesTransferStore(storeURL: NSPersistentContainer
                 .defaultDirectoryURL()
                 .appendingPathComponent("feed-store.sqlite"))
+            
             let client = URLSessionHTTPClient()
             let url = URL(string: "https://4e6774cc-4d63-41b2-8003-336545c0a86d.mock.pstmn.io/transfer-list/1")!
-            let transferloader = RemoteTransferLoader(url: url, client: client)
+            let transferLoader = RemoteTransferLoader(url: url, client: client)
             let favTransferLoader = LocalFavoritesTransferLoader(store: store)
-            let transferViewModel = TransferViewModel(transferLoader: transferloader, favTransferLoader: favTransferLoader)
+            let transferViewModel = TransferViewModel(transferLoader: transferLoader, favTransferLoader: favTransferLoader)
             _viewModel = StateObject(wrappedValue: transferViewModel)
         } catch {
             return nil
