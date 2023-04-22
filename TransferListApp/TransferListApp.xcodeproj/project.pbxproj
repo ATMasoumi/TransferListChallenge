@@ -18,6 +18,7 @@
 		A88F1BE329F43B730087E917 /* TransferListChallenge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A88F1BE129F43B730087E917 /* TransferListChallenge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A88F1BE829F457040087E917 /* DetailPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88F1BE729F457040087E917 /* DetailPageView.swift */; };
 		A88F1BEA29F461440087E917 /* TransferUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88F1BE929F461440087E917 /* TransferUIComposer.swift */; };
+		A88F1BEC29F466560087E917 /* NullStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88F1BEB29F466560087E917 /* NullStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		A88F1BE129F43B730087E917 /* TransferListChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TransferListChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A88F1BE729F457040087E917 /* DetailPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageView.swift; sourceTree = "<group>"; };
 		A88F1BE929F461440087E917 /* TransferUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferUIComposer.swift; sourceTree = "<group>"; };
+		A88F1BEB29F466560087E917 /* NullStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				A88F1BE929F461440087E917 /* TransferUIComposer.swift */,
 				A82A510129F4394D004355CB /* HomeView.swift */,
 				A88F1BE729F457040087E917 /* DetailPageView.swift */,
+				A88F1BEB29F466560087E917 /* NullStore.swift */,
 				A82A510329F4394E004355CB /* Assets.xcassets */,
 				A82A510529F4394E004355CB /* Preview Content */,
 			);
@@ -293,6 +296,7 @@
 			files = (
 				A88F1BE829F457040087E917 /* DetailPageView.swift in Sources */,
 				A82A510229F4394D004355CB /* HomeView.swift in Sources */,
+				A88F1BEC29F466560087E917 /* NullStore.swift in Sources */,
 				A88F1BEA29F461440087E917 /* TransferUIComposer.swift in Sources */,
 				A82A510029F4394D004355CB /* TransferListAppApp.swift in Sources */,
 			);

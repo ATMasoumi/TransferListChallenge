@@ -38,21 +38,24 @@ public class TransferViewModel: ObservableObject {
         isTransfersLoading = true
         group.enter()
         transferLoader.load { [weak self] result in
-            guard let self = self else { return }
-            self.isTransfersLoading = false
-            switch result {
-            case let .success(transfers):
-                self.transfers = transfers
-            case let .failure(error):
-                guard let error = error as? RemoteTransferLoader.Error else { return }
-                switch error {
-                case .connectivity:
-                    self.connectivityError = "Please check your network!"
-                case .invalidData:
-                    self.invalidDataError = "Could not reach to server!"
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.isTransfersLoading = false
+                switch result {
+                case let .success(transfers):
+                    self.transfers = transfers
+                case let .failure(error):
+                    guard let error = error as? RemoteTransferLoader.Error else { return }
+                    switch error {
+                    case .connectivity:
+                        self.connectivityError = "Please check your network!"
+                    case .invalidData:
+                        self.invalidDataError = "Could not reach to server!"
+                    }
                 }
+                self.group.leave()
             }
-            group.leave()
+           
         }
     }
     

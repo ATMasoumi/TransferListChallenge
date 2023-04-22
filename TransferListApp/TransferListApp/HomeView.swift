@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import TransferListChallenge
+import CoreData
 
 struct HomeView: View {
+    @ObservedObject var viewModel: TransferViewModel
     let onDetailTap: ()->()
     var body: some View {
         VStack {
@@ -20,11 +23,11 @@ struct HomeView: View {
     
     var transferList: some View {
         List {
-            ForEach(1...10, id: \.self) { item in
+            ForEach(viewModel.transfers, id: \.lastTransfer) { item in
                 Button{
                     onDetailTap()
                 } label: {
-                    transferListCell(url: "", title: "name ", subTitle: "subtitle")
+                    transferListCell(url: item.person.avatar, name: item.person.fullName, email: item.person.email)
                         .listRowSeparator(.hidden)
                 }
             }
@@ -32,15 +35,18 @@ struct HomeView: View {
         .listStyle(.plain)
         .ignoresSafeArea()
     }
-    func transferListCell(url: String, title: String, subTitle: String) -> some View {
+    func transferListCell(url: URL, name: String, email: String?) -> some View {
         HStack {
-            Circle()
+            AsyncImage(url: url)
                 .frame(width: 60, height: 60)
+                .clipShape(Circle())
             VStack (alignment: .leading, spacing: 10){
-                Text(title)
+                Text(name)
                     .bold()
-                Text(subTitle)
-                    .foregroundColor(.secondary)
+                if let email = email {
+                    Text(email)
+                        .foregroundColor(.secondary)
+                }
             }
             Spacer()
             Image(systemName: "star.fill")
@@ -86,6 +92,10 @@ struct HomeView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(onDetailTap: {})
+        let client = URLSessionHTTPClient()
+        let url = URL(string: "https://4e6774cc-4d63-41b2-8003-336545c0a86d.mock.pstmn.io/transfer-list/1")!
+        let loader = RemoteTransferLoader(url: url, client: client)
+        let localFavTransferLoader = LocalFavoritesTransferLoader(store: NullStore())
+        HomeView(viewModel: TransferViewModel(transferLoader: loader, favTransferLoader: localFavTransferLoader), onDetailTap: {})
     }
 }
