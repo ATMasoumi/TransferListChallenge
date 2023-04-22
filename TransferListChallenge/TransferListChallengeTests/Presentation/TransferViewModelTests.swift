@@ -34,7 +34,7 @@ class TransferViewModel: ObservableObject {
                 case .connectivity:
                     self.connectivityError = "Please check your network!"
                 case .invalidData:
-                    self.invalidDataError = "Could not reach our server!"
+                    self.invalidDataError = "Could not reach to server!"
                 }
             }
         }
