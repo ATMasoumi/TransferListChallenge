@@ -34,7 +34,7 @@ extension ManagedFavTransfer : Identifiable {
    
     static func find(in context: NSManagedObjectContext) throws -> [ManagedFavTransfer]? {
         let request = fetchRequest()
-        var addDateSort = NSSortDescriptor(key:"addDate", ascending:true)
+        let addDateSort = NSSortDescriptor(key:"addDate", ascending:true)
         request.sortDescriptors = [addDateSort]
         request.returnsObjectsAsFaults = false
         return try context.fetch(request)

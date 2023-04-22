@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    let onDetailTap: ()->()
     var body: some View {
         VStack {
             title(name: "Favorites")
@@ -20,8 +21,12 @@ struct HomeView: View {
     var transferList: some View {
         List {
             ForEach(1...10, id: \.self) { item in
-                transferListCell(url: "", title: "name ", subTitle: "subtitle")
-                    .listRowSeparator(.hidden)
+                Button{
+                    onDetailTap()
+                } label: {
+                    transferListCell(url: "", title: "name ", subTitle: "subtitle")
+                        .listRowSeparator(.hidden)
+                }
             }
         }
         .listStyle(.plain)
@@ -81,6 +86,6 @@ struct HomeView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(onDetailTap: {})
     }
 }
