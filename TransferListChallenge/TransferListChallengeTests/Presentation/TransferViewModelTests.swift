@@ -201,6 +201,19 @@ final class TransferViewModelTests: XCTestCase {
         
         XCTAssertNotNil(sut.deleteError)
     }
+   
+    func test_addToFavTransferSuccessfully_canLoadThatItem() {
+        let (sut, _, favTransferLoader) = makeSUT()
+        
+        let transfer = makeItem(name: "amin", cardNumber: "1", note: "note").model
+        sut.addToFavorites(item: transfer)
+        favTransferLoader.completeSaving()
+        
+        sut.loadFavTransfers()
+        favTransferLoader.completeLoading()
+        
+        XCTAssertEqual(sut.favTransfers, [transfer])
+    }
     
     func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: TransferViewModel, transferLoader: TransferLoaderSpy, favTransferLoader: FavTransferLoaderSpy) {
        
