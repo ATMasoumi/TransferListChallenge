@@ -14,6 +14,8 @@ class TransferViewModel: ObservableObject {
     @Published var favTransfers: [Transfer] = []
     
     @Published var isTransfersLoading: Bool = false
+    @Published var isFavTransfersLoading: Bool = false
+    
     @Published var connectivityError : String? = nil
     @Published var invalidDataError : String? = nil
     
@@ -29,12 +31,11 @@ class TransferViewModel: ObservableObject {
         isTransfersLoading = true
         transferLoader.load { [weak self] result in
             guard let self = self else { return }
+            self.isTransfersLoading = false
             switch result {
             case let .success(transfers):
                 self.transfers = transfers
-                self.isTransfersLoading = false
             case let .failure(error):
-                self.isTransfersLoading = false
                 guard let error = error as? RemoteTransferLoader.Error else { return }
                 switch error {
                 case .connectivity:
@@ -47,8 +48,10 @@ class TransferViewModel: ObservableObject {
     }
     
     func loadFavTransfers() {
+        isFavTransfersLoading = true
         favTransferLoader.load { [weak self] result in
             guard let self = self else { return }
+            self.isFavTransfersLoading = false
             switch result {
             case let .success(favTransfers):
                 self.favTransfers = favTransfers
@@ -60,6 +63,8 @@ class TransferViewModel: ObservableObject {
 }
 
 final class TransferViewModelTests: XCTestCase {
+
+    // MARK: - transfer Loading
 
     func test_doesNotLoad_onInit() throws {
         let (sut,_, _) = makeSUT()
@@ -112,6 +117,7 @@ final class TransferViewModelTests: XCTestCase {
         XCTAssertEqual(sut.isTransfersLoading, false)
     }
     
+    // MARK: - favTransfer Loading
     func test_doesNotLoadFavTransfers_onInit() throws {
         let (sut,_, _) = makeSUT()
         XCTAssertEqual(sut.favTransfers, [])
@@ -125,6 +131,28 @@ final class TransferViewModelTests: XCTestCase {
         XCTAssertEqual(sut.favTransfers, [transfer])
     }
     
+    
+    func test_favTransfersLoadingIsActivated_onLoadCall() throws {
+       
+        let (sut,_, favTransferLoader) = makeSUT()
+        let transfer = makeItem(name: "amin", cardNumber: "1", note: "note").model
+
+        XCTAssertEqual(sut.isFavTransfersLoading, false)
+        sut.loadFavTransfers()
+        XCTAssertEqual(sut.isFavTransfersLoading, true)
+        favTransferLoader.complete(with: [transfer])
+        XCTAssertEqual(sut.isFavTransfersLoading, false)
+    }
+    
+    func test_favTransfersLoadingIsDeActivated_afterGettingError() {
+        let (sut,_,favTransferLoader) = makeSUT()
+
+        XCTAssertEqual(sut.isFavTransfersLoading, false)
+        sut.loadFavTransfers()
+        XCTAssertEqual(sut.isFavTransfersLoading, true)
+        favTransferLoader.complete(with: NSError(domain: "any error", code: 1))
+        XCTAssertEqual(sut.isFavTransfersLoading, false)
+    }
     
     func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: TransferViewModel, transferLoader: TransferLoaderSpy, favTransferLoader: FavTransferLoaderSpy) {
         let transferLoader = TransferLoaderSpy()
@@ -166,6 +194,10 @@ final class TransferViewModelTests: XCTestCase {
             completion(.success(transfers))
         }
         
+        func complete(with error: Error) {
+            guard let completion = favTransferCompletions.first else { return }
+            completion(.failure(error))
+        }
         
         func save(_ transfer: TransferListChallenge.Transfer, completion: @escaping (SaveResult) -> Void) {
             

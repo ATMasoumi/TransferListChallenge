@@ -10,6 +10,7 @@ import Foundation
 public class LocalFavoritesTransferLoader: FavoritesTransferLoader {
     
     let store: FavoritesTransferStore
+    
     public init(store: FavoritesTransferStore) {
         self.store = store
     }
