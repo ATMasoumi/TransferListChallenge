@@ -160,6 +160,7 @@ final class TransferViewModelTests: XCTestCase {
         let sut = TransferViewModel(transferLoader: transferLoader, favTransferLoader: favTransferLoader)
         trackForMemoryLeaks(transferLoader, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
+        trackForMemoryLeaks(favTransferLoader, file: file, line: line)
         return (sut, transferLoader, favTransferLoader)
     }
     
