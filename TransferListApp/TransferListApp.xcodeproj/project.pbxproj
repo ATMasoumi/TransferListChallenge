@@ -16,6 +16,7 @@
 		A82A511D29F4394E004355CB /* TransferListAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82A511C29F4394E004355CB /* TransferListAppUITestsLaunchTests.swift */; };
 		A88F1BE229F43B730087E917 /* TransferListChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A88F1BE129F43B730087E917 /* TransferListChallenge.framework */; };
 		A88F1BE329F43B730087E917 /* TransferListChallenge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A88F1BE129F43B730087E917 /* TransferListChallenge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A88F1BE829F457040087E917 /* DetailPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88F1BE729F457040087E917 /* DetailPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		A82A511A29F4394E004355CB /* TransferListAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferListAppUITests.swift; sourceTree = "<group>"; };
 		A82A511C29F4394E004355CB /* TransferListAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferListAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A88F1BE129F43B730087E917 /* TransferListChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TransferListChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A88F1BE729F457040087E917 /* DetailPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			children = (
 				A82A50FF29F4394D004355CB /* TransferListAppApp.swift */,
 				A82A510129F4394D004355CB /* HomeView.swift */,
+				A88F1BE729F457040087E917 /* DetailPageView.swift */,
 				A82A510329F4394E004355CB /* Assets.xcassets */,
 				A82A510529F4394E004355CB /* Preview Content */,
 			);
@@ -285,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A88F1BE829F457040087E917 /* DetailPageView.swift in Sources */,
 				A82A510229F4394D004355CB /* HomeView.swift in Sources */,
 				A82A510029F4394D004355CB /* TransferListAppApp.swift in Sources */,
 			);
