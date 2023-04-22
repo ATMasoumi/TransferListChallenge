@@ -22,7 +22,8 @@ class TransferViewModel: ObservableObject {
     
     func load() {
         isTransfersLoading = true
-        transferLoader.load { result in
+        transferLoader.load { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case let .success(transfers):
                 self.transfers = transfers
@@ -83,9 +84,11 @@ final class TransferViewModelTests: XCTestCase {
         XCTAssertNotNil(sut.invalidDataError)
     }
     
-    func makeSUT() -> (sut: TransferViewModel, transferLoader: TransferLoaderSpy) {
+    func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: TransferViewModel, transferLoader: TransferLoaderSpy) {
         let transferLoader = TransferLoaderSpy()
         let sut = TransferViewModel(transferLoader: transferLoader)
+        trackForMemoryLeaks(transferLoader, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, transferLoader)
     }
     
