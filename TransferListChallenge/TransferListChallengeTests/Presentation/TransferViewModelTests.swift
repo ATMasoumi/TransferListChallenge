@@ -19,6 +19,7 @@ class TransferViewModel: ObservableObject {
     @Published var connectivityError : String? = nil
     @Published var invalidDataError : String? = nil
     @Published var dataStoreError : String? = nil
+    @Published var deleteError : String? = nil
     
     let transferLoader: TransferLoader
     let favTransferLoader: FavoritesTransferLoader
@@ -64,8 +65,13 @@ class TransferViewModel: ObservableObject {
     }
     
     func addToFavorites(item: Transfer) {
-        favTransferLoader.save(item) { result in
-            
+        favTransferLoader.save(item) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success: break
+            case .failure:
+                self.deleteError = "Could not delete item"
+            }
         }
     }
 }
@@ -193,8 +199,7 @@ final class TransferViewModelTests: XCTestCase {
         sut.addToFavorites(item: transfer)
         favTransferLoader.completeSaving(with: anyError())
         
-        sut.loadFavTransfers()
-        favTransferLoader.completeLoading()
+        XCTAssertNotNil(sut.deleteError)
     }
     
     func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: TransferViewModel, transferLoader: TransferLoaderSpy, favTransferLoader: FavTransferLoaderSpy) {
