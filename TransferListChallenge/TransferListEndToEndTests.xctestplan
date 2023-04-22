@@ -1,0 +1,33 @@
+{
+  "configurations" : [
+    {
+      "id" : "72569B02-6EEB-4E56-B89B-22B1549ED7B7",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:TransferListChallenge.xcodeproj",
+          "identifier" : "A897C26429EFB5F600B91E54",
+          "name" : "TransferListChallenge"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:TransferListChallenge.xcodeproj",
+        "identifier" : "A8A9681F29F1164500B8E220",
+        "name" : "TransferListEndToEndTests"
+      }
+    }
+  ],
+  "version" : 1
+}

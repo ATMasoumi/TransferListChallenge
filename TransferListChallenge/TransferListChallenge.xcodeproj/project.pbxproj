@@ -61,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A82A508629F42A2E004355CB /* TransferListEndToEndTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TransferListEndToEndTests.xctestplan; sourceTree = "<group>"; };
 		A87C53CA29F08C4D005A8F24 /* TransferListChallenge.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TransferListChallenge.xctestplan; sourceTree = "<group>"; };
 		A88E7FAE29F1C55700F63416 /* FavoritesTransferStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritesTransferStore.xcdatamodel; sourceTree = "<group>"; };
 		A894C4F829F1D12C0056D1B0 /* ManagedMoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedMoreInfo.swift; sourceTree = "<group>"; };
@@ -130,6 +131,7 @@
 		A897C25B29EFB5F500B91E54 = {
 			isa = PBXGroup;
 			children = (
+				A82A508629F42A2E004355CB /* TransferListEndToEndTests.xctestplan */,
 				A8A9682C29F14B7000B8E220 /* CI.xctestplan */,
 				A87C53CA29F08C4D005A8F24 /* TransferListChallenge.xctestplan */,
 				A89C43AE29F2A955003DA796 /* Transfer App Object Graph.pdf */,
