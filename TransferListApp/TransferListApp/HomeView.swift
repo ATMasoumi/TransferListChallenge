@@ -43,7 +43,6 @@ struct HomeView: View {
             Image(systemName: "chevron.right")
                 .foregroundColor(Color(UIColor.tertiaryLabel))
         }
-//        .padding()
     }
     
     var favoritesItems: some View {

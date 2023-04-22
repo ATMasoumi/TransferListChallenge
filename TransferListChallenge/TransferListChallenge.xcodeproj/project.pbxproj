@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A88E7FAF29F1C55700F63416 /* FavoritesTransferStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A88E7FAD29F1C55700F63416 /* FavoritesTransferStore.xcdatamodeld */; };
+		A88F1BE629F4532C0087E917 /* Proposed UI for Detail Page.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A88F1BE529F4532C0087E917 /* Proposed UI for Detail Page.pdf */; };
 		A894C4FC29F1D12C0056D1B0 /* ManagedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A894C4FB29F1D12C0056D1B0 /* ManagedCard.swift */; };
 		A894C4FD29F1D12C0056D1B0 /* ManagedPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = A894C4FA29F1D12C0056D1B0 /* ManagedPerson.swift */; };
 		A894C4FE29F1D12C0056D1B0 /* ManagedFavTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A894C4F929F1D12C0056D1B0 /* ManagedFavTransfer.swift */; };
@@ -64,6 +65,7 @@
 		A82A508629F42A2E004355CB /* TransferListEndToEndTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TransferListEndToEndTests.xctestplan; sourceTree = "<group>"; };
 		A87C53CA29F08C4D005A8F24 /* TransferListChallenge.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TransferListChallenge.xctestplan; sourceTree = "<group>"; };
 		A88E7FAE29F1C55700F63416 /* FavoritesTransferStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritesTransferStore.xcdatamodel; sourceTree = "<group>"; };
+		A88F1BE529F4532C0087E917 /* Proposed UI for Detail Page.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Proposed UI for Detail Page.pdf"; sourceTree = "<group>"; };
 		A894C4F829F1D12C0056D1B0 /* ManagedMoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedMoreInfo.swift; sourceTree = "<group>"; };
 		A894C4F929F1D12C0056D1B0 /* ManagedFavTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedFavTransfer.swift; sourceTree = "<group>"; };
 		A894C4FA29F1D12C0056D1B0 /* ManagedPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedPerson.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				A8A9682C29F14B7000B8E220 /* CI.xctestplan */,
 				A87C53CA29F08C4D005A8F24 /* TransferListChallenge.xctestplan */,
 				A89C43AE29F2A955003DA796 /* Transfer App Object Graph.pdf */,
+				A88F1BE529F4532C0087E917 /* Proposed UI for Detail Page.pdf */,
 				A897C26729EFB5F600B91E54 /* TransferListChallenge */,
 				A897C27329EFB5F600B91E54 /* TransferListChallengeTests */,
 				A8A9682129F1164500B8E220 /* TransferListEndToEndTests */,
@@ -406,6 +409,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A88F1BE629F4532C0087E917 /* Proposed UI for Detail Page.pdf in Resources */,
 				A89C43AF29F2A955003DA796 /* Transfer App Object Graph.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
