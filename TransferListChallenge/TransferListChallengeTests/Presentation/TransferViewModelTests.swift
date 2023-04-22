@@ -59,7 +59,7 @@ class TransferViewModel: ObservableObject {
                 self.favTransfers = favTransfers
             case .failure:
                 self.dataStoreError = "Could not load favorite transfers!"
-
+                
             }
         }
     }
@@ -83,9 +83,9 @@ class TransferViewModel: ObservableObject {
 }
 
 final class TransferViewModelTests: XCTestCase {
-
+    
     // MARK: - transfer Loading
-
+    
     func test_doesNotLoad_onInit() throws {
         let (sut,_, _) = makeSUT()
         XCTAssertEqual(sut.transfers, [])
@@ -100,10 +100,10 @@ final class TransferViewModelTests: XCTestCase {
     }
     
     func test_transfersLoadingIsActivated_onLoadCall() throws {
-       
+        
         let (sut,transferLoader, _) = makeSUT()
         let transfer = makeItem(name: "amin", cardNumber: "1", note: "note").model
-
+        
         XCTAssertEqual(sut.isTransfersLoading, false)
         sut.load()
         XCTAssertEqual(sut.isTransfersLoading, true)
@@ -126,10 +126,10 @@ final class TransferViewModelTests: XCTestCase {
         
         XCTAssertNotNil(sut.invalidDataError)
     }
-
+    
     func test_transfersLoadingIsDeActivated_afterGettingError() {
         let (sut,transferLoader,_) = makeSUT()
-
+        
         XCTAssertEqual(sut.isTransfersLoading, false)
         sut.load()
         XCTAssertEqual(sut.isTransfersLoading, true)
@@ -145,7 +145,7 @@ final class TransferViewModelTests: XCTestCase {
     
     func test_deliversFavTransfers_onLoadCall() throws {
         let (sut,_, favTransferLoader) = makeSUT()
-
+        
         let transfer = makeItem(name: "amin", cardNumber: "1", note: "note").model
         sut.addToFavorites(item: transfer)
         favTransferLoader.completeSaving()
@@ -157,13 +157,13 @@ final class TransferViewModelTests: XCTestCase {
     
     
     func test_favTransfersLoadingIsActivated_onLoadCall() throws {
-       
+        
         let (sut,_, favTransferLoader) = makeSUT()
-      
+        
         let transfer = makeItem(name: "amin", cardNumber: "1", note: "note").model
         sut.addToFavorites(item: transfer)
         favTransferLoader.completeSaving()
-
+        
         XCTAssertEqual(sut.isFavTransfersLoading, false)
         sut.loadFavTransfers()
         XCTAssertEqual(sut.isFavTransfersLoading, true)
@@ -173,7 +173,7 @@ final class TransferViewModelTests: XCTestCase {
     
     func test_favTransfersLoadingIsDeActivated_afterGettingError() {
         let (sut,_,favTransferLoader) = makeSUT()
-
+        
         let transfer = makeItem(name: "amin", cardNumber: "1", note: "note").model
         sut.addToFavorites(item: transfer)
         favTransferLoader.completeSaving()
@@ -187,7 +187,7 @@ final class TransferViewModelTests: XCTestCase {
     
     func test_loadingFavTransfers_getsDataStoreError() {
         let (sut,_,favTransferLoader) = makeSUT()
-       
+        
         let transfer = makeItem(name: "amin", cardNumber: "1", note: "note").model
         sut.addToFavorites(item: transfer)
         favTransferLoader.completeSaving()
@@ -207,7 +207,7 @@ final class TransferViewModelTests: XCTestCase {
         
         XCTAssertNotNil(sut.deleteError)
     }
-   
+    
     func test_addToFavTransferSuccessfully_canLoadThatItem() {
         let (sut, _, favTransferLoader) = makeSUT()
         
@@ -225,31 +225,32 @@ final class TransferViewModelTests: XCTestCase {
         XCTAssertEqual(sut.favTransfers, [transfer, transfer2])
     }
     
-        func test_deleteFavTransferSuccessfully() {
-            let (sut, _, favTransferLoader) = makeSUT()
+    func test_deleteFavTransferSuccessfully() {
+        let (sut, _, favTransferLoader) = makeSUT()
+        
+        let transfer = makeItem(name: "amin", cardNumber: "1", note: "note").model
+        sut.addToFavorites(item: transfer)
+        favTransferLoader.completeSaving()
+        
+        let transfer2 = makeItem(name: "torabi", cardNumber: "2", note: "note2").model
+        sut.addToFavorites(item: transfer2)
+        favTransferLoader.completeSaving()
+        
+        
+        sut.deleteFavorite(item: transfer2)
+        favTransferLoader.completeDeletion()
+        
+        sut.loadFavTransfers()
+        favTransferLoader.completeLoading()
+        
+        XCTAssertEqual(sut.favTransfers, [transfer])
+        
+    }
     
-            let transfer = makeItem(name: "amin", cardNumber: "1", note: "note").model
-            sut.addToFavorites(item: transfer)
-            favTransferLoader.completeSaving()
     
-            let transfer2 = makeItem(name: "torabi", cardNumber: "2", note: "note2").model
-            sut.addToFavorites(item: transfer2)
-            favTransferLoader.completeSaving()
-    
-            
-            sut.deleteFavorite(item: transfer2)
-            favTransferLoader.completeDeletion()
-            
-            sut.loadFavTransfers()
-            favTransferLoader.completeLoading()
-    
-            XCTAssertEqual(sut.favTransfers, [transfer])
-    
-    
-        }
     
     func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: TransferViewModel, transferLoader: TransferLoaderSpy, favTransferLoader: FavTransferLoaderSpy) {
-       
+        
         let transferLoader = TransferLoaderSpy()
         let favTransferLoader = FavTransferLoaderSpy()
         let sut = TransferViewModel(transferLoader: transferLoader, favTransferLoader: favTransferLoader)
@@ -257,7 +258,7 @@ final class TransferViewModelTests: XCTestCase {
         trackForMemoryLeaks(transferLoader, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         trackForMemoryLeaks(favTransferLoader, file: file, line: line)
-       
+        
         return (sut, transferLoader, favTransferLoader)
     }
     
@@ -280,7 +281,7 @@ final class TransferViewModelTests: XCTestCase {
     }
     
     class FavTransferLoaderSpy: FavoritesTransferLoader {
-       
+        
         var favTransferCompletions: [(LoadResult) -> Void] = []
         var saveCompletions: [(SaveResult) -> Void] = []
         var deleteCompletions: [(DeleteResult) -> Void] = []
