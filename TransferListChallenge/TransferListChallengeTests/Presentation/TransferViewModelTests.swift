@@ -12,6 +12,7 @@ class TransferViewModel: ObservableObject {
     
     @Published var transfers: [Transfer] = []
     @Published var isTransfersLoading: Bool = false
+    @Published var connectivityError : String? = nil
     
     let transferLoader: TransferLoader
     init(transferLoader: TransferLoader) {
@@ -25,8 +26,14 @@ class TransferViewModel: ObservableObject {
             case let .success(transfers):
                 self.transfers = transfers
                 self.isTransfersLoading = false
-            case .failure:
-                break
+            case let .failure(error):
+                guard let error = error as? RemoteTransferLoader.Error else { return }
+                switch error {
+                case .connectivity:
+                    self.connectivityError = "Please check your network!"
+                case .invalidData:
+                    break
+                }
             }
         }
     }
@@ -35,29 +42,42 @@ class TransferViewModel: ObservableObject {
 final class TransferViewModelTests: XCTestCase {
 
     func test_doesNotLoad_onInit() throws {
-        let transferLoader = TransferLoaderSpy()
-        let sut = TransferViewModel(transferLoader: transferLoader)
+        let (sut,_) = makeSUT()
         XCTAssertEqual(sut.transfers, [])
     }
     
     func test_deliversTransfers_onLoadCall() throws {
         let transfer = makeItem(name: "amin", cardNumber: "1", note: "note").model
-        let transferLoader = TransferLoaderSpy()
-        let sut = TransferViewModel(transferLoader: transferLoader)
+        let (sut,transferLoader) = makeSUT()
         sut.load()
         transferLoader.complete(with: [transfer])
         XCTAssertEqual(sut.transfers, [transfer])
     }
     
     func test_transfersLoadingIsActivated_onLoadCall() throws {
+       
+        let (sut,transferLoader) = makeSUT()
         let transfer = makeItem(name: "amin", cardNumber: "1", note: "note").model
-        let transferLoader = TransferLoaderSpy()
-        let sut = TransferViewModel(transferLoader: transferLoader)
+
         XCTAssertEqual(sut.isTransfersLoading, false)
         sut.load()
         XCTAssertEqual(sut.isTransfersLoading, true)
         transferLoader.complete(with: [transfer])
         XCTAssertEqual(sut.isTransfersLoading, false)
+    }
+    
+    func test_transferLoading_getsConnectivityError() {
+        let (sut,transferLoader) = makeSUT()
+        sut.load()
+        transferLoader.complete(with: RemoteTransferLoader.Error.connectivity)
+        
+        XCTAssertNotNil(sut.connectivityError)
+    }
+    
+    func makeSUT() -> (sut: TransferViewModel, transferLoader: TransferLoaderSpy) {
+        let transferLoader = TransferLoaderSpy()
+        let sut = TransferViewModel(transferLoader: transferLoader)
+        return (sut, transferLoader)
     }
     
     class TransferLoaderSpy: TransferLoader {
@@ -70,6 +90,11 @@ final class TransferViewModelTests: XCTestCase {
         func complete(with transfers: [Transfer]) {
             guard let completion = transferCompletions.first else { return }
             completion(.success(transfers))
+        }
+        
+        func complete(with error: RemoteTransferLoader.Error) {
+            guard let completion = transferCompletions.first else { return }
+            completion(.failure(error))
         }
     }
     
