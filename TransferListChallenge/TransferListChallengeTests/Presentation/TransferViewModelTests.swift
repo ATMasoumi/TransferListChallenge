@@ -74,6 +74,12 @@ class TransferViewModel: ObservableObject {
             }
         }
     }
+    
+    func deleteFavorite(item: Transfer) {
+        favTransferLoader.delete(item) { result in
+            
+        }
+    }
 }
 
 final class TransferViewModelTests: XCTestCase {
@@ -209,11 +215,16 @@ final class TransferViewModelTests: XCTestCase {
         sut.addToFavorites(item: transfer)
         favTransferLoader.completeSaving()
         
+        let transfer2 = makeItem(name: "torabi", cardNumber: "2", note: "note2").model
+        sut.addToFavorites(item: transfer2)
+        favTransferLoader.completeSaving()
+        
         sut.loadFavTransfers()
         favTransferLoader.completeLoading()
         
-        XCTAssertEqual(sut.favTransfers, [transfer])
+        XCTAssertEqual(sut.favTransfers, [transfer, transfer2])
     }
+    
     
     func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: TransferViewModel, transferLoader: TransferLoaderSpy, favTransferLoader: FavTransferLoaderSpy) {
        
@@ -250,8 +261,10 @@ final class TransferViewModelTests: XCTestCase {
        
         var favTransferCompletions: [(LoadResult) -> Void] = []
         var saveCompletions: [(SaveResult) -> Void] = []
+        var deleteCompletions: [(DeleteResult) -> Void] = []
         
         var saveTransfers: [Transfer] =  []
+        var deleteTransfers: [Transfer] =  []
         var favTransfers: [Transfer] = []
         
         func load(completion: @escaping (LoadResult) -> Void) {
@@ -277,6 +290,7 @@ final class TransferViewModelTests: XCTestCase {
             guard let completion = saveCompletions.first else { return }
             favTransfers.append(contentsOf: saveTransfers)
             completion(.success(()))
+            saveTransfers = []
         }
         
         func completeSaving(with error: Error) {
@@ -286,6 +300,19 @@ final class TransferViewModelTests: XCTestCase {
         
         
         func delete(_ transfer: TransferListChallenge.Transfer, completion: @escaping (DeleteResult) -> Void) {
+            deleteCompletions.append(completion)
+            deleteTransfers.append(transfer)
+        }
+        
+        func completeDeletion() {
+            guard let completion = deleteCompletions.first else { return }
+            guard let transfer = deleteTransfers.first else {
+                completion(.success(()))
+                return
+            }
+            favTransfers.removeAll(where: { $0.person.fullName == transfer.person.fullName })
+            completion(.success(()))
+            deleteTransfers = []
             
         }
         
@@ -308,3 +335,4 @@ final class TransferViewModelTests: XCTestCase {
         NSError(domain: "any error", code: 1)
     }
 }
+
