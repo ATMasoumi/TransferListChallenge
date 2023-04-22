@@ -12,6 +12,12 @@ struct DetailPageView: View {
         VStack {
             headerView
             card(number: "12345678", type: "MasterCard")
+            moreInfoView
+            addToFavButton
+        }
+    }
+    var moreInfoView: some View {
+        VStack {
             Text("Note:Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo.")
                 .padding()
             
@@ -25,21 +31,21 @@ struct DetailPageView: View {
                 Spacer()
             }
             .padding()
-            
-            Button {
-                
-            }label: {
-                RoundedRectangle(cornerRadius: 15)
-                    .frame(height: 50)
-                    .overlay {
-                        Text("Add to favorites ⭐️")
-                            .foregroundColor(.white)
-                    }
-            }
-            .padding()
         }
     }
-    
+    var addToFavButton: some View {
+        Button {
+            
+        }label: {
+            RoundedRectangle(cornerRadius: 15)
+                .frame(height: 50)
+                .overlay {
+                    Text("Add to favorites ⭐️")
+                        .foregroundColor(.white)
+                }
+        }
+        .padding()
+    }
     var headerView: some View {
         VStack (spacing: 10){
             Circle()
