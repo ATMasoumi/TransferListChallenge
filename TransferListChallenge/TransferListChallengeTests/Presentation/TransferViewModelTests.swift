@@ -11,13 +11,18 @@ import TransferListChallenge
 class TransferViewModel: ObservableObject {
     
     @Published var transfers: [Transfer] = []
+    @Published var favTransfers: [Transfer] = []
+    
     @Published var isTransfersLoading: Bool = false
     @Published var connectivityError : String? = nil
     @Published var invalidDataError : String? = nil
     
     let transferLoader: TransferLoader
-    init(transferLoader: TransferLoader) {
+    let favTransferLoader: FavoritesTransferLoader
+    
+    init(transferLoader: TransferLoader, favTransferLoader: FavoritesTransferLoader) {
         self.transferLoader = transferLoader
+        self.favTransferLoader = favTransferLoader
     }
     
     func load() {
@@ -40,18 +45,30 @@ class TransferViewModel: ObservableObject {
             }
         }
     }
+    
+    func loadFavTransfers() {
+        favTransferLoader.load { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case let .success(favTransfers):
+                self.favTransfers = favTransfers
+            case .failure:
+                break
+            }
+        }
+    }
 }
 
 final class TransferViewModelTests: XCTestCase {
 
     func test_doesNotLoad_onInit() throws {
-        let (sut,_) = makeSUT()
+        let (sut,_, _) = makeSUT()
         XCTAssertEqual(sut.transfers, [])
     }
     
     func test_deliversTransfers_onLoadCall() throws {
         let transfer = makeItem(name: "amin", cardNumber: "1", note: "note").model
-        let (sut,transferLoader) = makeSUT()
+        let (sut,transferLoader, _) = makeSUT()
         sut.load()
         transferLoader.complete(with: [transfer])
         XCTAssertEqual(sut.transfers, [transfer])
@@ -59,7 +76,7 @@ final class TransferViewModelTests: XCTestCase {
     
     func test_transfersLoadingIsActivated_onLoadCall() throws {
        
-        let (sut,transferLoader) = makeSUT()
+        let (sut,transferLoader, _) = makeSUT()
         let transfer = makeItem(name: "amin", cardNumber: "1", note: "note").model
 
         XCTAssertEqual(sut.isTransfersLoading, false)
@@ -70,7 +87,7 @@ final class TransferViewModelTests: XCTestCase {
     }
     
     func test_loadingTransfers_getsConnectivityError() {
-        let (sut,transferLoader) = makeSUT()
+        let (sut,transferLoader, _) = makeSUT()
         sut.load()
         transferLoader.complete(with: RemoteTransferLoader.Error.connectivity)
         
@@ -78,7 +95,7 @@ final class TransferViewModelTests: XCTestCase {
     }
     
     func test_loadingTransfers_getsInvalidDataError() {
-        let (sut,transferLoader) = makeSUT()
+        let (sut,transferLoader, _) = makeSUT()
         sut.load()
         transferLoader.complete(with: RemoteTransferLoader.Error.invalidData)
         
@@ -86,7 +103,7 @@ final class TransferViewModelTests: XCTestCase {
     }
 
     func test_transfersLoadingIsDeActivated_afterGettingError() {
-        let (sut,transferLoader) = makeSUT()
+        let (sut,transferLoader,_) = makeSUT()
 
         XCTAssertEqual(sut.isTransfersLoading, false)
         sut.load()
@@ -95,12 +112,27 @@ final class TransferViewModelTests: XCTestCase {
         XCTAssertEqual(sut.isTransfersLoading, false)
     }
     
-    func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: TransferViewModel, transferLoader: TransferLoaderSpy) {
+    func test_doesNotLoadFavTransfers_onInit() throws {
+        let (sut,_, _) = makeSUT()
+        XCTAssertEqual(sut.favTransfers, [])
+    }
+    
+    func test_deliversFavTransfers_onLoadCall() throws {
+        let transfer = makeItem(name: "amin", cardNumber: "1", note: "note").model
+        let (sut,_, favTransferLoader) = makeSUT()
+        sut.loadFavTransfers()
+        favTransferLoader.complete(with: [transfer])
+        XCTAssertEqual(sut.favTransfers, [transfer])
+    }
+    
+    
+    func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: TransferViewModel, transferLoader: TransferLoaderSpy, favTransferLoader: FavTransferLoaderSpy) {
         let transferLoader = TransferLoaderSpy()
-        let sut = TransferViewModel(transferLoader: transferLoader)
+        let favTransferLoader = FavTransferLoaderSpy()
+        let sut = TransferViewModel(transferLoader: transferLoader, favTransferLoader: favTransferLoader)
         trackForMemoryLeaks(transferLoader, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
-        return (sut, transferLoader)
+        return (sut, transferLoader, favTransferLoader)
     }
     
     class TransferLoaderSpy: TransferLoader {
@@ -119,6 +151,31 @@ final class TransferViewModelTests: XCTestCase {
             guard let completion = transferCompletions.first else { return }
             completion(.failure(error))
         }
+    }
+    
+    class FavTransferLoaderSpy: FavoritesTransferLoader {
+       
+        var favTransferCompletions: [(LoadResult) -> Void] = []
+        
+        func load(completion: @escaping (LoadResult) -> Void) {
+            favTransferCompletions.append(completion)
+        }
+        
+        func complete(with transfers: [Transfer]) {
+            guard let completion = favTransferCompletions.first else { return }
+            completion(.success(transfers))
+        }
+        
+        
+        func save(_ transfer: TransferListChallenge.Transfer, completion: @escaping (SaveResult) -> Void) {
+            
+        }
+        
+        func delete(_ transfer: TransferListChallenge.Transfer, completion: @escaping (DeleteResult) -> Void) {
+            
+        }
+        
+        
     }
     
     private func makeItem(name: String, cardNumber: String, note: String) -> (model: Transfer, local: LocalTransfer) {
