@@ -23,14 +23,20 @@ class TransferViewModel: ObservableObject {
     
     let transferLoader: TransferLoader
     let favTransferLoader: FavoritesTransferLoader
-    
+    let group = DispatchGroup()
+
     init(transferLoader: TransferLoader, favTransferLoader: FavoritesTransferLoader) {
         self.transferLoader = transferLoader
         self.favTransferLoader = favTransferLoader
+        group.notify(queue: .main) { [weak self] in
+            guard let self = self else { return }
+            self.markRemoteTransfersToFavoriteIfNeeded(with: self.favTransfers)
+        }
     }
     
     func load() {
         isTransfersLoading = true
+        group.enter()
         transferLoader.load { [weak self] result in
             guard let self = self else { return }
             self.isTransfersLoading = false
@@ -46,22 +52,24 @@ class TransferViewModel: ObservableObject {
                     self.invalidDataError = "Could not reach to server!"
                 }
             }
+            group.leave()
         }
     }
     
     func loadFavTransfers() {
         isFavTransfersLoading = true
+        group.enter()
         favTransferLoader.load { [weak self] result in
             guard let self = self else { return }
             self.isFavTransfersLoading = false
             switch result {
             case let .success(favTransfers):
                 self.favTransfers = favTransfers
-                self.markRemoteTransfersToFavoriteIfNeeded(with: favTransfers)
             case .failure:
                 self.dataStoreError = "Could not load favorite transfers!"
                 
             }
+            group.leave()
         }
     }
     
@@ -270,13 +278,17 @@ final class TransferViewModelTests: XCTestCase {
         
         sut.loadFavTransfers()
         favTransferLoader.completeLoading()
-        
-        XCTAssertEqual(sut.favTransfers, [transfer])
-        XCTAssertEqual(sut.transfers[0].markedFavorite, true)
-        XCTAssertEqual(sut.transfers[1].markedFavorite, false)
-        XCTAssertEqual(sut.transfers[2].markedFavorite, false)
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            XCTAssertEqual(sut.favTransfers, [transfer])
+            XCTAssertEqual(sut.transfers[0].markedFavorite, true)
+            XCTAssertEqual(sut.transfers[1].markedFavorite, false)
+            XCTAssertEqual(sut.transfers[2].markedFavorite, false)
+        }
+       
+        executeRunLoop()
     }
+    
+    
     
     func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: TransferViewModel, transferLoader: TransferLoaderSpy, favTransferLoader: FavTransferLoaderSpy) {
         
@@ -385,6 +397,10 @@ final class TransferViewModelTests: XCTestCase {
     
     func anyError() -> NSError {
         NSError(domain: "any error", code: 1)
+    }
+    /// this method is there to hold the test for longer time  to give DispatchGroup to be notified
+    func executeRunLoop() {
+        RunLoop.current.run(until: Date() + 1)
     }
 }
 
