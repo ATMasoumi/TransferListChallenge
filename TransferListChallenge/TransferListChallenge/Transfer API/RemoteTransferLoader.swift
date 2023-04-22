@@ -58,7 +58,7 @@ private extension Array where Element == RemoteTransferItem {
                               lastTransfer: $0.lastTransfer.toDate(),
                               note: $0.note,
                               moreInfo: MoreInfo(numberOfTransfers: $0.moreInfo.numberOfTransfers,
-                                                 totalTransfer: $0.moreInfo.totalTransfer))
+                                                 totalTransfer: $0.moreInfo.totalTransfer), markedFavorite: false)
         }
     }
 }

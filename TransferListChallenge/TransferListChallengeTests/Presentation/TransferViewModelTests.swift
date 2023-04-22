@@ -57,6 +57,7 @@ class TransferViewModel: ObservableObject {
             switch result {
             case let .success(favTransfers):
                 self.favTransfers = favTransfers
+                self.markRemoteTransfersToFavoriteIfNeeded(with: favTransfers)
             case .failure:
                 self.dataStoreError = "Could not load favorite transfers!"
                 
@@ -78,6 +79,13 @@ class TransferViewModel: ObservableObject {
     func deleteFavorite(item: Transfer) {
         favTransferLoader.delete(item) { result in
             
+        }
+    }
+    
+    func markRemoteTransfersToFavoriteIfNeeded(with favTransfers: [Transfer]) {
+        favTransfers.forEach { transfer in
+            guard let index = transfers.firstIndex(of: transfer) else {  return }
+            transfers[index].markedFavorite = true
         }
     }
 }
@@ -247,7 +255,28 @@ final class TransferViewModelTests: XCTestCase {
         
     }
     
-    
+    func test_marksTransfersFromRemoteToFavorite_onLoadFavorites() {
+        let (sut, transferLoader, favTransferLoader) = makeSUT()
+        
+        let transfer = makeItem(name: "amin", cardNumber: "1", note: "note").model
+        let transfer2 = makeItem(name: "amin", cardNumber: "1", note: "note").model
+        let transfer3 = makeItem(name: "amin", cardNumber: "1", note: "note").model
+       
+        sut.addToFavorites(item: transfer)
+        favTransferLoader.completeSaving()
+        
+        sut.load()
+        transferLoader.complete(with: [transfer,transfer2, transfer3])
+        
+        sut.loadFavTransfers()
+        favTransferLoader.completeLoading()
+        
+        XCTAssertEqual(sut.favTransfers, [transfer])
+        XCTAssertEqual(sut.transfers[0].markedFavorite, true)
+        XCTAssertEqual(sut.transfers[1].markedFavorite, false)
+        XCTAssertEqual(sut.transfers[2].markedFavorite, false)
+        
+    }
     
     func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: TransferViewModel, transferLoader: TransferLoaderSpy, favTransferLoader: FavTransferLoaderSpy) {
         
@@ -347,7 +376,7 @@ final class TransferViewModelTests: XCTestCase {
         let card = Card(cardNumber: cardNumber, cardType: "Personal")
         let transferDate : String = "2022-07-14T02:47:58Z"
         let moreInfo = MoreInfo(numberOfTransfers: 5, totalTransfer: 100)
-        let item = Transfer(person: person, card: card, lastTransfer: transferDate.toDate(), note: note, moreInfo: moreInfo)
+        let item = Transfer(person: person, card: card, lastTransfer: transferDate.toDate(), note: note, moreInfo: moreInfo, markedFavorite: false)
         
         
         let localItem = LocalTransfer(person: LocalPerson(fullName: person.fullName, email: person.email, avatar: person.avatar), card: LocalCard(cardNumber: card.cardNumber, cardType: card.cardType), lastTransfer: transferDate.toDate(), note: note, moreInfo: LocalMoreInfo(numberOfTransfers: moreInfo.numberOfTransfers, totalTransfer: moreInfo.totalTransfer))

@@ -62,7 +62,7 @@ private extension Array where Element == LocalTransfer {
             let person = Person(fullName: $0.person.fullName, email: $0.person.email, avatar: $0.person.avatar)
             let card = Card(cardNumber: $0.card.cardNumber, cardType: $0.card.cardType)
             let moreInfo = MoreInfo(numberOfTransfers: $0.moreInfo.numberOfTransfers, totalTransfer: $0.moreInfo.totalTransfer)
-            let item = Transfer(person: person, card: card, lastTransfer: $0.lastTransfer, note: $0.note, moreInfo: moreInfo)
+            let item = Transfer(person: person, card: card, lastTransfer: $0.lastTransfer, note: $0.note, moreInfo: moreInfo, markedFavorite: true)
            return item
         }
     }

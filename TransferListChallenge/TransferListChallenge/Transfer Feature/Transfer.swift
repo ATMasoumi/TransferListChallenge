@@ -14,12 +14,14 @@ public struct Transfer: Equatable {
     public let lastTransfer: Date
     public let note: String?
     public let moreInfo: MoreInfo
-    public init(person: Person, card: Card, lastTransfer: Date, note: String?, moreInfo: MoreInfo) {
+    public var markedFavorite: Bool
+    public init(person: Person, card: Card, lastTransfer: Date, note: String?, moreInfo: MoreInfo, markedFavorite: Bool) {
         self.person = person
         self.card = card
         self.lastTransfer = lastTransfer
         self.note = note
         self.moreInfo = moreInfo
+        self.markedFavorite = markedFavorite
     }
 }
 

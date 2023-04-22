@@ -158,7 +158,7 @@ final class CacheTransferUseCaseTests: XCTestCase {
         let card = Card(cardNumber: cardNumber, cardType: "Personal")
         let transferDate : String = "2022-07-14T02:47:58Z"
         let moreInfo = MoreInfo(numberOfTransfers: 5, totalTransfer: 100)
-        let item = Transfer(person: person, card: card, lastTransfer: transferDate.toDate(), note: note, moreInfo: moreInfo)
+        let item = Transfer(person: person, card: card, lastTransfer: transferDate.toDate(), note: note, moreInfo: moreInfo, markedFavorite: true)
         
         
         let localItem = LocalTransfer(person: LocalPerson(fullName: person.fullName, email: person.email, avatar: person.avatar), card: LocalCard(cardNumber: card.cardNumber, cardType: card.cardType), lastTransfer: transferDate.toDate(), note: note, moreInfo: LocalMoreInfo(numberOfTransfers: moreInfo.numberOfTransfers, totalTransfer: moreInfo.totalTransfer))
