@@ -14,6 +14,8 @@
 		A82A511129F4394E004355CB /* TransferListAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82A511029F4394E004355CB /* TransferListAppTests.swift */; };
 		A82A511B29F4394E004355CB /* TransferListAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82A511A29F4394E004355CB /* TransferListAppUITests.swift */; };
 		A82A511D29F4394E004355CB /* TransferListAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82A511C29F4394E004355CB /* TransferListAppUITestsLaunchTests.swift */; };
+		A88F1BE229F43B730087E917 /* TransferListChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A88F1BE129F43B730087E917 /* TransferListChallenge.framework */; };
+		A88F1BE329F43B730087E917 /* TransferListChallenge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A88F1BE129F43B730087E917 /* TransferListChallenge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +35,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A88F1BE429F43B730087E917 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A88F1BE329F43B730087E917 /* TransferListChallenge.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		A82A50FC29F4394D004355CB /* TransferListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransferListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A82A50FF29F4394D004355CB /* TransferListAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferListAppApp.swift; sourceTree = "<group>"; };
@@ -44,6 +60,7 @@
 		A82A511629F4394E004355CB /* TransferListAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransferListAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A82A511A29F4394E004355CB /* TransferListAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferListAppUITests.swift; sourceTree = "<group>"; };
 		A82A511C29F4394E004355CB /* TransferListAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferListAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A88F1BE129F43B730087E917 /* TransferListChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TransferListChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A88F1BE229F43B730087E917 /* TransferListChallenge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +96,7 @@
 				A82A510F29F4394E004355CB /* TransferListAppTests */,
 				A82A511929F4394E004355CB /* TransferListAppUITests */,
 				A82A50FD29F4394D004355CB /* Products */,
+				A88F1BE029F43B730087E917 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,6 +146,14 @@
 			path = TransferListAppUITests;
 			sourceTree = "<group>";
 		};
+		A88F1BE029F43B730087E917 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A88F1BE129F43B730087E917 /* TransferListChallenge.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,6 +164,7 @@
 				A82A50F829F4394D004355CB /* Sources */,
 				A82A50F929F4394D004355CB /* Frameworks */,
 				A82A50FA29F4394D004355CB /* Resources */,
+				A88F1BE429F43B730087E917 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
