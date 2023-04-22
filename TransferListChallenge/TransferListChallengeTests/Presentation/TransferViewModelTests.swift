@@ -8,96 +8,6 @@
 import XCTest
 import TransferListChallenge
 
-class TransferViewModel: ObservableObject {
-    
-    @Published var transfers: [Transfer] = []
-    @Published var favTransfers: [Transfer] = []
-    
-    @Published var isTransfersLoading: Bool = false
-    @Published var isFavTransfersLoading: Bool = false
-    
-    @Published var connectivityError : String? = nil
-    @Published var invalidDataError : String? = nil
-    @Published var dataStoreError : String? = nil
-    @Published var deleteError : String? = nil
-    
-    let transferLoader: TransferLoader
-    let favTransferLoader: FavoritesTransferLoader
-    let group = DispatchGroup()
-
-    init(transferLoader: TransferLoader, favTransferLoader: FavoritesTransferLoader) {
-        self.transferLoader = transferLoader
-        self.favTransferLoader = favTransferLoader
-        group.notify(queue: .main) { [weak self] in
-            guard let self = self else { return }
-            self.markRemoteTransfersToFavoriteIfNeeded(with: self.favTransfers)
-        }
-    }
-    
-    func load() {
-        isTransfersLoading = true
-        group.enter()
-        transferLoader.load { [weak self] result in
-            guard let self = self else { return }
-            self.isTransfersLoading = false
-            switch result {
-            case let .success(transfers):
-                self.transfers = transfers
-            case let .failure(error):
-                guard let error = error as? RemoteTransferLoader.Error else { return }
-                switch error {
-                case .connectivity:
-                    self.connectivityError = "Please check your network!"
-                case .invalidData:
-                    self.invalidDataError = "Could not reach to server!"
-                }
-            }
-            group.leave()
-        }
-    }
-    
-    func loadFavTransfers() {
-        isFavTransfersLoading = true
-        group.enter()
-        favTransferLoader.load { [weak self] result in
-            guard let self = self else { return }
-            self.isFavTransfersLoading = false
-            switch result {
-            case let .success(favTransfers):
-                self.favTransfers = favTransfers
-            case .failure:
-                self.dataStoreError = "Could not load favorite transfers!"
-                
-            }
-            group.leave()
-        }
-    }
-    
-    func addToFavorites(item: Transfer) {
-        favTransferLoader.save(item) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success: break
-            case .failure:
-                self.deleteError = "Could not delete item"
-            }
-        }
-    }
-    
-    func deleteFavorite(item: Transfer) {
-        favTransferLoader.delete(item) { result in
-            
-        }
-    }
-    
-    func markRemoteTransfersToFavoriteIfNeeded(with favTransfers: [Transfer]) {
-        favTransfers.forEach { transfer in
-            guard let index = transfers.firstIndex(of: transfer) else {  return }
-            transfers[index].markedFavorite = true
-        }
-    }
-}
-
 final class TransferViewModelTests: XCTestCase {
     
     // MARK: - transfer Loading
@@ -221,7 +131,7 @@ final class TransferViewModelTests: XCTestCase {
         sut.addToFavorites(item: transfer)
         favTransferLoader.completeSaving(with: anyError())
         
-        XCTAssertNotNil(sut.deleteError)
+        XCTAssertNotNil(sut.addError)
     }
     
     func test_addToFavTransferSuccessfully_canLoadThatItem() {
@@ -260,7 +170,24 @@ final class TransferViewModelTests: XCTestCase {
         favTransferLoader.completeLoading()
         
         XCTAssertEqual(sut.favTransfers, [transfer])
+    }
+    
+    func test_deleteFavTransfer_givesError() {
+        let (sut, _, favTransferLoader) = makeSUT()
         
+        let transfer = makeItem(name: "amin", cardNumber: "1", note: "note").model
+        sut.addToFavorites(item: transfer)
+        favTransferLoader.completeSaving()
+        
+        let transfer2 = makeItem(name: "torabi", cardNumber: "2", note: "note2").model
+        sut.addToFavorites(item: transfer2)
+        favTransferLoader.completeSaving()
+        
+        
+        sut.deleteFavorite(item: transfer2)
+        favTransferLoader.completeDeletion(with: anyError())
+        
+        XCTAssertNotNil(sut.deleteError)
     }
     
     func test_marksTransfersFromRemoteToFavorite_onLoadFavorites() {
@@ -278,6 +205,7 @@ final class TransferViewModelTests: XCTestCase {
         
         sut.loadFavTransfers()
         favTransferLoader.completeLoading()
+       
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             XCTAssertEqual(sut.favTransfers, [transfer])
             XCTAssertEqual(sut.transfers[0].markedFavorite, true)
@@ -377,8 +305,13 @@ final class TransferViewModelTests: XCTestCase {
             favTransfers.removeAll(where: { $0.person.fullName == transfer.person.fullName })
             completion(.success(()))
             deleteTransfers = []
-            
         }
+        
+        func completeDeletion(with error: Error) {
+            guard let completion = deleteCompletions.first else { return }
+            completion(.failure(error))
+        }
+        
         
         
     }
