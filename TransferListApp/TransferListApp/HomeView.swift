@@ -37,8 +37,17 @@ struct HomeView: View {
     }
     func transferListCell(url: URL, name: String, email: String?) -> some View {
         HStack {
-            AsyncImage(url: url)
-                .frame(width: 60, height: 60)
+            AsyncImage(url: url) { phase in
+                if let image = phase.image {
+                    image
+                        .resizable()
+                } else if phase.error != nil {
+                    Color.gray
+                } else {
+                    ProgressView()
+                }
+            }
+            .frame(width: 60, height: 60)
                 .clipShape(Circle())
             VStack (alignment: .leading, spacing: 10){
                 Text(name)
