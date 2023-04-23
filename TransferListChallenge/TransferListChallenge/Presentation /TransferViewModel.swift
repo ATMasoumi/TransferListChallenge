@@ -41,13 +41,7 @@ public class TransferViewModel: ObservableObject {
                 case let .success(transfers):
                     self.transfers = transfers
                 case let .failure(error):
-                    guard let error = error as? RemoteTransferLoader.Error else { return }
-                    switch error {
-                    case .connectivity:
-                        self.connectivityError = "Please check your network!"
-                    case .invalidData:
-                        self.invalidDataError = "Could not reach to server!"
-                    }
+                    handleTransferLoadErrors(for: error)
                 }
                 self.group.leave()
         }
@@ -55,7 +49,16 @@ public class TransferViewModel: ObservableObject {
             guard let self = self else { return }
             self.markRemoteTransfersToFavoriteIfNeeded(with: self.favTransfers)
         }
-
+    }
+   
+    func handleTransferLoadErrors(for error: Error) {
+        guard let error = error as? RemoteTransferLoader.Error else { return }
+        switch error {
+        case .connectivity:
+            self.connectivityError = "Please check your network!"
+        case .invalidData:
+            self.invalidDataError = "Could not reach to server!"
+        }
     }
     
     public func loadFavTransfers() {
@@ -80,9 +83,7 @@ public class TransferViewModel: ObservableObject {
             guard let self = self else { return }
             switch result {
             case .success:
-                if let index = transfers.firstIndex(of: item) {
-                    transfers[index].markedFavorite = true
-                }
+                mark(item: item, as: true)
                 break
             case .failure:
                 self.addError = "Could not delete item"
@@ -95,9 +96,7 @@ public class TransferViewModel: ObservableObject {
             guard let self = self else { return }
             switch result {
             case .success:
-                if let index = transfers.firstIndex(of: item) {
-                    transfers[index].markedFavorite = false
-                }
+                mark(item: item, as: false)
                 break
             case .failure:
                 self.deleteError = "Could not delete item"
@@ -105,6 +104,11 @@ public class TransferViewModel: ObservableObject {
         }
     }
     
+    func mark(item: Transfer, as bool: Bool) {
+        if let index = transfers.firstIndex(of: item) {
+            transfers[index].markedFavorite = bool
+        }
+    }
     private func markRemoteTransfersToFavoriteIfNeeded(with favTransfers: [Transfer]) {
         favTransfers.forEach { transfer in
             guard let index = transfers.firstIndex(of: transfer) else {  return }
