@@ -62,7 +62,13 @@ struct HomeView: View {
         ScrollView(.horizontal) {
             HStack {
                 ForEach(viewModel.favTransfers, id: \.lastTransfer) { item in
-                    favoritesCell(url: item.person.avatar, name: item.person.fullName, email: item.person.email)
+                    Button{
+                        viewModel.select(item: item)
+                        onDetailTap()
+                    } label: {
+                        favoritesCell(url: item.person.avatar, name: item.person.fullName, email: item.person.email)
+                    }
+                    .buttonStyle(.plain)
                 }
             }
             .padding(.leading)
