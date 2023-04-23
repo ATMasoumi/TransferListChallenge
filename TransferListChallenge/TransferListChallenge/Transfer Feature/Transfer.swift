@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Transfer
-public struct Transfer: Equatable {
+public struct Transfer {
     public let person: Person
     public let card: Card
     public let lastTransfer: Date
@@ -24,6 +24,13 @@ public struct Transfer: Equatable {
         self.markedFavorite = markedFavorite
     }
 }
+
+extension Transfer: Equatable {
+    public static func == (lhs: Transfer, rhs: Transfer) -> Bool {
+        return lhs.lastTransfer == rhs.lastTransfer
+    }
+}
+
 
 // MARK: - Card
 public struct Card: Equatable {
