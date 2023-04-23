@@ -28,7 +28,7 @@ struct HomeView: View {
                     viewModel.select(item: item)
                     onDetailTap()
                 } label: {
-                    transferListCell(url: item.person.avatar, name: item.person.fullName, email: item.person.email)
+                    transferListCell(url: item.person.avatar, name: item.person.fullName, email: item.person.email, markedFav: item.markedFavorite)
                         .listRowSeparator(.hidden)
                 }
             }
@@ -36,11 +36,10 @@ struct HomeView: View {
         .listStyle(.plain)
         .ignoresSafeArea()
     }
-    func transferListCell(url: URL, name: String, email: String?) -> some View {
+    func transferListCell(url: URL, name: String, email: String?, markedFav: Bool) -> some View {
         HStack {
             AvatarImage(url: url)
             .frame(width: 60, height: 60)
-                .clipShape(Circle())
             VStack (alignment: .leading, spacing: 10){
                 Text(name)
                     .bold()
@@ -50,8 +49,10 @@ struct HomeView: View {
                 }
             }
             Spacer()
-            Image(systemName: "star.fill")
-                .foregroundColor(.yellow)
+            if markedFav {
+                Image(systemName: "star.fill")
+                    .foregroundColor(.yellow)
+            }
             Image(systemName: "chevron.right")
                 .foregroundColor(Color(UIColor.tertiaryLabel))
         }
