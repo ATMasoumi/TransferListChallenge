@@ -20,11 +20,11 @@ struct AvatarImage: View {
                     ProgressView()
                 }
             }
-        
+            .clipShape(Circle())
     }
 }
 struct AvatarImageView_Previews: PreviewProvider {
     static var previews: some View {
-        AvatarImage()
+        AvatarImage(url: URL(string: "any-url.com")!)
     }
 }
