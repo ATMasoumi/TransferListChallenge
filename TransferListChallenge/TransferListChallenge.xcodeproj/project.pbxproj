@@ -14,6 +14,7 @@
 		A883348129F5A7AB00FB09E8 /* TransferListiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A883348029F5A7AB00FB09E8 /* TransferListiOSTests.swift */; };
 		A883348229F5A7AB00FB09E8 /* TransferListiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A883347429F5A7AB00FB09E8 /* TransferListiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A883348C29F5A82D00FB09E8 /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A883348B29F5A82D00FB09E8 /* PullToRefreshView.swift */; };
+		A883349129F5BA2200FB09E8 /* Transfer App Object Graph .pdf in Resources */ = {isa = PBXBuildFile; fileRef = A883349029F5BA2200FB09E8 /* Transfer App Object Graph .pdf */; };
 		A88E7FAF29F1C55700F63416 /* FavoritesTransferStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A88E7FAD29F1C55700F63416 /* FavoritesTransferStore.xcdatamodeld */; };
 		A88F1BE629F4532C0087E917 /* Proposed UI for Detail Page.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A88F1BE529F4532C0087E917 /* Proposed UI for Detail Page.pdf */; };
 		A894C4FC29F1D12C0056D1B0 /* ManagedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A894C4FB29F1D12C0056D1B0 /* ManagedCard.swift */; };
@@ -26,7 +27,6 @@
 		A897C27629EFB5F600B91E54 /* TransferListChallenge.h in Headers */ = {isa = PBXBuildFile; fileRef = A897C26829EFB5F600B91E54 /* TransferListChallenge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A89C43AA29F2A200003DA796 /* TransferViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89C43A929F2A200003DA796 /* TransferViewModel.swift */; };
 		A89C43AD29F2A22F003DA796 /* TransferViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89C43AC29F2A22F003DA796 /* TransferViewModelTests.swift */; };
-		A89C43AF29F2A955003DA796 /* Transfer App Object Graph.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A89C43AE29F2A955003DA796 /* Transfer App Object Graph.pdf */; };
 		A8A9681B29F0904200B8E220 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9681A29F0904200B8E220 /* URLSessionHTTPClient.swift */; };
 		A8A9682329F1164500B8E220 /* TransferListEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9682229F1164500B8E220 /* TransferListEndToEndTests.swift */; };
 		A8A9682429F1164500B8E220 /* TransferListChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A897C26529EFB5F600B91E54 /* TransferListChallenge.framework */; };
@@ -86,6 +86,7 @@
 		A883347B29F5A7AB00FB09E8 /* TransferListiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransferListiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A883348029F5A7AB00FB09E8 /* TransferListiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferListiOSTests.swift; sourceTree = "<group>"; };
 		A883348B29F5A82D00FB09E8 /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
+		A883349029F5BA2200FB09E8 /* Transfer App Object Graph .pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Transfer App Object Graph .pdf"; sourceTree = "<group>"; };
 		A88E7FAE29F1C55700F63416 /* FavoritesTransferStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritesTransferStore.xcdatamodel; sourceTree = "<group>"; };
 		A88F1BE529F4532C0087E917 /* Proposed UI for Detail Page.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Proposed UI for Detail Page.pdf"; sourceTree = "<group>"; };
 		A894C4F829F1D12C0056D1B0 /* ManagedMoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedMoreInfo.swift; sourceTree = "<group>"; };
@@ -99,7 +100,6 @@
 		A897C27429EFB5F600B91E54 /* LoadTransferFromRemoteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTransferFromRemoteUseCase.swift; sourceTree = "<group>"; };
 		A89C43A929F2A200003DA796 /* TransferViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewModel.swift; sourceTree = "<group>"; };
 		A89C43AC29F2A22F003DA796 /* TransferViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewModelTests.swift; sourceTree = "<group>"; };
-		A89C43AE29F2A955003DA796 /* Transfer App Object Graph.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Transfer App Object Graph.pdf"; sourceTree = "<group>"; };
 		A8A9681A29F0904200B8E220 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		A8A9682029F1164500B8E220 /* TransferListEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransferListEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8A9682229F1164500B8E220 /* TransferListEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferListEndToEndTests.swift; sourceTree = "<group>"; };
@@ -191,7 +191,7 @@
 				A82A508629F42A2E004355CB /* TransferListEndToEndTests.xctestplan */,
 				A8A9682C29F14B7000B8E220 /* CI.xctestplan */,
 				A87C53CA29F08C4D005A8F24 /* TransferListChallenge.xctestplan */,
-				A89C43AE29F2A955003DA796 /* Transfer App Object Graph.pdf */,
+				A883349029F5BA2200FB09E8 /* Transfer App Object Graph .pdf */,
 				A88F1BE529F4532C0087E917 /* Proposed UI for Detail Page.pdf */,
 				A897C26729EFB5F600B91E54 /* TransferListChallenge */,
 				A897C27329EFB5F600B91E54 /* TransferListChallengeTests */,
@@ -522,6 +522,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A883349129F5BA2200FB09E8 /* Transfer App Object Graph .pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,7 +538,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A88F1BE629F4532C0087E917 /* Proposed UI for Detail Page.pdf in Resources */,
-				A89C43AF29F2A955003DA796 /* Transfer App Object Graph.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
