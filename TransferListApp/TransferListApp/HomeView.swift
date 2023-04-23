@@ -32,6 +32,11 @@ struct HomeView: View {
                         .listRowSeparator(.hidden)
                 }
             }
+            Color.clear.frame(height: 1)
+                .task {
+                    viewModel.load()
+                    viewModel.loadFavTransfers()
+                }
         }
         .listStyle(.plain)
         .ignoresSafeArea()
@@ -39,7 +44,7 @@ struct HomeView: View {
     func transferListCell(url: URL, name: String, email: String?, markedFav: Bool) -> some View {
         HStack {
             AvatarImage(url: url)
-            .frame(width: 60, height: 60)
+                .frame(width: 60, height: 60)
             VStack (alignment: .leading, spacing: 10){
                 Text(name)
                     .bold()
@@ -74,7 +79,7 @@ struct HomeView: View {
             .padding(.leading)
         }
     }
-   
+    
     func favoritesCell(url: URL, name: String, email: String?) -> some View {
         VStack {
             AvatarImage(url: url)
@@ -89,7 +94,7 @@ struct HomeView: View {
         }
         .padding()
     }
-  
+    
     func title(name: String) -> some View {
         HStack {
             Text(name)

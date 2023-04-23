@@ -41,10 +41,6 @@ struct TransferUIComposer: View {
                 }) {}
             }
         }
-        .task {
-            viewModel.load()
-            viewModel.loadFavTransfers()
-        }
     }
 }
 

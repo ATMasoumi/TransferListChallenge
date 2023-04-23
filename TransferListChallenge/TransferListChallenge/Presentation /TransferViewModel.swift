@@ -25,21 +25,22 @@ public class TransferViewModel: ObservableObject {
     let transferLoader: TransferLoader
     let favTransferLoader: FavoritesTransferLoader
     let group = DispatchGroup()
-
+    public var page = 0
     public init(transferLoader: TransferLoader, favTransferLoader: FavoritesTransferLoader) {
         self.transferLoader = transferLoader
         self.favTransferLoader = favTransferLoader
     }
     
     public func load() {
+        page += 1
         isTransfersLoading = true
         group.enter()
-        transferLoader.load(page: 3) { [weak self] result in
+        transferLoader.load(page: page) { [weak self] result in
                 guard let self = self else { return }
                 self.isTransfersLoading = false
                 switch result {
                 case let .success(transfers):
-                    self.transfers = transfers
+                    self.transfers.append(contentsOf: transfers)
                 case let .failure(error):
                     handleTransferLoadErrors(for: error)
                 }

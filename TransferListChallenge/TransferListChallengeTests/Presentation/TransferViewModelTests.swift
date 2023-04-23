@@ -25,6 +25,18 @@ final class TransferViewModelTests: XCTestCase {
         XCTAssertEqual(sut.transfers, [transfer])
     }
     
+    func test_increasePage_onLoadCall() throws {
+        let (sut,_, _) = makeSUT()
+        
+        sut.load()
+        XCTAssertEqual(sut.page,1)
+        
+        sut.load()
+        XCTAssertEqual(sut.page,2)
+    }
+    
+    
+    
     func test_transfersLoadingIsActivated_onLoadCall() throws {
         
         let (sut,transferLoader, _) = makeSUT()
