@@ -10,5 +10,5 @@ import Foundation
 public protocol TransferLoader {
     typealias Result = Swift.Result<[Transfer], Error>
 
-    func load(completion: @escaping (Result) -> Void)
+    func load(page:Int ,completion: @escaping (Result) -> Void)
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A883346429F5631400FB09E8 /* TransferEndPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A883346329F5631400FB09E8 /* TransferEndPointTests.swift */; };
+		A883346629F5661200FB09E8 /* TransferEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A883346529F5661200FB09E8 /* TransferEndpoint.swift */; };
 		A88E7FAF29F1C55700F63416 /* FavoritesTransferStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A88E7FAD29F1C55700F63416 /* FavoritesTransferStore.xcdatamodeld */; };
 		A88F1BE629F4532C0087E917 /* Proposed UI for Detail Page.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A88F1BE529F4532C0087E917 /* Proposed UI for Detail Page.pdf */; };
 		A894C4FC29F1D12C0056D1B0 /* ManagedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A894C4FB29F1D12C0056D1B0 /* ManagedCard.swift */; };
@@ -64,6 +66,8 @@
 /* Begin PBXFileReference section */
 		A82A508629F42A2E004355CB /* TransferListEndToEndTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TransferListEndToEndTests.xctestplan; sourceTree = "<group>"; };
 		A87C53CA29F08C4D005A8F24 /* TransferListChallenge.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TransferListChallenge.xctestplan; sourceTree = "<group>"; };
+		A883346329F5631400FB09E8 /* TransferEndPointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferEndPointTests.swift; sourceTree = "<group>"; };
+		A883346529F5661200FB09E8 /* TransferEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferEndpoint.swift; sourceTree = "<group>"; };
 		A88E7FAE29F1C55700F63416 /* FavoritesTransferStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritesTransferStore.xcdatamodel; sourceTree = "<group>"; };
 		A88F1BE529F4532C0087E917 /* Proposed UI for Detail Page.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Proposed UI for Detail Page.pdf"; sourceTree = "<group>"; };
 		A894C4F829F1D12C0056D1B0 /* ManagedMoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedMoreInfo.swift; sourceTree = "<group>"; };
@@ -208,6 +212,7 @@
 			children = (
 				A897C27429EFB5F600B91E54 /* LoadTransferFromRemoteUseCase.swift */,
 				A8FD712C29F06B0F00817E8D /* URLSessionHTTPClientTests.swift */,
+				A883346329F5631400FB09E8 /* TransferEndPointTests.swift */,
 			);
 			path = "Transfer API";
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 				A8FD712029F0602A00817E8D /* TransferItemsMapper.swift */,
 				A8FD712229F0605B00817E8D /* RemoteTransferItem.swift */,
 				A8A9681A29F0904200B8E220 /* URLSessionHTTPClient.swift */,
+				A883346529F5661200FB09E8 /* TransferEndpoint.swift */,
 			);
 			path = "Transfer API";
 			sourceTree = "<group>";
@@ -442,6 +448,7 @@
 				A8E7562A29F1998000A149D3 /* FavoritesTransferLoader.swift in Sources */,
 				A8FD711D29F05D6E00817E8D /* Transfer.swift in Sources */,
 				A8E7563129F19E6C00A149D3 /* LocalFavoritesTransferLoader.swift in Sources */,
+				A883346629F5661200FB09E8 /* TransferEndpoint.swift in Sources */,
 				A8E7563929F1B72000A149D3 /* CoreDataFavoritesTransferStore.swift in Sources */,
 				A897C26A29EFB5F600B91E54 /* TransferListChallenge.docc in Sources */,
 				A8FD711C29F05D6E00817E8D /* HTTPClient.swift in Sources */,
@@ -467,6 +474,7 @@
 			files = (
 				A8E7563329F1A7A000A149D3 /* CoreDataTransferStoreUseCase.swift in Sources */,
 				A89C43AD29F2A22F003DA796 /* TransferViewModelTests.swift in Sources */,
+				A883346429F5631400FB09E8 /* TransferEndPointTests.swift in Sources */,
 				A897C27529EFB5F600B91E54 /* LoadTransferFromRemoteUseCase.swift in Sources */,
 				A8FD712D29F06B0F00817E8D /* URLSessionHTTPClientTests.swift in Sources */,
 				A8FD712B29F0655900817E8D /* XCTestCase+MemoryLeakTracking.swift in Sources */,

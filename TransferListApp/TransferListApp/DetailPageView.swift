@@ -115,8 +115,8 @@ struct DetailPageView: View {
 struct DetailPageView_Previews: PreviewProvider {
     static var previews: some View {
         let client = URLSessionHTTPClient()
-        let url = URL(string: "https://4e6774cc-4d63-41b2-8003-336545c0a86d.mock.pstmn.io/transfer-list/1")!
-        let loader = RemoteTransferLoader(url: url, client: client)
+        let url = URL(string: "https://4e6774cc-4d63-41b2-8003-336545c0a86d.mock.pstmn.io")!
+        let loader = RemoteTransferLoader(baseURL: url, client: client)
         let localFavTransferLoader = LocalFavoritesTransferLoader(store: NullStore())
         DetailPageView(viewModel: TransferViewModel(transferLoader: loader, favTransferLoader: localFavTransferLoader))
     }

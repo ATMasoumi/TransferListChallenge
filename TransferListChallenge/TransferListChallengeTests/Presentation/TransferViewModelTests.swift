@@ -275,7 +275,7 @@ final class TransferViewModelTests: XCTestCase {
     class TransferLoaderSpy: TransferLoader {
         var transferCompletions: [(TransferLoader.Result) -> Void] = []
         
-        func load(completion: @escaping (TransferLoader.Result) -> Void) {
+        func load(page: Int, completion: @escaping (TransferLoader.Result) -> Void) {
             transferCompletions.append(completion)
         }
         

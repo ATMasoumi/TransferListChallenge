@@ -34,7 +34,7 @@ public class TransferViewModel: ObservableObject {
     public func load() {
         isTransfersLoading = true
         group.enter()
-        transferLoader.load { [weak self] result in
+        transferLoader.load(page: 3) { [weak self] result in
                 guard let self = self else { return }
                 self.isTransfersLoading = false
                 switch result {
@@ -109,6 +109,7 @@ public class TransferViewModel: ObservableObject {
             transfers[index].markedFavorite = bool
         }
     }
+    
     private func markRemoteTransfersToFavoriteIfNeeded(with favTransfers: [Transfer]) {
         favTransfers.forEach { transfer in
             guard let index = transfers.firstIndex(of: transfer) else {  return }

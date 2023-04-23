@@ -9,7 +9,7 @@ import Foundation
 
 public final class RemoteTransferLoader: TransferLoader {
     
-    private let url: URL
+    private let baseURL: URL
     private let client: HTTPClient
 
     public enum Error: Swift.Error , Equatable{
@@ -19,13 +19,14 @@ public final class RemoteTransferLoader: TransferLoader {
 
     typealias Result = TransferLoader.Result
     
-    public init(url: URL, client: HTTPClient) {
-        self.url = url
+    public init(baseURL: URL, client: HTTPClient) {
+        self.baseURL = baseURL
         self.client = client
     }
     
-    public func load(completion: @escaping (TransferLoader.Result) -> Void) {
-        client.get(from: url) { [weak self] result in
+    public func load(page: Int, completion: @escaping (TransferLoader.Result) -> Void) {
+        
+        client.get(from: TransferEndpoint.get.url(baseURL: baseURL, page: page)) { [weak self] result in
             DispatchQueue.main.async {
                 guard self != nil else { return }
 
