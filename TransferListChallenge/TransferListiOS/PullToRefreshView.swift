@@ -7,14 +7,19 @@
 
 import SwiftUI
 
-struct PullToRefreshView: View {
+public struct PullToRefreshView: View {
     
     var coordinateSpaceName: String
-    var onRefresh: ()->Void
+    public var onRefresh: ()->Void
     
     @State var needRefresh: Bool = false
     
-    var body: some View {
+    
+   public init(coordinateSpaceName: String, onRefresh: @escaping () -> Void) {
+        self.coordinateSpaceName = coordinateSpaceName
+        self.onRefresh = onRefresh
+    }
+    public var body: some View {
         GeometryReader { geo in
             if (geo.frame(in: .named(coordinateSpaceName)).midY > 50) {
                 Spacer()

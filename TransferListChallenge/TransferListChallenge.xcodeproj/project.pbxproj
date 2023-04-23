@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		A883346429F5631400FB09E8 /* TransferEndPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A883346329F5631400FB09E8 /* TransferEndPointTests.swift */; };
 		A883346629F5661200FB09E8 /* TransferEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A883346529F5661200FB09E8 /* TransferEndpoint.swift */; };
+		A883347629F5A7AB00FB09E8 /* TransferListiOS.docc in Sources */ = {isa = PBXBuildFile; fileRef = A883347529F5A7AB00FB09E8 /* TransferListiOS.docc */; };
+		A883347C29F5A7AB00FB09E8 /* TransferListiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A883347229F5A7AB00FB09E8 /* TransferListiOS.framework */; };
+		A883348129F5A7AB00FB09E8 /* TransferListiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A883348029F5A7AB00FB09E8 /* TransferListiOSTests.swift */; };
+		A883348229F5A7AB00FB09E8 /* TransferListiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A883347429F5A7AB00FB09E8 /* TransferListiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A883348C29F5A82D00FB09E8 /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A883348B29F5A82D00FB09E8 /* PullToRefreshView.swift */; };
 		A88E7FAF29F1C55700F63416 /* FavoritesTransferStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A88E7FAD29F1C55700F63416 /* FavoritesTransferStore.xcdatamodeld */; };
 		A88F1BE629F4532C0087E917 /* Proposed UI for Detail Page.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A88F1BE529F4532C0087E917 /* Proposed UI for Detail Page.pdf */; };
 		A894C4FC29F1D12C0056D1B0 /* ManagedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A894C4FB29F1D12C0056D1B0 /* ManagedCard.swift */; };
@@ -47,6 +52,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A883347D29F5A7AB00FB09E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A897C25C29EFB5F600B91E54 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A883347129F5A7AB00FB09E8;
+			remoteInfo = TransferListiOS;
+		};
 		A897C27129EFB5F600B91E54 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A897C25C29EFB5F600B91E54 /* Project object */;
@@ -68,6 +80,12 @@
 		A87C53CA29F08C4D005A8F24 /* TransferListChallenge.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TransferListChallenge.xctestplan; sourceTree = "<group>"; };
 		A883346329F5631400FB09E8 /* TransferEndPointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferEndPointTests.swift; sourceTree = "<group>"; };
 		A883346529F5661200FB09E8 /* TransferEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferEndpoint.swift; sourceTree = "<group>"; };
+		A883347229F5A7AB00FB09E8 /* TransferListiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TransferListiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A883347429F5A7AB00FB09E8 /* TransferListiOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransferListiOS.h; sourceTree = "<group>"; };
+		A883347529F5A7AB00FB09E8 /* TransferListiOS.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = TransferListiOS.docc; sourceTree = "<group>"; };
+		A883347B29F5A7AB00FB09E8 /* TransferListiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransferListiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A883348029F5A7AB00FB09E8 /* TransferListiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferListiOSTests.swift; sourceTree = "<group>"; };
+		A883348B29F5A82D00FB09E8 /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
 		A88E7FAE29F1C55700F63416 /* FavoritesTransferStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritesTransferStore.xcdatamodel; sourceTree = "<group>"; };
 		A88F1BE529F4532C0087E917 /* Proposed UI for Detail Page.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Proposed UI for Detail Page.pdf"; sourceTree = "<group>"; };
 		A894C4F829F1D12C0056D1B0 /* ManagedMoreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedMoreInfo.swift; sourceTree = "<group>"; };
@@ -108,6 +126,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A883346F29F5A7AB00FB09E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A883347829F5A7AB00FB09E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A883347C29F5A7AB00FB09E8 /* TransferListiOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A897C26229EFB5F600B91E54 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -134,6 +167,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A883347329F5A7AB00FB09E8 /* TransferListiOS */ = {
+			isa = PBXGroup;
+			children = (
+				A883348B29F5A82D00FB09E8 /* PullToRefreshView.swift */,
+				A883347429F5A7AB00FB09E8 /* TransferListiOS.h */,
+				A883347529F5A7AB00FB09E8 /* TransferListiOS.docc */,
+			);
+			path = TransferListiOS;
+			sourceTree = "<group>";
+		};
+		A883347F29F5A7AB00FB09E8 /* TransferListiOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				A883348029F5A7AB00FB09E8 /* TransferListiOSTests.swift */,
+			);
+			path = TransferListiOSTests;
+			sourceTree = "<group>";
+		};
 		A897C25B29EFB5F500B91E54 = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +196,8 @@
 				A897C26729EFB5F600B91E54 /* TransferListChallenge */,
 				A897C27329EFB5F600B91E54 /* TransferListChallengeTests */,
 				A8A9682129F1164500B8E220 /* TransferListEndToEndTests */,
+				A883347329F5A7AB00FB09E8 /* TransferListiOS */,
+				A883347F29F5A7AB00FB09E8 /* TransferListiOSTests */,
 				A897C26629EFB5F600B91E54 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -155,6 +208,8 @@
 				A897C26529EFB5F600B91E54 /* TransferListChallenge.framework */,
 				A897C26F29EFB5F600B91E54 /* TransferListChallengeTests.xctest */,
 				A8A9682029F1164500B8E220 /* TransferListEndToEndTests.xctest */,
+				A883347229F5A7AB00FB09E8 /* TransferListiOS.framework */,
+				A883347B29F5A7AB00FB09E8 /* TransferListiOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -304,6 +359,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		A883346D29F5A7AB00FB09E8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A883348229F5A7AB00FB09E8 /* TransferListiOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A897C26029EFB5F600B91E54 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -315,6 +378,42 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		A883347129F5A7AB00FB09E8 /* TransferListiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A883348329F5A7AB00FB09E8 /* Build configuration list for PBXNativeTarget "TransferListiOS" */;
+			buildPhases = (
+				A883346D29F5A7AB00FB09E8 /* Headers */,
+				A883346E29F5A7AB00FB09E8 /* Sources */,
+				A883346F29F5A7AB00FB09E8 /* Frameworks */,
+				A883347029F5A7AB00FB09E8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TransferListiOS;
+			productName = TransferListiOS;
+			productReference = A883347229F5A7AB00FB09E8 /* TransferListiOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A883347A29F5A7AB00FB09E8 /* TransferListiOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A883348629F5A7AB00FB09E8 /* Build configuration list for PBXNativeTarget "TransferListiOSTests" */;
+			buildPhases = (
+				A883347729F5A7AB00FB09E8 /* Sources */,
+				A883347829F5A7AB00FB09E8 /* Frameworks */,
+				A883347929F5A7AB00FB09E8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A883347E29F5A7AB00FB09E8 /* PBXTargetDependency */,
+			);
+			name = TransferListiOSTests;
+			productName = TransferListiOSTests;
+			productReference = A883347B29F5A7AB00FB09E8 /* TransferListiOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		A897C26429EFB5F600B91E54 /* TransferListChallenge */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A897C27929EFB5F600B91E54 /* Build configuration list for PBXNativeTarget "TransferListChallenge" */;
@@ -379,6 +478,12 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					A883347129F5A7AB00FB09E8 = {
+						CreatedOnToolsVersion = 14.3;
+					};
+					A883347A29F5A7AB00FB09E8 = {
+						CreatedOnToolsVersion = 14.3;
+					};
 					A897C26429EFB5F600B91E54 = {
 						CreatedOnToolsVersion = 14.3;
 					};
@@ -406,11 +511,27 @@
 				A897C26429EFB5F600B91E54 /* TransferListChallenge */,
 				A897C26E29EFB5F600B91E54 /* TransferListChallengeTests */,
 				A8A9681F29F1164500B8E220 /* TransferListEndToEndTests */,
+				A883347129F5A7AB00FB09E8 /* TransferListiOS */,
+				A883347A29F5A7AB00FB09E8 /* TransferListiOSTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A883347029F5A7AB00FB09E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A883347929F5A7AB00FB09E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A897C26329EFB5F600B91E54 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -437,6 +558,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A883346E29F5A7AB00FB09E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A883348C29F5A82D00FB09E8 /* PullToRefreshView.swift in Sources */,
+				A883347629F5A7AB00FB09E8 /* TransferListiOS.docc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A883347729F5A7AB00FB09E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A883348129F5A7AB00FB09E8 /* TransferListiOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A897C26129EFB5F600B91E54 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -493,6 +631,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A883347E29F5A7AB00FB09E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A883347129F5A7AB00FB09E8 /* TransferListiOS */;
+			targetProxy = A883347D29F5A7AB00FB09E8 /* PBXContainerItemProxy */;
+		};
 		A897C27229EFB5F600B91E54 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A897C26429EFB5F600B91E54 /* TransferListChallenge */;
@@ -506,6 +649,112 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		A883348429F5A7AB00FB09E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 99TB4TR395;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = Amin.TransferListiOS;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A883348529F5A7AB00FB09E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 99TB4TR395;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = Amin.TransferListiOS;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A883348729F5A7AB00FB09E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99TB4TR395;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Amin.TransferListiOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A883348829F5A7AB00FB09E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99TB4TR395;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Amin.TransferListiOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		A897C27729EFB5F600B91E54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -778,6 +1027,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A883348329F5A7AB00FB09E8 /* Build configuration list for PBXNativeTarget "TransferListiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A883348429F5A7AB00FB09E8 /* Debug */,
+				A883348529F5A7AB00FB09E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A883348629F5A7AB00FB09E8 /* Build configuration list for PBXNativeTarget "TransferListiOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A883348729F5A7AB00FB09E8 /* Debug */,
+				A883348829F5A7AB00FB09E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A897C25F29EFB5F600B91E54 /* Build configuration list for PBXProject "TransferListChallenge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

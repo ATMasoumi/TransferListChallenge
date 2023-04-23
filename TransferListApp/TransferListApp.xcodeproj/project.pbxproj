@@ -16,7 +16,8 @@
 		A82A511D29F4394E004355CB /* TransferListAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82A511C29F4394E004355CB /* TransferListAppUITestsLaunchTests.swift */; };
 		A883346229F4FE5100FB09E8 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A883346129F4FE5100FB09E8 /* AvatarImageView.swift */; };
 		A883346929F58C9700FB09E8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A883346829F58C9700FB09E8 /* Kingfisher */; };
-		A883346B29F5902700FB09E8 /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A883346A29F5902700FB09E8 /* PullToRefreshView.swift */; };
+		A883348E29F5A84C00FB09E8 /* TransferListiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A883348D29F5A84C00FB09E8 /* TransferListiOS.framework */; };
+		A883348F29F5A84C00FB09E8 /* TransferListiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A883348D29F5A84C00FB09E8 /* TransferListiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A88F1BE229F43B730087E917 /* TransferListChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A88F1BE129F43B730087E917 /* TransferListChallenge.framework */; };
 		A88F1BE329F43B730087E917 /* TransferListChallenge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A88F1BE129F43B730087E917 /* TransferListChallenge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A88F1BE829F457040087E917 /* DetailPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88F1BE729F457040087E917 /* DetailPageView.swift */; };
@@ -49,6 +50,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				A88F1BE329F43B730087E917 /* TransferListChallenge.framework in Embed Frameworks */,
+				A883348F29F5A84C00FB09E8 /* TransferListiOS.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,7 +69,7 @@
 		A82A511A29F4394E004355CB /* TransferListAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferListAppUITests.swift; sourceTree = "<group>"; };
 		A82A511C29F4394E004355CB /* TransferListAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferListAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A883346129F4FE5100FB09E8 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
-		A883346A29F5902700FB09E8 /* PullToRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
+		A883348D29F5A84C00FB09E8 /* TransferListiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TransferListiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A88F1BE129F43B730087E917 /* TransferListChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TransferListChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A88F1BE729F457040087E917 /* DetailPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageView.swift; sourceTree = "<group>"; };
 		A88F1BE929F461440087E917 /* TransferUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferUIComposer.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			files = (
 				A883346929F58C9700FB09E8 /* Kingfisher in Frameworks */,
 				A88F1BE229F43B730087E917 /* TransferListChallenge.framework in Frameworks */,
+				A883348E29F5A84C00FB09E8 /* TransferListiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +131,6 @@
 				A883346C29F5A17300FB09E8 /* Views */,
 				A883346029F4FE3700FB09E8 /* Shared SwiftUI Views */,
 				A82A50FF29F4394D004355CB /* TransferListAppApp.swift */,
-				A883346A29F5902700FB09E8 /* PullToRefreshView.swift */,
 				A88F1BE929F461440087E917 /* TransferUIComposer.swift */,
 				A88F1BEB29F466560087E917 /* NullStore.swift */,
 				A82A510329F4394E004355CB /* Assets.xcassets */,
@@ -182,6 +184,7 @@
 		A88F1BE029F43B730087E917 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A883348D29F5A84C00FB09E8 /* TransferListiOS.framework */,
 				A88F1BE129F43B730087E917 /* TransferListChallenge.framework */,
 			);
 			name = Frameworks;
@@ -328,7 +331,6 @@
 				A82A510229F4394D004355CB /* HomeView.swift in Sources */,
 				A88F1BEC29F466560087E917 /* NullStore.swift in Sources */,
 				A883346229F4FE5100FB09E8 /* AvatarImageView.swift in Sources */,
-				A883346B29F5902700FB09E8 /* PullToRefreshView.swift in Sources */,
 				A88F1BEA29F461440087E917 /* TransferUIComposer.swift in Sources */,
 				A82A510029F4394D004355CB /* TransferListAppApp.swift in Sources */,
 			);
