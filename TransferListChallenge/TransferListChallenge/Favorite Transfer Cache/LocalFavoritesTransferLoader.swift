@@ -33,11 +33,13 @@ public class LocalFavoritesTransferLoader: FavoritesTransferLoader {
         let localTransfer = LocalTransfer(person: LocalPerson(fullName: transfer.person.fullName, email: transfer.person.email, avatar: transfer.person.avatar), card: LocalCard(cardNumber: transfer.card.cardNumber, cardType: transfer.card.cardType), lastTransfer: transfer.lastTransfer, note: transfer.note, moreInfo: LocalMoreInfo(numberOfTransfers: transfer.moreInfo.numberOfTransfers, totalTransfer: transfer.moreInfo.totalTransfer))
         
         store.insert(localTransfer) { result in
-            switch result {
-            case .success:
-                completion(.success(()))
-            case let .failure(error):
-                completion(.failure(error))
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    completion(.success(()))
+                case let .failure(error):
+                    completion(.failure(error))
+                }
             }
         }
     }
@@ -47,11 +49,13 @@ public class LocalFavoritesTransferLoader: FavoritesTransferLoader {
         let localTransfer = LocalTransfer(person: LocalPerson(fullName: transfer.person.fullName, email: transfer.person.email, avatar: transfer.person.avatar), card: LocalCard(cardNumber: transfer.card.cardNumber, cardType: transfer.card.cardType), lastTransfer: transfer.lastTransfer, note: transfer.note, moreInfo: LocalMoreInfo(numberOfTransfers: transfer.moreInfo.numberOfTransfers, totalTransfer: transfer.moreInfo.totalTransfer))
         
         store.delete(localTransfer) { result in
-            switch result {
-            case .success:
-                completion(.success(()))
-            case let .failure(error):
-                completion(.failure(error))
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    completion(.success(()))
+                case let .failure(error):
+                    completion(.failure(error))
+                }
             }
         }
     }
