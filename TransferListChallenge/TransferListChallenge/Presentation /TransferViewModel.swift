@@ -95,6 +95,9 @@ public class TransferViewModel: ObservableObject {
             guard let self = self else { return }
             switch result {
             case .success:
+                if let index = transfers.firstIndex(of: item) {
+                    transfers[index].markedFavorite = false
+                }
                 break
             case .failure:
                 self.deleteError = "Could not delete item"
