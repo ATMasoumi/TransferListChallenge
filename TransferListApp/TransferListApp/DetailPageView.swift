@@ -20,13 +20,13 @@ struct DetailPageView: View {
     }
     var moreInfoView: some View {
         VStack {
-            Text("Note:Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo.")
+            Text(viewModel.selectedItem?.note ?? "")
                 .padding()
             
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("Number Of transfers: 81")
-                    Text("Total transfers: 349890")
+                    Text("Number Of transfers: \(viewModel.selectedItem?.moreInfo.numberOfTransfers ?? 0)")
+                    Text("Total transfers: \(viewModel.selectedItem?.moreInfo.totalTransfer ?? 0)")
                 }
                 .font(.footnote)
                 .foregroundColor(.secondary)
@@ -37,7 +37,12 @@ struct DetailPageView: View {
     }
     var addToFavButton: some View {
         Button {
-            
+            guard let item = viewModel.selectedItem else { return }
+            if item.markedFavorite {
+                viewModel.deleteFavorite(item: item)
+            } else {
+                viewModel.addToFavorites(item: item)
+            }
         }label: {
             RoundedRectangle(cornerRadius: 15)
                 .frame(height: 50)
@@ -50,10 +55,17 @@ struct DetailPageView: View {
     }
     var headerView: some View {
         VStack (spacing: 10){
-            Circle()
-                .frame(width: 100, height: 100)
-            Text("Amin")
-            Text(verbatim:"Torabi.dsd@gmail.com")
+            Group {
+                if let url = viewModel.selectedItem?.person.avatar {
+                    AvatarImage(url: url)
+                }else {
+                    Circle()
+                }
+            }
+            .frame(width: 100, height: 100)
+            
+            Text(viewModel.selectedItem?.person.fullName ?? "")
+            Text(verbatim:viewModel.selectedItem?.person.email ?? "")
                 .foregroundColor(Color.secondary)
                 .font(.caption)
         }

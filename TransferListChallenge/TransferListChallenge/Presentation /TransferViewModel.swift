@@ -11,6 +11,7 @@ public class TransferViewModel: ObservableObject {
     
     @Published public var transfers: [Transfer] = []
     @Published public var favTransfers: [Transfer] = []
+    @Published public var selectedItem: Transfer? = nil
     
     @Published public var isTransfersLoading: Bool = false
     @Published public var isFavTransfersLoading: Bool = false
@@ -106,6 +107,10 @@ public class TransferViewModel: ObservableObject {
             guard let index = transfers.firstIndex(of: transfer) else {  return }
             transfers[index].markedFavorite = true
         }
+    }
+    
+    public func select(item: Transfer) {
+        selectedItem = item
     }
 }
 

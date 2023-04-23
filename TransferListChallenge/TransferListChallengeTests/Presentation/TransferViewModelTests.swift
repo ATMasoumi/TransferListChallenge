@@ -216,7 +216,18 @@ final class TransferViewModelTests: XCTestCase {
         executeRunLoop()
     }
     
-    
+    func test_selectItem() {
+        let (sut, transferLoader, favTransferLoader) = makeSUT()
+        let transfer = makeItem(name: "amin", cardNumber: "1", note: "note").model
+        let transfer2 = makeItem(name: "amin", cardNumber: "1", note: "note").model
+        let transfer3 = makeItem(name: "amin", cardNumber: "1", note: "note").model
+        
+        sut.load()
+        transferLoader.complete(with: [transfer,transfer2, transfer3])
+        
+        sut.select(item: transfer)
+        XCTAssertEqual(sut.selectedItem, transfer)
+    }
     
     func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: TransferViewModel, transferLoader: TransferLoaderSpy, favTransferLoader: FavTransferLoaderSpy) {
         

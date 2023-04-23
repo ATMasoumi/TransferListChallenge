@@ -25,6 +25,7 @@ struct HomeView: View {
         List {
             ForEach(viewModel.transfers, id: \.lastTransfer) { item in
                 Button{
+                    viewModel.select(item: item)
                     onDetailTap()
                 } label: {
                     transferListCell(url: item.person.avatar, name: item.person.fullName, email: item.person.email)
@@ -37,7 +38,7 @@ struct HomeView: View {
     }
     func transferListCell(url: URL, name: String, email: String?) -> some View {
         HStack {
-            avatarImage(url: url)
+            AvatarImage(url: url)
             .frame(width: 60, height: 60)
                 .clipShape(Circle())
             VStack (alignment: .leading, spacing: 10){
@@ -69,7 +70,7 @@ struct HomeView: View {
    
     func favoritesCell(url: URL, name: String, email: String?) -> some View {
         VStack {
-            avatarImage(url: url)
+            AvatarImage(url: url)
                 .frame(width: 60, height: 60)
             Text(name)
                 .bold()
@@ -91,19 +92,8 @@ struct HomeView: View {
         }
         .padding(.leading)
     }
-    func avatarImage(url: URL) -> some View {
-        AsyncImage(url: url) { phase in
-            if let image = phase.image {
-                image
-                    .resizable()
-            } else if phase.error != nil {
-                Color.gray
-            } else {
-                ProgressView()
-            }
-        }
-    }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
