@@ -47,6 +47,7 @@ struct DetailPageView: View {
             } else {
                 viewModel.addToFavorites(item: item)
             }
+            viewModel.loadFavTransfers()
             dismiss()
         }label: {
             RoundedRectangle(cornerRadius: 15)
