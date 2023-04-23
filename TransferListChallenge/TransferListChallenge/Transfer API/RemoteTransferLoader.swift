@@ -26,13 +26,15 @@ public final class RemoteTransferLoader: TransferLoader {
     
     public func load(completion: @escaping (TransferLoader.Result) -> Void) {
         client.get(from: url) { [weak self] result in
-            guard self != nil else { return }
+            DispatchQueue.main.async {
+                guard self != nil else { return }
 
-            switch result {
-            case let .success((data, response)):
-                completion(RemoteTransferLoader.map(data, from: response))
-            case .failure:
-                completion(.failure(Error.connectivity))
+                switch result {
+                case let .success((data, response)):
+                    completion(RemoteTransferLoader.map(data, from: response))
+                case .failure:
+                    completion(.failure(Error.connectivity))
+                }
             }
         }
     }

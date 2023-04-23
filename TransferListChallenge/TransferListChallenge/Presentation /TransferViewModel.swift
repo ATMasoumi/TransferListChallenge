@@ -29,17 +29,12 @@ public class TransferViewModel: ObservableObject {
     public init(transferLoader: TransferLoader, favTransferLoader: FavoritesTransferLoader) {
         self.transferLoader = transferLoader
         self.favTransferLoader = favTransferLoader
-        group.notify(queue: .main) { [weak self] in
-            guard let self = self else { return }
-            self.markRemoteTransfersToFavoriteIfNeeded(with: self.favTransfers)
-        }
     }
     
     public func load() {
         isTransfersLoading = true
         group.enter()
         transferLoader.load { [weak self] result in
-            DispatchQueue.main.async {
                 guard let self = self else { return }
                 self.isTransfersLoading = false
                 switch result {
@@ -55,16 +50,18 @@ public class TransferViewModel: ObservableObject {
                     }
                 }
                 self.group.leave()
-            }
-           
         }
+        group.notify(queue: .main) { [weak self] in
+            guard let self = self else { return }
+            self.markRemoteTransfersToFavoriteIfNeeded(with: self.favTransfers)
+        }
+
     }
     
     public func loadFavTransfers() {
         isFavTransfersLoading = true
         group.enter()
         favTransferLoader.load { [weak self] result in
-            DispatchQueue.main.async {
                 guard let self = self else { return }
                 self.isFavTransfersLoading = false
                 switch result {
@@ -75,8 +72,6 @@ public class TransferViewModel: ObservableObject {
                     
                 }
                 self.group.leave()
-            }
-           
         }
     }
     

@@ -17,11 +17,13 @@ public class LocalFavoritesTransferLoader: FavoritesTransferLoader {
     
     public func load(completion: @escaping (LoadResult) -> Void) {
         store.retrieve { result in
-            switch result {
-            case let .success(transfers):
-                completion(.success(transfers.toModels()))
-            case let .failure(error):
-                completion(.failure(error))
+            DispatchQueue.main.async {
+                switch result {
+                case let .success(transfers):
+                    completion(.success(transfers.toModels()))
+                case let .failure(error):
+                    completion(.failure(error))
+                }
             }
         }
     }

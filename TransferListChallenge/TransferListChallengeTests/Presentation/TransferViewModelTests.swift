@@ -217,7 +217,7 @@ final class TransferViewModelTests: XCTestCase {
     }
     
     func test_selectItem() {
-        let (sut, transferLoader, favTransferLoader) = makeSUT()
+        let (sut, transferLoader, _) = makeSUT()
         let transfer = makeItem(name: "amin", cardNumber: "1", note: "note").model
         let transfer2 = makeItem(name: "amin", cardNumber: "1", note: "note").model
         let transfer3 = makeItem(name: "amin", cardNumber: "1", note: "note").model
