@@ -90,7 +90,8 @@ public class TransferViewModel: ObservableObject {
         favTransferLoader.delete(item) { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success: break
+            case .success:
+                break
             case .failure:
                 self.deleteError = "Could not delete item"
             }

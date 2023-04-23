@@ -17,3 +17,12 @@ public extension String {
         return returnDate
     }
 }
+public extension Date {
+    func toDateString() -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let dateString = dateFormatter.string(from: self)
+        return dateString
+    }
+}

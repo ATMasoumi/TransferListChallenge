@@ -8,23 +8,26 @@
 import Foundation
 
 // MARK: - Transfer
-public struct LocalTransfer: Equatable {
+public struct LocalTransfer {
     public let person: LocalPerson
     public let card: LocalCard
     public let lastTransfer: Date
     public let note: String?
     public let moreInfo: LocalMoreInfo
-    public let identifier: String
-    public init(person: LocalPerson, card: LocalCard, lastTransfer: Date, note: String?, moreInfo: LocalMoreInfo, identifier: String = UUID().uuidString) {
+    public init(person: LocalPerson, card: LocalCard, lastTransfer: Date, note: String?, moreInfo: LocalMoreInfo) {
         self.person = person
         self.card = card
         self.lastTransfer = lastTransfer
         self.note = note
         self.moreInfo = moreInfo
-        self.identifier = identifier
     }
 }
 
+extension LocalTransfer: Equatable {
+    public static func == (lhs: LocalTransfer, rhs: LocalTransfer) -> Bool {
+        return lhs.lastTransfer == rhs.lastTransfer
+    }
+}
 // MARK: - Card
 public struct LocalCard: Equatable {
     public let cardNumber, cardType: String

@@ -21,8 +21,7 @@ extension ManagedFavTransfer {
     }
 
     @NSManaged public var note: String?
-    @NSManaged public var identifier: String
-    @NSManaged public var lastTransfer: Date
+    @NSManaged public var lastTransfer: String
     @NSManaged public var addDate: Date
     @NSManaged public var person: ManagedPerson
     @NSManaged public var card: ManagedCard
@@ -43,7 +42,7 @@ extension ManagedFavTransfer : Identifiable {
     static func findObject(with id: String, in context: NSManagedObjectContext) throws -> ManagedFavTransfer? {
         let request = NSFetchRequest<ManagedFavTransfer>(entityName: entity().name!)
         request.predicate = NSPredicate(
-            format: "identifier LIKE %@", id
+            format: "lastTransfer LIKE %@", id
         )
         request.returnsObjectsAsFaults = false
         return try context.fetch(request).first

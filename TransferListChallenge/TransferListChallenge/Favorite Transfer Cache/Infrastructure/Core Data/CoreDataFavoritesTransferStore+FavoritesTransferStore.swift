@@ -15,7 +15,7 @@ extension CoreDataFavoritesTransferStore: FavoritesTransferStore {
                 let managedFavTransfer: [ManagedFavTransfer]? = try ManagedFavTransfer.find(in: context)
                 guard let managedFavTransfer = managedFavTransfer else { return []}
                 
-                return managedFavTransfer.map({LocalTransfer(person: LocalPerson(fullName: $0.person.fullName, email: $0.person.email, avatar: $0.person.avatar), card: LocalCard(cardNumber: $0.card.cardNumber, cardType: $0.card.cardType), lastTransfer: $0.lastTransfer, note: $0.note, moreInfo: LocalMoreInfo(numberOfTransfers: Int($0.moreInfo.numberOfTransfers), totalTransfer: Int($0.moreInfo.totalTransfer)), identifier: $0.identifier)})
+                return managedFavTransfer.map({LocalTransfer(person: LocalPerson(fullName: $0.person.fullName, email: $0.person.email, avatar: $0.person.avatar), card: LocalCard(cardNumber: $0.card.cardNumber, cardType: $0.card.cardType), lastTransfer: $0.lastTransfer.toDate(), note: $0.note, moreInfo: LocalMoreInfo(numberOfTransfers: Int($0.moreInfo.numberOfTransfers), totalTransfer: Int($0.moreInfo.totalTransfer)))})
             })
         }
     }
@@ -39,12 +39,11 @@ extension CoreDataFavoritesTransferStore: FavoritesTransferStore {
                 managedPerson.email = transfer.person.email
                 managedPerson.fullName = transfer.person.fullName
                 
-                managedFavTransfer.lastTransfer = transfer.lastTransfer
+                managedFavTransfer.lastTransfer = transfer.lastTransfer.toDateString()
                 managedFavTransfer.note = transfer.note
                 managedFavTransfer.person = managedPerson
                 managedFavTransfer.card = managedCard
                 managedFavTransfer.moreInfo = managedMoreInfo
-                managedFavTransfer.identifier = transfer.identifier
                 managedFavTransfer.addDate = Date()
                 
                 try context.save()
@@ -56,7 +55,10 @@ extension CoreDataFavoritesTransferStore: FavoritesTransferStore {
         perform { context in
             completion(Result {
                 do {
-                    try ManagedFavTransfer.findObject(with: transfer.identifier, in: context).map { context.delete($0)}
+                    if let object =  try ManagedFavTransfer.findObject(with: transfer.lastTransfer.toDateString(), in: context){
+                        context.delete(object)
+                         try context.save()
+                    } 
                 }catch {
                     print(error)
                 }

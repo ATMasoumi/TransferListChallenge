@@ -112,3 +112,11 @@ final class CoreDataTransferStoreUseCase: XCTestCase {
     }
 }
 
+//("
+// [TransferListChallenge.LocalTransfer(person: TransferListChallenge.LocalPerson(fullName: "amin", email: Optional("Torabi.dsd@gmail.com"), avatar: any-url.com), card: TransferListChallenge.LocalCard(cardNumber: "1", cardType: "Personal"), lastTransfer: ۲۰۲۲-۰۷-۱۴ ۰۲:۴۷:۵۸ +0000, note: Optional("note"), moreInfo: TransferListChallenge.LocalMoreInfo(numberOfTransfers: 5, totalTransfer: 100))
+//  , TransferListChallenge.LocalTransfer(person: TransferListChallenge.LocalPerson(fullName: "torabi", email: Optional("Torabi.dsd@gmail.com"), avatar: any-url.com), card: TransferListChallenge.LocalCard(cardNumber: "2", cardType: "Personal"), lastTransfer: ۲۰۲۲-۰۷-۱۴ ۰۲:۴۷:۵۸ +0000, note: Optional("note2"), moreInfo: TransferListChallenge.LocalMoreInfo(numberOfTransfers: 5, totalTransfer: 100))
+//  , TransferListChallenge.LocalTransfer(person: TransferListChallenge.LocalPerson(fullName: "masoumi", email: Optional("Torabi.dsd@gmail.com"), avatar: any-url.com), card: TransferListChallenge.LocalCard(cardNumber: "3", cardType: "Personal"), lastTransfer: ۲۰۲۲-۰۷-۱۴ ۰۲:۴۷:۵۸ +0000, note: Optional("note3"), moreInfo: TransferListChallenge.LocalMoreInfo(numberOfTransfers: 5, totalTransfer: 100))]
+// ") is not equal to ("
+// [TransferListChallenge.LocalTransfer(person: TransferListChallenge.LocalPerson(fullName: "amin", email: Optional("Torabi.dsd@gmail.com"), avatar: any-url.com), card: TransferListChallenge.LocalCard(cardNumber: "1", cardType: "Personal"), lastTransfer: ۲۰۲۲-۰۷-۱۴ ۰۲:۴۷:۵۸ +0000, note: Optional("note"), moreInfo: TransferListChallenge.LocalMoreInfo(numberOfTransfers: 5, totalTransfer: 100))
+//  , TransferListChallenge.LocalTransfer(person: TransferListChallenge.LocalPerson(fullName: "torabi", email: Optional("Torabi.dsd@gmail.com"), avatar: any-url.com), card: TransferListChallenge.LocalCard(cardNumber: "2", cardType: "Personal"), lastTransfer: ۲۰۲۲-۰۷-۱۴ ۰۲:۴۷:۵۸ +0000, note: Optional("note2"), moreInfo: TransferListChallenge.LocalMoreInfo(numberOfTransfers: 5, totalTransfer: 100))
+// ]")
