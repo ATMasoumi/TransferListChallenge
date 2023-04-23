@@ -36,6 +36,7 @@ struct HomeView: View {
                         } label: {
                             transferListCell(url: item.person.avatar, name: item.person.fullName, email: item.person.email, markedFav: item.markedFavorite)
                         }
+                        .buttonStyle(.plain)
                         .padding(.horizontal)
                     }
                     Color.clear.frame(height: 1)
