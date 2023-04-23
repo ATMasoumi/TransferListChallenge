@@ -79,7 +79,11 @@ public class TransferViewModel: ObservableObject {
         favTransferLoader.save(item) { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success: break
+            case .success:
+                if let index = transfers.firstIndex(of: item) {
+                    transfers[index].markedFavorite = true
+                }
+                break
             case .failure:
                 self.addError = "Could not delete item"
             }

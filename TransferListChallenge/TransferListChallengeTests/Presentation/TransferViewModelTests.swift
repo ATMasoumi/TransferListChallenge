@@ -151,6 +151,21 @@ final class TransferViewModelTests: XCTestCase {
         XCTAssertEqual(sut.favTransfers, [transfer, transfer2])
     }
     
+    func test_addToFavTransferSuccessfully_marksThatTransferAsFavorite() {
+        
+        let transfer = makeItem(name: "amin", cardNumber: "1", note: "note").model
+        let (sut, transferLoader, favTransferLoader) = makeSUT()
+       
+        sut.load()
+        transferLoader.complete(with: [transfer])
+        
+        sut.addToFavorites(item: transfer)
+        favTransferLoader.completeSaving()
+        
+        
+        XCTAssertEqual(sut.transfers.first!.markedFavorite, true)
+    }
+    
     func test_deleteFavTransferSuccessfully() {
         let (sut, _, favTransferLoader) = makeSUT()
         
@@ -212,7 +227,6 @@ final class TransferViewModelTests: XCTestCase {
             XCTAssertEqual(sut.transfers[1].markedFavorite, false)
             XCTAssertEqual(sut.transfers[2].markedFavorite, false)
         }
-       
         executeRunLoop()
     }
     
