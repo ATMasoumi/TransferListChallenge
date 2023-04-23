@@ -125,12 +125,11 @@
 		A82A50FE29F4394D004355CB /* TransferListApp */ = {
 			isa = PBXGroup;
 			children = (
+				A883346C29F5A17300FB09E8 /* Views */,
 				A883346029F4FE3700FB09E8 /* Shared SwiftUI Views */,
 				A82A50FF29F4394D004355CB /* TransferListAppApp.swift */,
 				A883346A29F5902700FB09E8 /* PullToRefreshView.swift */,
 				A88F1BE929F461440087E917 /* TransferUIComposer.swift */,
-				A82A510129F4394D004355CB /* HomeView.swift */,
-				A88F1BE729F457040087E917 /* DetailPageView.swift */,
 				A88F1BEB29F466560087E917 /* NullStore.swift */,
 				A82A510329F4394E004355CB /* Assets.xcassets */,
 				A82A510529F4394E004355CB /* Preview Content */,
@@ -169,6 +168,15 @@
 				A883346129F4FE5100FB09E8 /* AvatarImageView.swift */,
 			);
 			path = "Shared SwiftUI Views";
+			sourceTree = "<group>";
+		};
+		A883346C29F5A17300FB09E8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A82A510129F4394D004355CB /* HomeView.swift */,
+				A88F1BE729F457040087E917 /* DetailPageView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		A88F1BE029F43B730087E917 /* Frameworks */ = {
