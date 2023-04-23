@@ -10,6 +10,8 @@ import TransferListChallenge
 
 struct DetailPageView: View {
     @ObservedObject var viewModel: TransferViewModel
+    @Environment(\.dismiss) var dismiss
+
     var body: some View {
         VStack {
             headerView
@@ -20,9 +22,11 @@ struct DetailPageView: View {
     }
     var moreInfoView: some View {
         VStack {
-            Text(viewModel.selectedItem?.note ?? "")
-                .padding()
-            
+            if let note = viewModel.selectedItem?.note {
+                Text(note)
+                    .padding()
+
+            }
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
                     Text("Number Of transfers: \(viewModel.selectedItem?.moreInfo.numberOfTransfers ?? 0)")
@@ -43,15 +47,24 @@ struct DetailPageView: View {
             } else {
                 viewModel.addToFavorites(item: item)
             }
+            dismiss()
         }label: {
             RoundedRectangle(cornerRadius: 15)
                 .frame(height: 50)
                 .overlay {
-                    Text("Add to favorites ⭐️")
+                    Text(buttonText)
                         .foregroundColor(.white)
                 }
         }
         .padding()
+    }
+    var buttonText: String {
+        guard let item = viewModel.selectedItem else { return "Add To Favorites ⭐️"}
+        if item.markedFavorite {
+            return "Remove from favorites ⭐️"
+        } else {
+           return "Add To Favorites ⭐️"
+        }
     }
     var headerView: some View {
         VStack (spacing: 10){
@@ -74,17 +87,17 @@ struct DetailPageView: View {
         VStack{
             Spacer()
             HStack {
-                Text(type)
+                Text(viewModel.selectedItem?.card.cardType ?? "")
                     .italic()
                 Spacer()
-                Text("Blu")
+                Text("blu")
                     .font(.title)
                     .bold()
             }
         }
         .padding()
         .overlay {
-            Text("12345667909")
+            Text(viewModel.selectedItem?.card.cardNumber ?? "")
                 .font(.title2)
                 .kerning(5)
         }
@@ -93,7 +106,6 @@ struct DetailPageView: View {
                 .cornerRadius(20)
         }
         .frame(height: 180)
-
         .padding()
         .foregroundColor(.white)
     }
