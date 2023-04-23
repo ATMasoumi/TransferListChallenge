@@ -37,7 +37,7 @@ struct TransferUIComposer: View {
                     isDetailActive = true
                 }
                 NavigationLink(isActive: $isDetailActive, destination: {
-                    DetailPageView()
+                    DetailPageView(viewModel: viewModel)
                 }) {}
             }
         }
