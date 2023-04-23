@@ -35,7 +35,21 @@ final class TransferViewModelTests: XCTestCase {
         XCTAssertEqual(sut.page,2)
     }
     
-    
+    func test_refreshPaginationData() {
+        let (sut,_, _) = makeSUT()
+        
+        sut.load()
+        XCTAssertEqual(sut.page,1)
+        
+        sut.load()
+        XCTAssertEqual(sut.page,2)
+        
+        sut.refreshPaginationData()
+        
+        XCTAssertEqual(sut.page, 0)
+        XCTAssertEqual(sut.transfers, [])
+        
+    }
     
     func test_transfersLoadingIsActivated_onLoadCall() throws {
         

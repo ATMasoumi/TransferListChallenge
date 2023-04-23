@@ -22,23 +22,32 @@ struct HomeView: View {
     }
     
     var transferList: some View {
-        List {
-            ForEach(viewModel.transfers, id: \.lastTransfer) { item in
-                Button{
-                    viewModel.select(item: item)
-                    onDetailTap()
-                } label: {
-                    transferListCell(url: item.person.avatar, name: item.person.fullName, email: item.person.email, markedFav: item.markedFavorite)
+            ScrollView {
+                PullToRefreshView(coordinateSpaceName: "pullToRefresh") {
+                    viewModel.refreshPaginationData()
+                    viewModel.load()
+                }
+                LazyVStack {
+                    ForEach(viewModel.transfers, id: \.lastTransfer) { item in
+                        Button{
+                            viewModel.select(item: item)
+                            onDetailTap()
+                        } label: {
+                            transferListCell(url: item.person.avatar, name: item.person.fullName, email: item.person.email, markedFav: item.markedFavorite)
+                        }
+                        .padding(.horizontal)
+                    }
+                    Color.clear.frame(height: 1)
+                        .onAppear {
+                            viewModel.load()
+                            viewModel.loadFavTransfers()
+                        }
                 }
             }
-            Color.clear.frame(height: 1)
-                .onAppear {
-                    viewModel.load()
-                    viewModel.loadFavTransfers()
-                }
-        }
-        .listStyle(.plain)
-        .ignoresSafeArea()
+            .coordinateSpace(name: "pullToRefresh")
+            .animation(.spring(), value: viewModel.transfers)
+            
+        
     }
     func transferListCell(url: URL, name: String, email: String?, markedFav: Bool) -> some View {
         HStack {

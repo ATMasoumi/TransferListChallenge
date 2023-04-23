@@ -121,5 +121,10 @@ public class TransferViewModel: ObservableObject {
     public func select(item: Transfer) {
         selectedItem = item
     }
+    
+    public func refreshPaginationData() {
+        page = 0
+        transfers = []
+    }
 }
 
