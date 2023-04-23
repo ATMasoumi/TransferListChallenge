@@ -6,21 +6,23 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct AvatarImage: View {
     let url: URL
     var body: some View {
-            AsyncImage(url: url) { phase in
-                if let image = phase.image {
-                    image
-                        .resizable()
-                } else if phase.error != nil {
-                    Color.gray
-                } else {
-                    ProgressView()
-                }
-            }
-            .clipShape(Circle())
+        KFImage.url(url)
+                  .loadDiskFileSynchronously()
+                  .placeholder {
+                      ProgressView()
+                  }
+                  .cacheMemoryOnly()
+                  .fade(duration: 0.25)
+                  .onSuccess { result in  }
+                  .onFailure { error in }
+                  .resizable()
+                  .cancelOnDisappear(true)
+                  .clipShape(Circle())
     }
 }
 struct AvatarImageView_Previews: PreviewProvider {

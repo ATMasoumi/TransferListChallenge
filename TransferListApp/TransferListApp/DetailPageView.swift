@@ -10,7 +10,7 @@ import TransferListChallenge
 
 struct DetailPageView: View {
     @ObservedObject var viewModel: TransferViewModel
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         VStack {
@@ -48,17 +48,18 @@ struct DetailPageView: View {
                 viewModel.addToFavorites(item: item)
             }
             viewModel.loadFavTransfers()
-            dismiss()
+            presentationMode.wrappedValue.dismiss()
         }label: {
             RoundedRectangle(cornerRadius: 15)
                 .frame(height: 50)
-                .overlay {
+                .overlay(
                     Text(buttonText)
-                        .foregroundColor(.white)
-                }
+                    .foregroundColor(.white)
+                )
         }
         .padding()
     }
+    
     var buttonText: String {
         guard let item = viewModel.selectedItem else { return "Add To Favorites ⭐️"}
         if item.markedFavorite {
@@ -97,18 +98,19 @@ struct DetailPageView: View {
             }
         }
         .padding()
-        .overlay {
-            Text(viewModel.selectedItem?.card.cardNumber ?? "")
-                .font(.title2)
-                .kerning(5)
-        }
-        .background {
+        .overlay(cardNumber)
+        .background(
             Color.green
-                .cornerRadius(20)
-        }
+            .cornerRadius(20)
+        )
         .frame(height: 180)
         .padding()
         .foregroundColor(.white)
+    }
+    var cardNumber: some View {
+        Text(viewModel.selectedItem?.card.cardNumber ?? "")
+            .font(.title2)
+            .kerning(5)
     }
 }
 

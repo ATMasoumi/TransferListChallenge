@@ -15,6 +15,7 @@
 		A82A511B29F4394E004355CB /* TransferListAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82A511A29F4394E004355CB /* TransferListAppUITests.swift */; };
 		A82A511D29F4394E004355CB /* TransferListAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82A511C29F4394E004355CB /* TransferListAppUITestsLaunchTests.swift */; };
 		A883346229F4FE5100FB09E8 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A883346129F4FE5100FB09E8 /* AvatarImageView.swift */; };
+		A883346929F58C9700FB09E8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A883346829F58C9700FB09E8 /* Kingfisher */; };
 		A88F1BE229F43B730087E917 /* TransferListChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A88F1BE129F43B730087E917 /* TransferListChallenge.framework */; };
 		A88F1BE329F43B730087E917 /* TransferListChallenge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A88F1BE129F43B730087E917 /* TransferListChallenge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A88F1BE829F457040087E917 /* DetailPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88F1BE729F457040087E917 /* DetailPageView.swift */; };
@@ -76,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A883346929F58C9700FB09E8 /* Kingfisher in Frameworks */,
 				A88F1BE229F43B730087E917 /* TransferListChallenge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,6 +193,9 @@
 			dependencies = (
 			);
 			name = TransferListApp;
+			packageProductDependencies = (
+				A883346829F58C9700FB09E8 /* Kingfisher */,
+			);
 			productName = TransferListApp;
 			productReference = A82A50FC29F4394D004355CB /* TransferListApp.app */;
 			productType = "com.apple.product-type.application";
@@ -263,6 +268,9 @@
 				Base,
 			);
 			mainGroup = A82A50F329F4394D004355CB;
+			packageReferences = (
+				A883346729F58C9700FB09E8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = A82A50FD29F4394D004355CB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -477,7 +485,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -507,7 +515,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -637,6 +645,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A883346729F58C9700FB09E8 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A883346829F58C9700FB09E8 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A883346729F58C9700FB09E8 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A82A50F429F4394D004355CB /* Project object */;
 }

@@ -29,11 +29,10 @@ struct HomeView: View {
                     onDetailTap()
                 } label: {
                     transferListCell(url: item.person.avatar, name: item.person.fullName, email: item.person.email, markedFav: item.markedFavorite)
-                        .listRowSeparator(.hidden)
                 }
             }
             Color.clear.frame(height: 1)
-                .task {
+                .onAppear {
                     viewModel.load()
                     viewModel.loadFavTransfers()
                 }
