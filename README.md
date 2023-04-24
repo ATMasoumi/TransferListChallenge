@@ -135,3 +135,6 @@ GET
 
 ```
 
+#installing 
+
+###just run .xcworkspace file in TransferListApp folder
