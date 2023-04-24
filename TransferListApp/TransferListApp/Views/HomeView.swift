@@ -39,6 +39,10 @@ struct HomeView: View {
                         .buttonStyle(.plain)
                         .padding(.horizontal)
                     }
+                    if viewModel.isTransfersLoading {
+                        ProgressView()
+                    }
+                    showErrors
                     Color.clear.frame(height: 1)
                         .onAppear {
                             viewModel.load()
@@ -50,6 +54,14 @@ struct HomeView: View {
             .animation(.spring(), value: viewModel.transfers)
             
         
+    }
+    
+    var showErrors: some View {
+        Group {
+            if let error = viewModel.remoteLoadError {
+                Text(error)
+            }
+        }
     }
     func transferListCell(url: URL, name: String, email: String?, markedFav: Bool) -> some View {
         HStack {

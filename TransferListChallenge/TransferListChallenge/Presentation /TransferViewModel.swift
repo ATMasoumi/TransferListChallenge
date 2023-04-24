@@ -16,8 +16,7 @@ public class TransferViewModel: ObservableObject {
     @Published public var isTransfersLoading: Bool = false
     @Published public var isFavTransfersLoading: Bool = false
     
-    @Published public var connectivityError : String? = nil
-    @Published public var invalidDataError : String? = nil
+    @Published public var remoteLoadError : String? = nil
     @Published public var dataStoreError : String? = nil
     @Published public var deleteError : String? = nil
     @Published public var addError : String? = nil
@@ -40,6 +39,7 @@ public class TransferViewModel: ObservableObject {
                 self.isTransfersLoading = false
                 switch result {
                 case let .success(transfers):
+                    self.remoteLoadError = nil
                     self.transfers.append(contentsOf: transfers)
                 case let .failure(error):
                     handleTransferLoadErrors(for: error)
@@ -56,9 +56,9 @@ public class TransferViewModel: ObservableObject {
         guard let error = error as? RemoteTransferLoader.Error else { return }
         switch error {
         case .connectivity:
-            self.connectivityError = "Please check your network!"
+            self.remoteLoadError = "Please check your network!"
         case .invalidData:
-            self.invalidDataError = "Could not reach to server!"
+            self.remoteLoadError = "Invalid data from server!"
         }
     }
     

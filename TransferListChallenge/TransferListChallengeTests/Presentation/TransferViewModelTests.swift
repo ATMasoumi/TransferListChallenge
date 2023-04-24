@@ -68,7 +68,7 @@ final class TransferViewModelTests: XCTestCase {
         sut.load()
         transferLoader.complete(with: RemoteTransferLoader.Error.connectivity)
         
-        XCTAssertNotNil(sut.connectivityError)
+        XCTAssertNotNil(sut.remoteLoadError)
     }
     
     func test_loadingTransfers_getsInvalidDataError() {
@@ -76,7 +76,7 @@ final class TransferViewModelTests: XCTestCase {
         sut.load()
         transferLoader.complete(with: RemoteTransferLoader.Error.invalidData)
         
-        XCTAssertNotNil(sut.invalidDataError)
+        XCTAssertNotNil(sut.remoteLoadError)
     }
     
     func test_transfersLoadingIsDeActivated_afterGettingError() {
